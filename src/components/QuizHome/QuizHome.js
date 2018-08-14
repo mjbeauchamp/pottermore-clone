@@ -1,9 +1,15 @@
 import React from 'react'
+import CursorTrail from './CursorTrail'
 
 function QuizHome () {
+   
     return(
         <div>
-            This is where the Quizes live
+            <CursorTrail/>
+            <div>
+                This is where the Quizes live
+
+            </div>
         </div>
     )   
 }
