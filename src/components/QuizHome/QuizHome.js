@@ -5,7 +5,7 @@
 //     render (){
 //         return (
 //             <div className="App">
-//                 This is where the Quizes sorts houses
+//                 This is where the Quizes live
 //             </div>
 //         )
 //     }
