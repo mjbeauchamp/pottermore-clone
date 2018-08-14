@@ -1,14 +1,11 @@
-// import React from 'react'
+import React from 'react'
 
-// export class QuizHome {
+function QuizHome () {
+    return(
+        <div>
+            This is where the Quizes live
+        </div>
+    )   
+}
 
-//     render (){
-//         return (
-//             <div className="App">
-//                 This is where the Quizes live
-//             </div>
-//         )
-//     }
-// }
-
-// export default QuizHome
+export default QuizHome
