@@ -4,6 +4,7 @@
   "private": true,
   "build-css": "node-sass-chokidar src/ -o src/",
   "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+  "main": "./server/server.js",
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",

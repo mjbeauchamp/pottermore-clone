@@ -1,0 +1,155 @@
+
+.wrapper {
+	margin: 100px auto;
+  max-width: 1000px;
+}
+
+.stage {
+	list-style: none;
+  padding: 0;
+}
+
+
+span {
+    color: blue;
+}
+.scene {
+	width: 260px;
+	height: 400px;
+	float: left;
+	perspective: 1000px;
+}
+ .cha {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+.movie {
+	width: 260px;
+	height: 400px;
+	transform-style: preserve-3d;
+	transform: translateZ(-130px);
+	transition: transform 350ms;
+}
+.movie:hover {
+	transform: rotateY(-78deg) translateZ(20px);
+}
+.movie .poster, 
+.movie .info {
+  position: absolute;
+  width: 260px;
+  height: 400px;
+  background-color: #fff;
+  backface-visibility: hidden;
+}
+.movie .poster  {
+    transform: translateZ(130px);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .movie .info {
+    transform: rotateY(90deg) translateZ(130px);
+    border: 1px solid #B8B5B5;
+    font-size: 0.75em;
+  }
+  .movie::after {
+    content: '';
+    width: 260px;
+    height: 260px;
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+    transform-origin: 100% 100%;
+    transform: rotateX(90deg) translateY(130px);
+    transition: box-shadow 350ms;
+  }
+  
+  .movie:hover::after {
+    box-shadow: 20px -5px 50px rgba(0,0,0,0.3);
+  }
+  .info header {
+    color: #FFF;
+    padding: 7px 10px;
+    font-weight: bold;
+    height: 195px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-shadow: 0px 1px 1px rgba(0,0,0,1);
+  }
+  
+  .info header h1 {
+    margin: 0 0 2px;
+    font-size: 1.4em;
+  }
+  
+  .info header .rating {
+    border: 1px solid #FFF;
+    padding: 0px 3px;
+  }
+  
+  .info p {
+    padding: 1.2em 1.4em;
+    margin: 2px 0 0;
+    font-weight: 700;
+    color: #666;
+    line-height: 1.4em;
+    border-top: 10px solid #555;
+  }
+  .movie .poster,
+.movie .info,
+.movie .info header {
+  transition: box-shadow 350ms;
+}
+
+.movie .poster {
+  box-shadow: inset 0px 0px 40px rgba(255,255,255,0);
+}
+
+.movie:hover .poster {
+  box-shadow: inset 300px 0px 40px rgba(255,255,255,0.8);
+}
+.movie .info, 
+.movie .info header {
+  box-shadow: inset -300px 0px 40px rgba(0,0,0,0.5);
+}
+
+.movie:hover .info, 
+.movie:hover .info header {
+  box-shadow: inset 0px 0px 40px rgba(0,0,0,0);
+}
+
+.scene:nth-child(1) .movie .poster {
+    background-image: url(https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/beast.jpg);
+    border: 3px solid white;
+    box-shadow: 3px 3px 10px rgb(161, 161, 161);
+  }
+  
+  .scene:nth-child(2) .poster {
+    background-image: url(https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/fb.jpg
+    );
+    border: 3px solid white;
+    box-shadow: 3px 3px 10px rgb(161, 161, 161);
+  }
+  
+  .scene:nth-child(3) .poster {
+    background-image: url(https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/harry2.jpg);
+    background-position: -12px;
+    border: 3px solid white;
+    box-shadow: 3px 3px 10px rgb(161, 161, 161);
+  }
+  
+  .scene:nth-child(1) .info header {
+    background-image: url(https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/beast2.jpg);
+    box-shadow: 5px 5px 10px rgb(161, 161, 161);
+  }
+  
+  .scene:nth-child(2) .info header {
+    background-image: url(https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/occamy.jpg);
+    box-shadow: 5px 5px 10px rgb(161, 161, 161);
+  }
+  
+  .scene:nth-child(3) .info header {
+    background-image: url(https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/harry3.jpg);
+    box-shadow: 5px 5px 10px rgb(161, 161, 161);
+  }
