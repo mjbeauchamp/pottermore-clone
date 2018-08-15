@@ -47,11 +47,14 @@ class Cart extends Component{
         return(
                 <div className='cart-main'>
                 <h1>Cart</h1>
-                  
+                <div className='shop-items'>
                   {items}
+                
                     <h1>Total:${total.reduce((total,amount) => Number(total) + Number(amount),0).toFixed(2)}</h1>
+                </div>
+                  
+                  <Link to='/Store'><button>STORE</button></Link>
                     
-                  <Link to='/Store'><button className='btn btn-primary'>STORE</button></Link>
                 </div>
 
             )
