@@ -27,10 +27,67 @@ class CursorTrail extends React.Component {
     this.handleMouseMove(touches[0]);
   }
 
+
+
   render() {
     return (
-      <NodeGroup
-        data={range(40).map(d => {
+      <div>
+        <NodeGroup
+          data={range(30).map(d => {
+            return {
+              key: `key-${d}`,
+              x: this.state.x,
+              y: this.state.y
+            };
+          })}
+
+          keyAccessor={d => d.key}
+  
+          start={data => {
+            return { x: data.x, y: data.y };
+          }}
+
+          update={(data, index) => {
+            return {
+              x: [data.x + 26],
+              y: [data.y + 35],
+              timing: {
+                delay: index * 14,
+                duration: 300,
+              }
+            };
+          }}
+        >
+          {nodes => {
+            return (
+              <div>
+                {nodes.map((node, index) => {
+                  const { x, y } = node.state;
+
+                  return (
+                    <div
+                      key={node.key}
+                      style={{
+                        backgroundColor: 'red',
+                        marginTop: -5,
+                        width: 5,
+                        height: 5,
+                        borderRadius: 25,
+                        opacity: 0.7,
+                        WebkitTransform: `translate3d(${x - 25}px, ${y -
+                          25}px, 0)`,
+                        transform: `translate3d(${x - 25}px, ${y - 25}px, 0)`,
+                        zIndex: nodes.length - index + 5000
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            );
+          }}
+        </NodeGroup>
+        <NodeGroup
+        data={range(30).map(d => {
           return {
             key: `key-${d}`,
             x: this.state.x,
@@ -50,7 +107,7 @@ class CursorTrail extends React.Component {
             y: [data.y + 35],
             timing: {
               delay: index * 20,
-              duration: 200,
+              duration: 300,
             }
           };
         }}
@@ -65,7 +122,7 @@ class CursorTrail extends React.Component {
                   <div
                     key={node.key}
                     style={{
-                      backgroundColor: '#0F4C5C',
+                      backgroundColor: 'yellow',
                       marginTop: -5,
                       width: 5,
                       height: 5,
@@ -83,6 +140,62 @@ class CursorTrail extends React.Component {
           );
         }}
       </NodeGroup>
+      <NodeGroup
+        data={range(30).map(d => {
+          return {
+            key: `key-${d}`,
+            x: this.state.x,
+            y: this.state.y
+          };
+        })}
+
+        keyAccessor={d => d.key}
+ 
+        start={data => {
+          return { x: data.x, y: data.y };
+        }}
+
+        update={(data, index) => {
+          return {
+            x: [data.x + 26],
+            y: [data.y + 35],
+            timing: {
+              delay: index * 17,
+              duration: 300,
+            }
+          };
+        }}
+      >
+        {nodes => {
+          return (
+            <div>
+              {nodes.map((node, index) => {
+                const { x, y } = node.state;
+
+                return (
+                  <div
+                    key={node.key}
+                    style={{
+                      backgroundColor: 'blue',
+                      marginTop: -5,
+                      width: 5,
+                      height: 5,
+                      borderRadius: 25,
+                      opacity: 0.7,
+                      WebkitTransform: `translate3d(${x - 25}px, ${y -
+                        25}px, 0)`,
+                      transform: `translate3d(${x - 25}px, ${y - 25}px, 0)`,
+                      zIndex: nodes.length - index + 5000
+                    }}
+                  />
+                );
+              })}
+            </div>
+          );
+        }}
+      </NodeGroup>
+      </div>
+      
     );
   }
 }
