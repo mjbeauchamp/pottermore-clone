@@ -1,2 +1,2 @@
-select username
-from wizard_users;
+SELECT username
+FROM wizard_users;

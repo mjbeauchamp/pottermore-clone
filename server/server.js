@@ -45,6 +45,7 @@ app.post('/auth/login', controllers.login);
 
 
 
+
 app.listen(SERVER_PORT, () => {
     console.log(`Server listening on port ${SERVER_PORT}`)
 });
