@@ -1,5 +1,11 @@
 .navbar {
     width: 100%;
     height: 100px;
-    background: pink;
+    background: #2D2327;
+    color: white;
+    a {
+        color: white;
+        text-decoration: none;
+        padding: 20px;
+    }
 }

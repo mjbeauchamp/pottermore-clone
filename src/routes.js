@@ -11,8 +11,8 @@ import SortingQuiz from './components/SortingQuiz/SortingQuiz'
 
 export default (
     <Switch>
-        {/* <Route path = '/' component = {Login} exact /> */}
-        {/* <Route path = '/signup' component = {SignUp}/> */}
+        <Route path = '/' component = {Login} exact />
+        <Route path = '/signup' component = {SignUp}/>
         {/* <Route path = '/dashboard' component = {UserProfile} /> */}
         {/* <Route path = '/home' component = {Home}/> */}
         {/* <Route path = '/store' component = {Storefront}/> */}
