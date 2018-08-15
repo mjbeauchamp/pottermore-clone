@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {connect} from 'react-redux';
-import {getTotal} from '../dux/reducer';
-import swal from 'sweetalert';
-import picture from '../imports/BellatrixFunkoPop.jpg';
 
 
 
@@ -63,14 +59,4 @@ class Items extends Component{
     }
 
 }
-function mapStateToProps(state){
-    return{
-        total:state.total
-    }
-}
-
-const actions = {
-    getTotal,
-}
-
-export default connect(mapStateToProps, actions)(Items)
+export default Items;
