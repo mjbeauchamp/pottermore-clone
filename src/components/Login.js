@@ -18,13 +18,14 @@ class Login extends Component {
         let {username, password} = this.state;
         axios.post('/auth/login', {username: username, password: password})
             .then(response => {
+                console.log(response.data[0].id)
                 console.log("You logged in!")
                 // this.props.gatherUserId(username);
                 this.setState({
                     username: '',
                     password: ''
                 })
-                this.props.history.push('/pick_unicorn');
+                //this.props.history.push('/pick_unicorn');
             })
             .catch(err => {
                 alert("Username and password incorrect.")
