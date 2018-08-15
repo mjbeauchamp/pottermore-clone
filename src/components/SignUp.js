@@ -59,6 +59,7 @@ class SignUp extends Component {
             this.newUser()
         }
     }
+    //s
 
     render(){
         return (
