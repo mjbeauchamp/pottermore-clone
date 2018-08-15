@@ -120,35 +120,36 @@ span {
 }
 
 .scene:nth-child(1) .movie .poster {
-    background-image: url(../components/Home/SpinNews/img/beast.jpg);
+    background-image: url(https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/beast.jpg);
     border: 3px solid white;
     box-shadow: 3px 3px 10px rgb(161, 161, 161);
   }
   
   .scene:nth-child(2) .poster {
-    background-image: url(../components/Home/SpinNews/img/fb.jpg);
+    background-image: url(https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/fb.jpg
+    );
     border: 3px solid white;
     box-shadow: 3px 3px 10px rgb(161, 161, 161);
   }
   
   .scene:nth-child(3) .poster {
-    background-image: url(../components/Home/SpinNews/img/harry2.jpg);
+    background-image: url(https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/harry2.jpg);
     background-position: -12px;
     border: 3px solid white;
     box-shadow: 3px 3px 10px rgb(161, 161, 161);
   }
   
   .scene:nth-child(1) .info header {
-    background-image: url(../components/Home/SpinNews/img/beast2.jpg);
+    background-image: url(https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/beast2.jpg);
     box-shadow: 5px 5px 10px rgb(161, 161, 161);
   }
   
   .scene:nth-child(2) .info header {
-    background-image: url(../components/Home/SpinNews/img/occamy.jpg);
+    background-image: url(https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/occamy.jpg);
     box-shadow: 5px 5px 10px rgb(161, 161, 161);
   }
   
   .scene:nth-child(3) .info header {
-    background-image: url(../components/Home/SpinNews/img/harry3.jpg);
+    background-image: url(https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/harry3.jpg);
     box-shadow: 5px 5px 10px rgb(161, 161, 161);
   }
