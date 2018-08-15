@@ -3,8 +3,8 @@ import {Switch, Route} from 'react-router-dom'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Home from './components/Home/Home'
-import Storefront from './components/Storefront'
-import Cart from './components/Cart'
+import Storefront from './components/Shop/Storefront'
+import Cart from './components/Shop/Cart'
 import UserProfile from './components/UserProfile'
 import QuizHome from './components/QuizHome/QuizHome'
 import SortingQuiz from './components/SortingQuiz/SortingQuiz'
@@ -15,8 +15,8 @@ export default (
         <Route path = '/signup' component = {SignUp}/>
         {/* <Route path = '/dashboard' component = {UserProfile} /> */}
         <Route path = '/home' component = {Home}/>
-        {/* <Route path = '/store' component = {Storefront}/> */}
-        {/* <Route path = '/cart' component = {Cart}/> */}
+        <Route path = '/store' component = {Storefront}/>
+        <Route path = '/cart' component = {Cart}/>
         <Route path = '/quizhome' component = {QuizHome}/>
         <Route path = '/sortingquiz' component = {SortingQuiz}/>
     </Switch>
