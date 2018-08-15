@@ -35,7 +35,11 @@ app.use(bodyParser.json());
 //ENDPOINTS
 
 //Auth endpoints
+//Create new user
 app.post('/auth/new_user', controllers.create_user);
+
+//Get all usernames to verify that there are no duplicate usernames for bcrypt
+app.get('/auth/all_usernames', controllers.all_usernames);
 
 
 
