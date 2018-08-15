@@ -1,6 +1,19 @@
 const bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
+    all_usernames: (req, res) => {
+        const dbInstance = req.app.get('db');
+
+        dbInstance.get_all_usernames()
+            .then(usernames => {
+                console.log(usernames)
+                res.status(200).send(usernames)
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).send({errorMessage: "Oops! Something went wrong."})
+            })
+    },
     create_user: (req, res) => {
         const dbInstance = req.app.get('db');
         const {first_name, last_name, username, password} = req.body;
