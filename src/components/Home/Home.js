@@ -15,7 +15,7 @@ import SpinNews from './SpinNews/SpinNews'
                     <SpinNews  />
                 </div>
                 <div className='go-store'>
-
+                    <button>Enter Store</button>
                 </div>
             </section>
             
