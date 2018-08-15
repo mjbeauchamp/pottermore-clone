@@ -4,6 +4,12 @@ import axios from 'axios';
 
 
 class Product extends Component{
+    constructor(){
+        super()
+        this.state={
+            cart:[]
+        }
+    }
 
 
     handleAdd=()=>{
@@ -20,6 +26,7 @@ class Product extends Component{
                 <div className="product-display">
                     <img src={this.props.image} alt="product"/>
                     <h3>Price:{this.props.price}</h3>
+                    <h3>Description:{this.props.description}</h3>
                 </div>
                     <button className='btn btn-primary' onClick={this.handleAdd}>Add to Cart</button>
             </div>

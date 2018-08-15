@@ -5,18 +5,26 @@ import {Link} from 'react-router-dom'
 
 
 class Storefront extends Component{
-    constructor()
-    super()
+    constructor(){
+        super()
+        this.state={
+            cart:[],
+            products:[],
+            user:{}
+        }
+    }
     
    
     componentDidMount(){
         axios.get('/api/products').then(products=>{
-            this.props.getProducts(products.data)
+            this.setState({
+                products: products.data
+            })
         })
     }
     
         render(){
-            let products = this.props.products.map(e=>{
+            let products = this.state.products.map(e=>{
             return(
                     <Products
                     key={e.id}
