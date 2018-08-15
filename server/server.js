@@ -43,6 +43,7 @@ app.get('/auth/all_usernames', controllers.all_usernames);
 
 app.post('/auth/login', controllers.login);
 
+app.get('/auth/logout', controllers.logout);
 
 
 

@@ -64,5 +64,11 @@ module.exports = {
                 res.status(500).send({errorMessage: "Oops! Something went wrong"});
                 console.log(err)
         });
+    },
+    logout: (req, res, next) => {
+        req.session.destroy();
+        console.log(req.session)
+        console.log('You successfully logged out!')
+        res.status(200).send(req.session);
     }
 }
