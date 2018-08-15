@@ -41,7 +41,7 @@ class Login extends Component {
     render(){
         return (
             <div onKeyDown={e => this.onEnter(e)}>
-                <Navbar />
+                <Navbar {...this.props}  />
                 <div className="auth-container">
                     <h1 className="auth-title">Login</h1>
                     <input
