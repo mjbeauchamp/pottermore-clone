@@ -34,6 +34,9 @@ app.use(bodyParser.json());
 
 //ENDPOINTS
 
+//Auth endpoints
+app.post('/auth/new_user', controllers.create_user);
+
 
 
 
