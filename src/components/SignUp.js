@@ -16,28 +16,30 @@ class SignUp extends Component {
     }
 
     newUser = () => {
-        let {username, password} = this.state;
-        axios.get('/api/all_usernames')
+        let {username, password, first_name, last_name} = this.state;
+        axios.get('/auth/all_usernames')
             .then(usernames => {
                 let nameArray = usernames.data.map(val => {
                     return val.username
                 })
                 //Check to see if username already exists in the database
                 if(nameArray.indexOf(username) === -1){
-                    axios.post('/auth/new_user', {username: username, password: password})
+                    axios.post('/auth/new_user', {first_name: first_name, last_name: last_name, username: username, password: password})
                         .then(response => {
-                            //Create a single default unicorn that all users have access to
-                            let newUserId = response.data[0].id;
-                            axios.post('/api/new_unicorn', {name: "Bubbles", file_name: "rainbow", user_id: newUserId})
-                                .then( response => {
-                        //Navigate back to the "Pick Your Unicorn" page
-                                    this.props.history.push('/pick_unicorn')
-                                })
-                                .catch(err => {console.log(err)})
+                        //     //Create a single default unicorn that all users have access to
+                        //     let newUserId = response.data[0].id;
+                        //     axios.post('/api/new_unicorn', {name: "Bubbles", file_name: "rainbow", user_id: newUserId})
+                        //         .then( response => {
+                        // //Navigate back to the "Pick Your Unicorn" page
+                        //             this.props.history.push('/pick_unicorn')
+                        //         })
+                        //         .catch(err => {console.log(err)})
                             //Set the username and password fields to be blank
                             this.setState({
-                            username: '',
-                            password: ''
+                                first_name: '',
+                                last_name: '',
+                                username: '',
+                                password: ''
                             })
                         })
                         .catch(err => {
@@ -64,6 +66,25 @@ class SignUp extends Component {
                 <Navbar {...this.props}  />
                 <div className="auth-container">
                     <h1 className="auth-title">Sign Up</h1>
+
+                    <input 
+                        autoFocus={true} 
+                        className="auth-input" 
+                        type="text" 
+                        onChange={(e) => {this.setState({first_name: e.target.value})}} 
+                        placeholder="First Name" 
+                        value={this.state.first_name}
+                        maxLength="25"/>
+
+                    <input 
+                        autoFocus={true} 
+                        className="auth-input" 
+                        type="text" 
+                        onChange={(e) => {this.setState({last_name: e.target.value})}} 
+                        placeholder="Last Name" 
+                        value={this.state.last_name}
+                        maxLength="25"/>
+
                     <input 
                         autoFocus={true} 
                         className="auth-input" 
@@ -72,6 +93,7 @@ class SignUp extends Component {
                         placeholder="Username" 
                         value={this.state.username}
                         maxLength="25"/>
+
                     <input 
                         className="auth-input" 
                         type="password" 
