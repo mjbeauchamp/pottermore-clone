@@ -1,6 +1,7 @@
 import React from 'react'
 import CursorTrail from './CursorTrail'
 import {NavLink} from 'react-router-dom'
+import Navbar from './../Navbar'
 
 function QuizHome () {
    
@@ -13,6 +14,7 @@ function QuizHome () {
 
             <div>
                 {/* nav bar will go here*/}
+                <Navbar/>
             </div>
 
             <div className = 'quizhometop'>
