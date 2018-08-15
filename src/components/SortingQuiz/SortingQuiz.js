@@ -8,8 +8,17 @@ export class QuizHome extends Component{
     
     render (){
         return (
-            <div className="App">
+            <div className="SortingQuiz">
                 This is where the quiz sorts houses
+                <div className = 'questioncontainer'>
+                    <div className = 'questiontext'>
+
+                    </div>
+
+                </div>
+                <div className = 'answercontainer'>
+                    
+                </div>
             </div>
         )
     }
