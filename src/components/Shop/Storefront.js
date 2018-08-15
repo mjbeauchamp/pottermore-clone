@@ -5,9 +5,6 @@ import {Link} from 'react-router-dom'
 
 
 class Storefront extends Component{
-    constructor()
-    super()
-    
    
     componentDidMount(){
         axios.get('/api/products').then(products=>{
