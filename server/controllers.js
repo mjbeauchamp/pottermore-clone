@@ -25,7 +25,7 @@ module.exports = {
             dbInstance.create_user([first_name, last_name, username, hash])
             .then(createdUser => {
                 req.session.userid = createdUser[0].id
-                console.log(req.session.userid)
+                console.log(req.session.user.id)
                 res.status(200).send(createdUser);
             })
             .catch(err => {
@@ -93,6 +93,46 @@ module.exports = {
                 } );
         } else {
             res.status(200).send("No current user");
+        }
+    },
+    getCart: async(req,res)=>{
+        try{
+            const db = req.app.get('db')
+            let cart = await db.get_Cart([+req.session.user.id])
+            return res.status(200).send(cart)
+            }catch(err){res.sendStatus(500)
+                console.log(err)
+            }
+        },
+    addToCart: async(req,res)=>{
+        try{
+            const db = req.app.get('db')
+            let {id}=req.body
+            
+            const  item= await db.check_Cart([+req.session.user.id , id]);
+            
+                if(item.length == 0){
+                    const newItem = await db.add_to_cart([id, +req.session.user.id])
+                    
+                    return res.status(200).send(newItem);
+                }else{
+                    const updatedItem = await db.add_quantity([+req.session.user.id, id])
+                    
+                    return res.status(200).send(updatedItem);
+                }
+        }catch(err){
+            res.status(500).send(err)
+                console.log(err)
+            }
+    },
+    getProducts: async (req, res) => {
+        try{
+            const db = req.app.get('db')
+            let products = await db.get_store()
+            return res.status(200).send(products)
+            
+        }catch(err){
+            console.log(err)
         }
     }
 }

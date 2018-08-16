@@ -4,13 +4,25 @@ import axios from 'axios';
 
 
 class Items extends Component{
+    constructor(){
+        super()
+        this.state={
+            cart:[],
+            details:[],
+            user:{}
+        }
+
+
+    }
 
     handleAddItem=()=>{
         const {id}=this.props
             axios.put('/api/cart',{id}).then((res)=>{
             console.log(res.data)
-            this.props.getTotal(res.data)
+            this.setState({
+                details:res.data
             })
+        })
     }
     handleDeleteItem=()=>{
         const {id} = this.props
@@ -25,8 +37,10 @@ class Items extends Component{
     handleDeleteProduct=(id)=>{
         // console.log(id)
         axios.delete('/api/product/'+id,).then(res=>{
-            // console.log(res.data)
-                this.props.getTotal(res.data)
+            console.log(res.data)
+                this.setState({
+                    details:res.data
+                })
                 // console.log(this.props.total)
             })
     }
