@@ -23,7 +23,14 @@ class Navbar extends Component {
                 }
             })
             .catch();
+    }
 
+    logout = () => {
+        axios.get('/auth/logout')
+            .then(
+                this.props.history.push("/home")
+            )
+            .catch()
     }
 
     render(){
@@ -41,7 +48,7 @@ class Navbar extends Component {
         let path = this.props.location.pathname;
 
         if(this.state.userID){
-            logout = <Link to="/logout">Logout</Link>
+            logout = <button onClick={this.logout}>Logout</button>
             dashboard = <Link to="/dashboard">Dashboard</Link>
             cart = <Link to="/cart">Cart</Link>
         } else if(!this.state.userID){
