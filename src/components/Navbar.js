@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 class Navbar extends Component {
-    constructor(props){
-        super(props)
+    constructor(){
+        super()
     }
     render(){
         //Links to be rendered conditionally
@@ -16,7 +16,6 @@ class Navbar extends Component {
         let cart;
         //Pulling path from props for conditional routing
         let path = this.props.location.pathname;
-        console.log(path)
 
         //Conditionally render links depending on what page you're on
         switch(path){
