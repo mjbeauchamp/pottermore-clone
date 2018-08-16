@@ -4,16 +4,10 @@ import axios from 'axios';
 
 
 class Product extends Component{
-    constructor(){
-        super()
-        this.state={
-            cart:[]
-        }
-    }
-
 
     handleAdd=()=>{
         const {id} = this.props
+        console.log(this.props)
             axios.post('/api/cart',{id}).then(()=>{
             
         })
@@ -22,13 +16,13 @@ class Product extends Component{
         return(
 
             <div className='products-main'>
-                <h3>Name:{this.props.name}</h3>
+                <h3>{this.props.name}</h3>
                 <div className="product-display">
                     <img src={this.props.image} alt="product"/>
-                    <h3>Price:{this.props.price}</h3>
-                    <h3>Description:{this.props.description}</h3>
+                    <h3>{this.props.price}</h3>
+                    {/* <h3>Description:{this.props.description}</h3> */}
+                    <button className='' onClick={this.handleAdd}>Add to Cart</button>
                 </div>
-                    <button className='btn btn-primary' onClick={this.handleAdd}>Add to Cart</button>
             </div>
         )
     }

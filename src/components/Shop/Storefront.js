@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Products from './Products';
 import {Link} from 'react-router-dom'
-
+import Navbar from '../Navbar';
 
 class Storefront extends Component{
     constructor(){
@@ -25,10 +25,12 @@ class Storefront extends Component{
     
         render(){
             let products = this.state.products.map(e=>{
+                console.log(e)
             return(
                     <Products
                     key={e.id}
                     id={e.id}
+                    cart ={this.state.cart}
                     name={e.product_name}
                     price={e.product_price}
                     image={e.product_image}

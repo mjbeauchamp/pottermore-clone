@@ -7,7 +7,7 @@ class Navbar extends Component {
     }
     render(){
         //Links to be rendered conditionally
-        let logout;
+         let logout;
         let home = <Link to="/home">Home</Link>;
         let store = <Link to="/store">Store</Link>;
         let dashboard;
