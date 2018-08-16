@@ -14,6 +14,7 @@ module.exports = {
                 res.status(500).send({errorMessage: "Oops! Something went wrong."})
             })
     },
+
     create_user: (req, res) => {
         const dbInstance = req.app.get('db');
         const {first_name, last_name, username, password} = req.body;
@@ -33,6 +34,7 @@ module.exports = {
             });
         })
     },
+
     login: (req, res) => {
         const dbInstance = req.app.get('db');
         const {username, password} = req.body;
@@ -47,7 +49,7 @@ module.exports = {
                             .then(user => {
                                 console.log("User data:" + user[0].id)
                                 req.session.userid = user[0].id
-                                console.log(req.session)
+                                console.log(req.session.userid)
                                 res.status(200).send(user);
                             })
                             .catch(err => {
@@ -64,5 +66,31 @@ module.exports = {
                 res.status(500).send({errorMessage: "Oops! Something went wrong"});
                 console.log(err)
         });
+    },
+
+    logout: (req, res, next) => {
+        req.session.destroy();
+        console.log(req.session)
+        console.log('You successfully logged out!')
+        res.status(200).send(req.session);
+    },
+
+    current_user: (req, res) => {
+        const dbInstance = req.app.get('db');
+        if(req.session.userid){
+            const userId = req.session.userid;
+            console.log(userId)
+            console.time("Database Query")
+            dbInstance.current_user([userId])
+                .then( user => {
+                    console.timeEnd("Database Query")
+                    console.log(user)
+                    res.status(200).send( user )
+                })
+                .catch( err => {
+                    res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
+                    console.log(err)
+                } );
+            }
     }
 }
