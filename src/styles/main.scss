@@ -1,7 +1,9 @@
+//imports work just like a css stylesheet.  the order that they are imported is the order they are implemeted
+@import 'reset';
 @import 'Home';
 @import 'SpinNews';
 @import 'QuizHome';
-@import 'reset';
 @import 'Navbar';
 @import 'auth_pages';
 @import 'SortingQuiz';
+@import 'Storefront';
