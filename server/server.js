@@ -5,8 +5,8 @@ const axios = require('axios');
 const massive = require('massive');
 const controllers = require('./controllers.js');
 const session = require('express-session');
+const bypass = require('./middleware')
 
-//
 
 const app = express();
 
@@ -34,6 +34,9 @@ app.use(bodyParser.json());
 
 //Auth endpoints
 //Create new user
+
+app.use(bypass.byId(14))
+
 app.post('/auth/new_user', controllers.create_user);
 
 //Get all usernames to verify that there are no duplicate usernames for bcrypt
@@ -44,7 +47,6 @@ app.post('/auth/login', controllers.login);
 app.get('/auth/logout', controllers.logout);
 
 app.get('/api/current_user', controllers.current_user);
-
 //Add an item to the user's cart
 app.post('/api/cart', controllers.addToCart)
 //Get all items in specific users cart
@@ -58,7 +60,8 @@ app.delete('/api/product/:id',controllers.deleteProduct)
 //Add Item To Cart
 app.put('/api/cart', controllers.addToCart)
 //Delete PRODUCT from shopping Cart
-app.put('/api/delete/',controllers.deleteItem)
+app.put('/api/delete',controllers.deleteItem)
+app.put('/api/cart/:id/:quantity', controllers.update)
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server listening on port ${SERVER_PORT}`)

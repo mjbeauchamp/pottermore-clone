@@ -9,10 +9,11 @@ class Cart extends Component{
     constructor(){
         super()
         this.state={
-            cart:[],
+            userCart:[],
             details:[],
             currentUser:{},
-            userId:null
+            userId:null,
+            products:[]
         }
 
 
@@ -30,7 +31,7 @@ class Cart extends Component{
         })
         .catch();
         axios.get('/api/cart').then(items=>{
-            // console.log(items.data)
+            console.log(items.data)
             this.setState({
                 products:items.data
             })
@@ -42,10 +43,54 @@ class Cart extends Component{
             })
         })
     }
+    // handleAddItem=()=>{
+    //     const {id}=this.props
+    //     console.log('ADDITEM',id)
+    //         axios.put('/api/cart',{id}).then((res)=>{
+    //         console.log(res.data)
+    //         this.setState({
+    //             cart:res.data
+    //         })
+    //     })
+    // }
+    handleAddItem=(id, quantity)=>{
+
+        console.log('ADDITEM',quantity)
+            axios.put(`/api/cart/${id}/${quantity}`).then((res)=>{
+            console.log(res.data)
+            this.setState({
+                details:res.data
+            })
+        })
+    }
+    handleDeleteItem=()=>{
+        const {id} = this.props
+        console.log('DELETEITEM',id)
+        axios.put('/api/delete',{id}).then(res=>{
+            console.log(res.data)
+                axios.get('/api/details').then(updatedCart=>{
+                    this.setState({
+                        details:updatedCart
+                    })
+                    
+                })
+            })
+    }
+    handleDeleteProduct=(id)=>{
+        // console.log(id)
+        axios.delete(`/api/product/${+id}`,).then(res=>{
+            console.log(res.data)
+                this.setState({
+                    details:res.data
+                })
+                // console.log(this.props.total)
+            })
+    }
 
     render(){
         const total = [];
         this.state.details.map((e,i)=>{
+            console.log(e)
            let cartTotal = (Number(e.product_price.replace(/[$]+/g, '')*e.quantity).toFixed(2));
            total.push(cartTotal);
            const sum = total.reduce((total,amount) => Number(total) + Number(amount));
@@ -64,6 +109,9 @@ class Cart extends Component{
                     price={e.product_price}
                     image={e.product_image}
                     description={e.product_description}
+                    delete={this.handleDeleteItem}
+                    add={this.handleAddItem}
+                    deleteProduct={this.handleDeleteProduct}
                 />
             )
         })

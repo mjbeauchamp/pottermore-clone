@@ -137,12 +137,11 @@ module.exports = {
             }
     },
     deleteItem: async (req,res)=>{
-        try{res
+        try{
             let {id} = req.body
             const db = req.app.get('db')
                  let item = await db.delete_item([+req.session.userid, id])
                  if(item[0].quantity<=0){
-                     console.log(item)
                     let checkedItem = await db.delete_product([+req.session.userid, id])
                     return res.status(200).send(checkedItem)
                  }else{
@@ -157,9 +156,7 @@ module.exports = {
         try{
             const db = req.app.get('db')
             let {id}=req.body
-            
             const  item= await db.check_cart([+req.session.userid , id]);
-            console.log(item)
                 if(item.length == 0){
                     const newItem = await db.add_to_cart([+req.session.userid , id])
                     
@@ -174,4 +171,16 @@ module.exports = {
                 console.log(err)
             }
     },
+    update: async(req,res)=>{
+        try{
+            
+            const db=req.app.get('db')
+            const{id,quantity}=req.params
+            let updatedQuantity= await db.update([+id,+quantity,+req.session.userid])
+            return res.status(200).send(updatedQuantity)
+        }catch(err){
+            res.status(500).send(err)
+            console.log(err)
+        }
+    }
 }
