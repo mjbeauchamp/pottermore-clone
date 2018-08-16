@@ -46,9 +46,9 @@ app.get('/auth/logout', controllers.logout);
 app.get('/api/current_user', controllers.current_user);
 
 //Add an item to the user's cart
-app.post('/api/cart', controllers.addToCart)
+// app.post('/api/cart', controllers.addToCart)
 //Get all items in specific users cart
-app.get('/api/cart',controllers.getCart)
+// app.get('/api/cart',controllers.getCart)
 //Get all items in the store
 app.get('/api/products', controllers.getProducts)
 
