@@ -21,8 +21,6 @@ massive(CONNECTION_STRING).then(db => {
 })
 
 app.use(session({
-    //You pull the session secret variable from your .env file, which you need to create, along with installing, requiring, and configuring .env
-    //BE SURE TO PUT YOUR .ENV FILE IN .GITIGNORE
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: true
@@ -43,6 +41,9 @@ app.get('/auth/all_usernames', controllers.all_usernames);
 
 app.post('/auth/login', controllers.login);
 
+app.get('/auth/logout', controllers.logout);
+
+app.get('/api/current_user', controllers.current_user);
 
 
 
