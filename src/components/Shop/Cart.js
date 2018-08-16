@@ -43,16 +43,7 @@ class Cart extends Component{
             })
         })
     }
-    // handleAddItem=()=>{
-    //     const {id}=this.props
-    //     console.log('ADDITEM',id)
-    //         axios.put('/api/cart',{id}).then((res)=>{
-    //         console.log(res.data)
-    //         this.setState({
-    //             cart:res.data
-    //         })
-    //     })
-    // }
+
     handleAddItem=(id, quantity)=>{
 
         console.log('ADDITEM',quantity)
@@ -90,7 +81,6 @@ class Cart extends Component{
     render(){
         const total = [];
         this.state.details.map((e,i)=>{
-            console.log(e)
            let cartTotal = (Number(e.product_price.replace(/[$]+/g, '')*e.quantity).toFixed(2));
            total.push(cartTotal);
            const sum = total.reduce((total,amount) => Number(total) + Number(amount));
