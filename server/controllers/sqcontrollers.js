@@ -14,10 +14,9 @@ module.exports = {
         })
     },
     sortingAnswers: (req, res) => {
-        const db = req.body.get('db')
+        const db = req.app.get('db')
 
         db.get_sorting_answers().then(sortinganswers => {
-            console.log(sortinganswers)
             res.status(200).send(sortinganswers)
         })
         .catch( err => {
