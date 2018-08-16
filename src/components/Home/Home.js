@@ -2,6 +2,7 @@ import React from 'react';
 import Wizard from './img/wizard'
 import SpinNews from './SpinNews/SpinNews'
 
+
  function Home() {
     return (
         <div className='home'>
