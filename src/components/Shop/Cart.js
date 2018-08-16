@@ -11,14 +11,26 @@ class Cart extends Component{
         this.state={
             cart:[],
             details:[],
-            user:{}
+            currentUser:{},
+            userId:null
         }
 
 
     }
     componentDidMount(){
+        axios.get("/api/current_user")
+        .then(response => {
+            if(response.data[0].id){
+                console.log(response.data[0].id)
+                this.setState({
+                    currentUser: response.data[0],
+                    userID: response.data[0].id
+                })
+            }
+        })
+        .catch();
         axios.get('/api/cart').then(items=>{
-            console.log(items.data)
+            // console.log(items.data)
             this.setState({
                 products:items.data
             })

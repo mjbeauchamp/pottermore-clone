@@ -1,3 +1,2 @@
-select *
-from wizard_users
-where username= $1 AND password= $2;
+SELECT * FROM wizard_users
+WHERE username= $1 AND password= $2;
