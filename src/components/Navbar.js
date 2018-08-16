@@ -7,7 +7,8 @@ class Navbar extends Component {
         super(props)
         this.state = {
             currentUser: {},
-            userID: null
+            userID: null,
+            toggle: false
         }
     }
 
@@ -27,10 +28,18 @@ class Navbar extends Component {
 
     logout = () => {
         axios.get('/auth/logout')
-            .then(
+            .then( res => {
+                this.setState({
+                    currentUser: {},
+                    userID: null
+                })
                 this.props.history.push("/home")
-            )
+            })
             .catch()
+    }
+
+    handleNavToggle = () => {
+        this.setState({toggle: !this.state.toggle})
     }
 
     render(){
@@ -48,7 +57,7 @@ class Navbar extends Component {
         let path = this.props.location.pathname;
 
         if(this.state.userID){
-            logout = <button onClick={this.logout}>Logout</button>
+            logout = <Link to='/' onClick={this.logout}>Logout</Link>
             dashboard = <Link to="/dashboard">Dashboard</Link>
             cart = <Link to="/cart">Cart</Link>
         } else if(!this.state.userID){
@@ -88,16 +97,22 @@ class Navbar extends Component {
 
         return (
             <div className="navbar">
+            <div className={this.state.toggle ? 'nav-left' : 'nav-hidden'}>
                 {home}
                 {store}
                 {dashboard}
-
-                I'm a Hufflepuff!
-
+            </div>
+                
+            <div className='nav-mid' onClick={this.handleNavToggle}>
+                MENU
+            </div>
+            
+            <div className={this.state.toggle ? 'nav-right' : 'nav-hidden-right'}>
                 {quizhome}
                 {cart}
                 {auth}
                 {logout}
+            </div>    
 
                 {/* <Link to="/signup">Sign Up</Link> */}
 

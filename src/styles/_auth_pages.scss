@@ -21,12 +21,12 @@
     .show {
         height: 80vh;
         width: 400px;
-        margin: 50px auto 0 auto;
+        margin: 150px auto 0 auto;
         padding-top: 20px;
-        transition: 1s all ease;
         display: flex;
         flex-direction: column;
         align-items: center;
+        transition: 1s all ease;
         opacity: 1;
     }
     
@@ -59,7 +59,9 @@
     .auth-title {
         font-size: 50px;
         margin-bottom: 30px;
-        font-weight: bold;
+        // font-weight: bold;
+        font-family: 'Modern Antiqua', cursive;
+        letter-spacing: 2px;
     }
     .signup-btn { margin: 10px }
 

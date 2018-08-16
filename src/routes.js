@@ -5,7 +5,7 @@ import SignUp from './components/SignUp'
 import Home from './components/Home/Home'
 import Storefront from './components/Shop/Storefront'
 import Cart from './components/Shop/Cart'
-import UserProfile from './components/UserProfile'
+import UserDashboard from './components/UserDashboard'
 import QuizHome from './components/QuizHome/QuizHome'
 import SortingQuiz from './components/SortingQuiz/SortingQuiz'
 
@@ -13,7 +13,7 @@ export default (
     <Switch>
         <Route path = '/' component = {Login} exact />
         <Route path = '/signup' component = {SignUp}/>
-        {/* <Route path = '/dashboard' component = {UserProfile} /> */}
+        <Route path = '/dashboard' component = {UserDashboard} />
         <Route path = '/home' component = {Home}/>
         <Route path = '/store' component = {Storefront}/>
         <Route path = '/cart' component = {Cart}/>
