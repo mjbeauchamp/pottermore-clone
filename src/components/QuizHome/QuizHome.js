@@ -1,9 +1,9 @@
 import React from 'react'
 import CursorTrail from './CursorTrail'
 import {NavLink} from 'react-router-dom'
-import Navbar from './../Navbar'
+import Navbar from '../Navbar'
 
-function QuizHome () {
+function QuizHome (props) {
    
     return(
         <div>
@@ -11,10 +11,10 @@ function QuizHome () {
             {/* This is code pulled in that makes the dots follow the cursor*/}
 
             <CursorTrail/>
-
+            
             <div>
                 {/* nav bar will go here*/}
-                <Navbar/>
+                <Navbar {...props} />
             </div>
 
             <div className = 'quizhometop'>

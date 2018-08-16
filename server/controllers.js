@@ -24,7 +24,7 @@ module.exports = {
             dbInstance.create_user([first_name, last_name, username, hash])
             .then(createdUser => {
                 req.session.userid = createdUser[0].id
-                console.log(req.session.userid)
+                console.log(req.session.user.id)
                 res.status(200).send(createdUser);
             })
             .catch(err => {
@@ -36,7 +36,7 @@ module.exports = {
     getCart: async(req,res)=>{
         try{
             const db = req.app.get('db')
-            let cart = await db.get_Cart([+req.session.userid])
+            let cart = await db.get_Cart([+req.session.user.id])
             return res.status(200).send(cart)
             }catch(err){res.sendStatus(500)
                 console.log(err)
@@ -46,12 +46,12 @@ module.exports = {
         try{
             const db = req.app.get('db')
             let {id}=req.body
-            console.log(1111111111,req.session.userid)
-            console.log(111111111111, +req.session.userid, id)
-            const  item= await db.check_Cart([+req.session.userid , id]);
+            console.log(1111111111,req.session.user.id)
+            console.log(111111111111, +req.session.user.id, id)
+            const  item= await db.check_Cart([+req.session.user.id , id]);
             
                 if(item.length == 0){
-                    const newItem = await db.add_to_cart([id, +req.session.userid])
+                    const newItem = await db.add_to_cart([id, +req.session.user.id])
                     
                     return res.status(200).send(newItem);
                 }else{
@@ -75,4 +75,36 @@ module.exports = {
         }
     },
 
+    login: (req, res) => {
+        const dbInstance = req.app.get('db');
+        const {username, password} = req.body;
+        //I need to pull this "hash" argument from the database using the username
+        dbInstance.get_password([username])
+            .then( hash => {
+                let myHash = hash[0].password
+                console.log(myHash)
+                bcrypt.compare(password, myHash, function(err, response){
+                    if(response){
+                        dbInstance.get_user([username, myHash])
+                            .then(user => {
+                                console.log("User data:" + user[0].id)
+                                req.session.userid = user[0].id
+                                console.log(req.session)
+                                res.status(200).send(user);
+                            })
+                            .catch(err => {
+                                res.status(500).send({errorMessage: "Oops! Something went wrong"});
+                                console.log(err)
+                        });
+                    } else {
+                        console.log("The password thing didn't work")
+                        res.status(500).send({errorMessage: "Oops! Something went wrong"});
+                    }
+                })
+            })
+            .catch(err => {
+                res.status(500).send({errorMessage: "Oops! Something went wrong"});
+                console.log(err)
+        });
+    }
 }
