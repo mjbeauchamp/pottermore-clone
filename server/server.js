@@ -46,11 +46,19 @@ app.get('/auth/logout', controllers.logout);
 app.get('/api/current_user', controllers.current_user);
 
 //Add an item to the user's cart
-// app.post('/api/cart', controllers.addToCart)
+app.post('/api/cart', controllers.addToCart)
 //Get all items in specific users cart
-// app.get('/api/cart',controllers.getCart)
+app.get('/api/cart',controllers.getCart)
 //Get all items in the store
 app.get('/api/products', controllers.getProducts)
+//Get Cart and item details
+app.get('/api/details',controllers.cartDetails)
+//Delete Item from shopping Cart
+app.delete('/api/product/:id',controllers.deleteProduct)
+//Add Item To Cart
+app.put('/api/cart', controllers.addToCart)
+//Delete PRODUCT from shopping Cart
+app.put('/api/delete/',controllers.deleteItem)
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server listening on port ${SERVER_PORT}`)
