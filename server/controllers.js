@@ -109,14 +109,14 @@ module.exports = {
             const db = req.app.get('db')
             let {id}=req.body
             
-            const  item= await db.check_Cart([+req.session.user.id , id]);
+            const  item= await db.check_Cart([+req.session.userid , id]);
             
                 if(item.length == 0){
-                    const newItem = await db.add_to_cart([id, +req.session.user.id])
+                    const newItem = await db.add_to_cart([id, +req.session.userid])
                     
                     return res.status(200).send(newItem);
                 }else{
-                    const updatedItem = await db.add_quantity([+req.session.user.id, id])
+                    const updatedItem = await db.add_quantity([+req.session.userid, id])
                     
                     return res.status(200).send(updatedItem);
                 }
