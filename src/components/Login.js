@@ -25,7 +25,7 @@ class Login extends Component {
                     username: '',
                     password: ''
                 })
-                //this.props.history.push('/pick_unicorn');
+                this.props.history.push('/home');
             })
             .catch(err => {
                 alert("Username and password incorrect.")
