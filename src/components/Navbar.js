@@ -28,9 +28,13 @@ class Navbar extends Component {
 
     logout = () => {
         axios.get('/auth/logout')
-            .then(
+            .then( res => {
+                this.setState({
+                    currentUser: {},
+                    userID: null
+                })
                 this.props.history.push("/home")
-            )
+            })
             .catch()
     }
 
