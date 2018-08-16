@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "eeae315c-5951-45e0-b486-863d2ceb77d7",
+		"name": "Group project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "group_project ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b9a4dc2d-98c6-47cd-93af-ef21f4a9f5ef",
+						"type": "text/javascript",
+						"exec": [
+							"var body = pm.response.json()",
+							"",
+							"pm.test('Status code is 200', () =>{",
+							"    pm.expect(pm.response).to.have.status(200)",
+							"})",
+							"",
+							"pm.test('Products length should be 77', () => {",
+							"    pm.expect(body.length).to.eql(77)",
+							"})",
+							"",
+							"pm.test('Is it array', () => {",
+							"    pm.expect(Array.isArray(body)).to.eql(true)",
+							"})",
+							"",
+							"pm.test('1st elemnt product type should be \"scarf\"', () => {",
+							"    pm.expect(body[0].product_type).to.eql('scarf')",
+							"})",
+							"",
+							"pm.test('1st elemnt product price should be \"$19.99\"', () => {",
+							"    pm.expect(body[0].product_price).to.eql('$19.99')",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products"
+					]
+				},
+				"description": "checking products\n\nhttp://localhost:3000/api/products"
+			},
+			"response": []
+		}
+	]
+}
