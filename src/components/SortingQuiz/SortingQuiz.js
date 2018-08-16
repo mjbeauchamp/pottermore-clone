@@ -1,10 +1,27 @@
 import React, {Component} from 'react'
+import axios from 'axios'
 
 export class SortingQuiz extends Component{
     constructor(){
         super()
 
     }
+
+    componentDidMount = () => {
+        axios.get('/api/sortingquiz/questions').then( (req, res) => {
+            // console.log(req.data)
+        })
+        .catch(err => 
+            console.log("The bird has flown the coop, please come back later.",err))
+
+        axios.get('/api/sortingquiz/answers').then( (req, res) => {
+            console.log(req.data)
+        })
+        .catch(err => 
+            console.log("Error, cannot compute.",err))
+    }
+
+
     
     render (){
 
