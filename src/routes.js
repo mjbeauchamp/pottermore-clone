@@ -14,7 +14,7 @@ export default (
         <Route path = '/' component = {Login} exact />
         <Route path = '/signup' component = {SignUp}/>
         {/* <Route path = '/dashboard' component = {UserProfile} /> */}
-        {/* <Route path = '/home' component = {Home}/> */}
+        <Route path = '/home' component = {Home}/>
         {/* <Route path = '/store' component = {Storefront}/> */}
         {/* <Route path = '/cart' component = {Cart}/> */}
         <Route path = '/quizhome' component = {QuizHome}/>
