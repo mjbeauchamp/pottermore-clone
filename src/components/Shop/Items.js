@@ -4,20 +4,34 @@ import axios from 'axios';
 
 
 class Items extends Component{
+    constructor(){
+        super()
+        this.state={
+            cart:[],
+            details:[],
+            user:{}
+        }
+
+
+    }
 
     handleAddItem=()=>{
         const {id}=this.props
             axios.put('/api/cart',{id}).then((res)=>{
             console.log(res.data)
-            this.props.getTotal(res.data)
+            this.setState({
+                cart:res.data
             })
+        })
     }
     handleDeleteItem=()=>{
         const {id} = this.props
         axios.put('/api/delete',{id}).then(res=>{
             // console.log(res.data)
                 axios.get('/api/details').then(updatedCart=>{
-                    this.props.getTotal(updatedCart.data)
+                    this.setState({
+                        cart:updatedCart
+                    })
                     
                 })
             })
@@ -25,8 +39,10 @@ class Items extends Component{
     handleDeleteProduct=(id)=>{
         // console.log(id)
         axios.delete('/api/product/'+id,).then(res=>{
-            // console.log(res.data)
-                this.props.getTotal(res.data)
+            console.log(res.data)
+                this.setState({
+                    details:res.data
+                })
                 // console.log(this.props.total)
             })
     }
@@ -44,9 +60,9 @@ class Items extends Component{
                     <h3>Item Total:${Number(this.props.price.replace(/[$]+/g, '')*this.props.quantity).toFixed(2)}</h3>
                 </div>
                     <div className='buttons'>
-                        <button className='btn btn-primary' onClick={this.handleAddItem}>+1</button>
-                        <button className='btn btn-primary' onClick={this.handleDeleteItem}>-1</button>
-                        <button className='btn btn-primary' onClick={()=>this.handleDeleteProduct(this.props.id)}>Delete Item</button>
+                        <button onClick={this.handleAddItem}>+1</button>
+                        <button onClick={this.handleDeleteItem}>-1</button>
+                        <button onClick={()=>this.handleDeleteProduct(this.props.id)}>Delete Item</button>
 
                     
                 </div>

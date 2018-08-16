@@ -1,41 +1,95 @@
+
 .auth-container {
-    width: 35%;
-    height: 60vh;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 8%;
-    text-align: center;
-    margin-bottom: 15%;
-    // background: $lightSea;
-    padding-top: 0%;
-    border-radius: 50px;
-    // box-shadow: 0px 0px 85px 55px $lightSea;
-    margin-top: 120px;
 
-    .auth-input {
-        padding: 18px;
-        width: 230px;
-        font-size: 20px;
-        // font-family: $boring;
-        margin-top: 25px;
-        border-radius: 10px;
-        outline: none;
-        box-shadow: 2px 2px 10px 2px #167686;
+    overflow: hidden;
+    height: 100vh;
+    .auth-background {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.479), rgba(0, 0, 0, 0.521)), url('https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/login-background.jpg');
+        background-size: cover;
+        background-position: (-50px -50px);
+        filter: blur(15px);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        height: 100vh;
+        width: 100%;
     }
 
-    .auth-submit:hover{
-        background: #D13F72;
+    .show {
+        height: 80vh;
+        width: 400px;
+        margin: 150px auto 0 auto;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: 1s all ease;
+        opacity: 1;
     }
-
-    .auth-input::placeholder {
-        color: pink;
+    
+    .hide {
+        height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: 1s all ease;
+    }
+       
+    .show-signup {
+        height: 80vh;
+        width: 450px;
+        margin: -20px auto;
+        padding-top: 20px;
+        transition: 1s all ease;
+        opacity: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hide-signup {
+        height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: 1s all ease;
     }
 
     .auth-title {
-        // font-family: $unicornFont;
-        font-size: 60px;
-        margin-bottom: 25px;
+        font-size: 50px;
+        margin-bottom: 30px;
+        // font-weight: bold;
+        font-family: 'Modern Antiqua', cursive;
+        letter-spacing: 2px;
     }
+    .signup-btn { margin: 10px }
+
+    input{
+        font-size: 16px;
+        width: 300px;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px auto;
+        box-shadow: 3px 3px 10px black;
+        outline: none;
+    }
+    .auth-submit { 
+        font-size: 20px;
+        background-color: rgb(22, 204, 6); 
+        padding: 10px;
+        width: 320px;
+        border-radius: 10px;
+        color: white;
+        margin: 10px auto;
+        box-shadow: 3px 3px 10px black;
+    }
+    .auth-green { color: rgb(58, 255, 32)}
+    .auth-red { color: rgb(236, 57, 57)}
+    p { color: white; }
+    .auth-span{ 
+        color: #8F8073;
+        cursor: pointer;
+     }
+
 }

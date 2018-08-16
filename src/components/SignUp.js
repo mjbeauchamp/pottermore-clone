@@ -11,7 +11,7 @@ class SignUp extends Component {
             first_name: '',
             last_name: '',
             username: '',
-            password: ''
+            password: '',
         }
     }
 
@@ -41,6 +41,7 @@ class SignUp extends Component {
                                 username: '',
                                 password: ''
                             })
+                            this.props.history.push('/home')
                         })
                         .catch(err => {
                             console.log("Unable to create new user.",err)
@@ -59,15 +60,14 @@ class SignUp extends Component {
             this.newUser()
         }
     }
-    //s
+
 
     render(){
         return (
-            <div onKeyDown={e => this.onEnter(e)}>
-                <Navbar {...this.props}  />
-                <div className="auth-container">
-                    <h1 className="auth-title">Sign Up</h1>
-
+            <div  onKeyDown={e => this.onEnter(e)}>
+                
+                
+                    <h1 className="auth-title auth-red">Sign Up</h1>
                     <input 
                         autoFocus={true} 
                         className="auth-input" 
@@ -103,8 +103,9 @@ class SignUp extends Component {
                         value={this.state.password}
                         maxLength="25"/>
                     <button className="auth-submit button" onClick={this.newUser}>Submit</button>
+                    <p className="signup-btn">Already have account? <span className='auth-span'  onClick={this.props.handleToggle}>Login </span></p>
+                    
                 </div>
-            </div>
         )
     }
 }

@@ -1,10 +1,12 @@
 import React from 'react';
 import Wizard from './img/wizard'
 import SpinNews from './SpinNews/SpinNews'
+import NavBar from '../Navbar'
 
- function Home() {
+ function Home(props) {
     return (
         <div className='home'>
+        <NavBar {...props} />
             <section className='header'>
                 <div className='header-text'>
                     {Wizard}

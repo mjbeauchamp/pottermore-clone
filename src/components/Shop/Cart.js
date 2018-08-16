@@ -6,21 +6,46 @@ import {Link} from 'react-router-dom';
 
 
 class Cart extends Component{
+    constructor(){
+        super()
+        this.state={
+            cart:[],
+            details:[],
+            currentUser:{},
+            userId:null
+        }
 
+
+    }
     componentDidMount(){
+        axios.get("/api/current_user")
+        .then(response => {
+            if(response.data[0].id){
+                console.log(response.data[0].id)
+                this.setState({
+                    currentUser: response.data[0],
+                    userID: response.data[0].id
+                })
+            }
+        })
+        .catch();
         axios.get('/api/cart').then(items=>{
-            this.props.getCart(items.data)
+            // console.log(items.data)
+            this.setState({
+                products:items.data
+            })
         })
         axios.get('/api/details').then(cart =>{
             console.log(cart.data)
-            this.props.getTotal(cart.data)
+            this.setState({
+                details:cart.data
+            })
         })
     }
 
     render(){
-        
         const total = [];
-        this.props.total.map((e,i)=>{
+        this.state.details.map((e,i)=>{
            let cartTotal = (Number(e.product_price.replace(/[$]+/g, '')*e.quantity).toFixed(2));
            total.push(cartTotal);
            const sum = total.reduce((total,amount) => Number(total) + Number(amount));
@@ -29,7 +54,7 @@ class Cart extends Component{
            );
         })
         
-        let items =  this.props.total.map(e=>{
+        let items =  this.state.details.map(e=>{
             return(
                 <Items
                     id={e.product_id}
@@ -53,7 +78,7 @@ class Cart extends Component{
                     <h1>Total:${total.reduce((total,amount) => Number(total) + Number(amount),0).toFixed(2)}</h1>
                 </div>
                   
-                  <Link to='/Store'><button>STORE</button></Link>
+                  <Link to='/store'><button>STORE</button></Link>
                     
                 </div>
 
