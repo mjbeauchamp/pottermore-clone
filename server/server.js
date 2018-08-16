@@ -6,7 +6,7 @@ const massive = require('massive');
 const controllers = require('./controllers.js');
 const session = require('express-session');
 
-
+//
 
 const app = express();
 
@@ -40,6 +40,8 @@ app.post('/auth/new_user', controllers.create_user);
 
 //Get all usernames to verify that there are no duplicate usernames for bcrypt
 app.get('/auth/all_usernames', controllers.all_usernames);
+
+app.post('/auth/login', controllers.login);
 
 
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import CursorTrail from './CursorTrail'
 import {NavLink} from 'react-router-dom'
-import Navbar from './../Navbar'
+import Navbar from '../Navbar'
 
 class QuizHome extends React.Component {
    constructor (props) {
