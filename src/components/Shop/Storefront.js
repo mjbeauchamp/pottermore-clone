@@ -25,7 +25,6 @@ class Storefront extends Component{
     
         render(){
             let products = this.state.products.map(e=>{
-                console.log(e)
             return(
                     <Products
                     key={e.id}
@@ -41,7 +40,9 @@ class Storefront extends Component{
             
             return(
                 <div className='store-main'>
-                <h1>Store</h1>
+                
+                <h1>COME BUY SHTUFF!</h1>
+                
                   <div className='store-products'>
                   {products}
                     </div>
