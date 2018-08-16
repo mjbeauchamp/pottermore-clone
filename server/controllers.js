@@ -25,7 +25,7 @@ module.exports = {
             dbInstance.create_user([first_name, last_name, username, hash])
             .then(createdUser => {
                 req.session.userid = createdUser[0].id
-                console.log(req.session.userid)
+                console.log(req.session.user.id)
                 res.status(200).send(createdUser);
             })
             .catch(err => {
