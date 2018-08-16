@@ -23,8 +23,8 @@ class Navbar extends Component {
                 }
             })
             .catch();
-    }
 
+    }
 
     render(){
         console.log(this.state.currentUser)
@@ -39,7 +39,6 @@ class Navbar extends Component {
         let cart;
         //Pulling path from props for conditional routing
         let path = this.props.location.pathname;
-        console.log(path)
 
         if(this.state.userID){
             logout = <Link to="/logout">Logout</Link>
