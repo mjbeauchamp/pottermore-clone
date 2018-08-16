@@ -38,7 +38,6 @@ class Storefront extends Component{
     }
     
         render(){
-            console.log(this.state)
             let products = this.state.products.map(e=>{
             return(
                     <Products
@@ -51,21 +50,17 @@ class Storefront extends Component{
                     description={e.product_description}
                     />
             )
-        })
-            
+        })            
             return(
                 <div className='store-main'>
-                
-                <h1>COME BUY SHTUFF!</h1>
-                
-                  <div className='store-products'>
-                  {products}
-                  <Link to='/cart'><button>CART</button></Link>
+                    <Navbar{...this.props}/>
+                    <h1>COME BUY SHTUFF!</h1>
+                    <div className='store-products'>
+                        {products}
+                        <Link to='/cart'><button>CART</button></Link>
                     </div>
                 </div>
-
             )
-
-    }
+        }
 }
 export default Storefront
