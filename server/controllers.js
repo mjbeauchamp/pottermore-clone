@@ -80,8 +80,10 @@ module.exports = {
         if(req.session.userid){
             const userId = req.session.userid;
             console.log(userId)
+            console.time("Database Query")
             dbInstance.current_user([userId])
                 .then( user => {
+                    console.timeEnd("Database Query")
                     console.log(user)
                     res.status(200).send( user )
                 })
