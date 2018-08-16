@@ -91,6 +91,8 @@ module.exports = {
                     res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
                     console.log(err)
                 } );
-            }
+        } else {
+            res.status(200).send("No current user");
+        }
     }
 }
