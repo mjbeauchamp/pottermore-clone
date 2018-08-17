@@ -54,7 +54,10 @@ class Storefront extends Component{
             return(
                 <div className='store-main'>
                     <Navbar{...this.props}/>
+                    <div className='store-header'>
                     <h1>COME BUY SHTUFF!</h1>
+
+                    </div>
                     <div className='store-products'>
                         {products}
                         <Link to='/cart'><button>CART</button></Link>

@@ -13,6 +13,9 @@
     height:300px;
     width:auto;
 }
+.store-header{
+    padding-top:80px;
+}
 .store-main{
     h1{font-size: 75px;
     color:white;}
@@ -24,7 +27,7 @@
     overflow: hidden;
 }
 .store-products{
-    margin-top: 500px;
+    margin-top: 200px;
     display:flex;
     flex-wrap: wrap;
     overflow:scroll;
