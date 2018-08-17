@@ -3,6 +3,8 @@ import range from "lodash.range";
 import { scaleLinear } from "d3-scale";
 import { NodeGroup } from "react-move";
 
+// consider making this a higher order component so that we can use the same code, but change details about it.
+
 const linear = scaleLinear().domain([0, window.innerWidth]);
 
 class CursorTrail extends React.Component {
