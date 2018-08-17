@@ -48,11 +48,21 @@
     }
     .nav-mid {
         position: absolute;
-        background-color: red;
-        padding: 10px;
-        border-radius: 50%;
-        font-size: 25px;
-        z-index: 10;
+        // background-image: url("../components/goldenSnitch.png");
+
+        // background-color: red;
+        // padding: 10px;
+        // border-radius: 50%;
+        // font-size: 25px;
+        // z-index: 10;
+        img {
+            width: 300px;
+            position: absolute;
+        }
+
+        h3 {
+            position: absolute;
+        }
     }
 
 }

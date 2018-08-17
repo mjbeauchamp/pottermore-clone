@@ -102,17 +102,18 @@ class Navbar extends Component {
                 {store}
                 {dashboard}
             </div>
-                
+
             <div className='nav-mid' onClick={this.handleNavToggle}>
-                MENU
+                <img src={require('./snitch.png')} alt=""/>
+                <h3>MENU</h3>
             </div>
-            
+
             <div className={this.state.toggle ? 'nav-right' : 'nav-hidden-right'}>
                 {quizhome}
                 {cart}
                 {auth}
                 {logout}
-            </div>    
+            </div>   
 
                 {/* <Link to="/signup">Sign Up</Link> */}
 
