@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Navbar from './Navbar'
+import Gryffindor from './Houses/Gryffindor';
+import Hufflepuff from './Houses/Hufflepuff';
+import Ravenclaw from './Houses/Ravenclaw';
+import Slytherin from './Houses/Slytherin'
 
 class UserDashboard extends Component{
     constructor(){
@@ -29,7 +33,11 @@ class UserDashboard extends Component{
         return (
             <div>
                 <Navbar {...this.props} />
-                I'm a Gryffindor!!!
+                <Gryffindor/>
+                {/* <Slytherin/> */}
+                {/* <Ravenclaw/> */}
+                {/* <Hufflepuff/> */}
+                
             </div>
         )
     }

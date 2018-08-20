@@ -26,15 +26,7 @@ class SignUp extends Component {
                 if(nameArray.indexOf(username) === -1){
                     axios.post('/auth/new_user', {first_name: first_name, last_name: last_name, username: username, password: password})
                         .then(response => {
-                        //     //Create a single default unicorn that all users have access to
-                        //     let newUserId = response.data[0].id;
-                        //     axios.post('/api/new_unicorn', {name: "Bubbles", file_name: "rainbow", user_id: newUserId})
-                        //         .then( response => {
-                        // //Navigate back to the "Pick Your Unicorn" page
-                        //             this.props.history.push('/pick_unicorn')
-                        //         })
-                        //         .catch(err => {console.log(err)})
-                            //Set the username and password fields to be blank
+                            console.log(response)
                             this.setState({
                                 first_name: '',
                                 last_name: '',
@@ -65,9 +57,9 @@ class SignUp extends Component {
     render(){
         return (
             <div  onKeyDown={e => this.onEnter(e)}>
-                
-                
+
                     <h1 className="auth-title auth-red">Sign Up</h1>
+
                     <input 
                         autoFocus={true} 
                         className="auth-input" 
