@@ -6,7 +6,6 @@ module.exports = {
 
         dbInstance.get_all_usernames()
             .then(usernames => {
-                console.log(usernames)
                 res.status(200).send(usernames)
             })
             .catch(err => {
@@ -24,9 +23,7 @@ module.exports = {
             //All of this is what was working before I tried using bcrypt, except I swapped out "hash" for "password in the argument array"
             dbInstance.create_user([first_name, last_name, username, hash])
             .then(createdUser => {
-                console.log(createdUser)
                 req.session.userid = createdUser[0].id
-                console.log(req.session.userid)
                 res.status(200).send(createdUser);
             })
             .catch(err => {
@@ -43,14 +40,12 @@ module.exports = {
         dbInstance.get_password([username])
             .then( hash => {
                 let myHash = hash[0].password
-                console.log(myHash)
                 bcrypt.compare(password, myHash, function(err, response){
                     if(response){
                         dbInstance.get_user([username, myHash])
                             .then(user => {
                                 console.log("User data:" + user[0].id)
                                 req.session.userid = user[0].id
-                                console.log(req.session.userid)
                                 res.status(200).send(user);
                             })
                             .catch(err => {
@@ -71,7 +66,6 @@ module.exports = {
 
     logout: (req, res, next) => {
         req.session.destroy();
-        console.log(req.session)
         console.log('You successfully logged out!')
         res.status(200).send(req.session);
     },
@@ -80,12 +74,10 @@ module.exports = {
         const dbInstance = req.app.get('db');
         if(req.session.userid){
             const userId = req.session.userid;
-            console.log(userId)
             console.time("Database Query")
             dbInstance.current_user([userId])
                 .then( user => {
                     console.timeEnd("Database Query")
-                    console.log(user)
                     res.status(200).send( user )
                 })
                 .catch( err => {

@@ -36,7 +36,6 @@ module.exports = {
         try{
             const db= req.app.get('db')
             let newCart = await db.delete_product(+req.session.userid,+req.params.id)
-            // console.log(newCart);
             return res.status(200).send(newCart)
         }catch(err){
             res.status(500).send(err)
@@ -49,7 +48,6 @@ module.exports = {
             const db = req.app.get('db')
                  let item = await db.delete_item([+req.session.userid, id])
                  if(item[0].quantity<=0){
-                    //  console.log(item)
                     let checkedItem = await db.delete_product([+req.session.userid, id])
                     return res.status(200).send(checkedItem)
                  }else{
@@ -66,7 +64,6 @@ module.exports = {
             let {id}=req.body
             
             const  item= await db.check_cart([+req.session.userid , id]);
-            // console.log(item)
                 if(item.length == 0){
                     const newItem = await db.add_to_cart([+req.session.userid , id])
                     
