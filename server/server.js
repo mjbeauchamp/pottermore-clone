@@ -60,6 +60,7 @@ app.post('/api/cart', authControllers.addToCart)
 app.get('/api/cart',authControllers.getCart)
 //Get all items in the store
 app.get('/api/products', authControllers.getProducts)
+
 //Get Cart and item details
 app.get('/api/details',authControllers.cartDetails)
 //Delete Item from shopping Cart
