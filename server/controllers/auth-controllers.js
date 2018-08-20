@@ -25,7 +25,7 @@ module.exports = {
             dbInstance.create_user([first_name, last_name, username, hash])
             .then(createdUser => {
                 console.log(createdUser)
-                Fireq.session.userid = createdUser[0].id
+                req.session.userid = createdUser[0].id
                 console.log(req.session.userid)
                 res.status(200).send(createdUser);
             })
@@ -110,7 +110,6 @@ module.exports = {
             const db = req.app.get('db')
             let products = await db.get_store()
             return res.status(200).send(products)
-            
         }catch(err){
             console.log(err)
         }
