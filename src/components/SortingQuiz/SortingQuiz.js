@@ -6,10 +6,8 @@ export class SortingQuiz extends Component{
     constructor(){
         super()
         this.state = {
-            sortingQuestion:{},
             sortingQuestions:[],
             sortingAnswers:[],
-            sortingAnswer:{}
         }
     }
 
@@ -32,18 +30,24 @@ export class SortingQuiz extends Component{
             console.log("Error, cannot compute.",err))
     }
 
-
+    getAQuestionsString = () => {
+        var sortingQuestions = this.state.sortingQuestions.map( (e,i) => {   
+            console.log(e.question)         
+            return (
+                <div key = {i + '.' + e.id}>
+                    {e.question} <br/>
+                </div>
+            )
+        })
+    }
         
                 
                 
                 
     render (){
 
-        var question = this.state.sortingQuestions.map( (e,i) => {
-         
-            
-         
-        })
+      
+       
         return (
 
             <div className="SortingQuiz">
@@ -53,7 +57,7 @@ export class SortingQuiz extends Component{
                 <div className = 'questioncontainer'>
 
                     <div className = 'questiontext'>
-                        The questions will go here
+
                     </div>
 
                 </div>
