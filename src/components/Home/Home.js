@@ -1,27 +1,54 @@
-import React from 'react';
+import React, { Component }  from 'react';
 import Wizard from './img/wizard'
 import SpinNews from './SpinNews/SpinNews'
 import NavBar from '../Navbar'
+import { fadeIn, fadeInUp } from 'react-animations'
+import Radium, {StyleRoot} from 'radium';
+import Fade from 'react-reveal/Fade';
+import Zoom from 'react-reveal/Zoom';
 
- function Home(props) {
+const styles = {
+    fadeIn: {
+      animation: 'x 7s',
+      animationName: Radium.keyframes(fadeIn, 'fadeIn')
+    },
+    fadeInUp: {
+        animation: 'x 3s',
+        animationName: Radium.keyframes(fadeInUp, 'fadeInUp')
+    }
+  }
+
+ class Home extends Component {
+     constructor(props){
+         super(props)
+     }
+
+     render(){
     return (
         <div className='home'>
-        <NavBar {...props} />
+        <NavBar {...this.props} />
             <section className='header'>
+            <Zoom duration={3000}>
                 <div className='header-text'>
                     {Wizard}
                 </div>
+            </Zoom >    
             </section>
             <section className='store' >
                 <div className='spinnews' >
                     <SpinNews  />
                 </div>
-                <div className='go-store'>
+                <Fade bottom duration={2000}>
+                <div className='go-store' >
                     <button>Enter Store</button>
                 </div>
+                </Fade>
+              
             </section>
             
             <section className='news'>
+            <Zoom bottom duration={2500}>
+            
                 <div className='news-paper'>
                     <img src="http://www.oregontraildays.com/images/old-paper-1-clr-nails2.png" alt="paper"/>
 
@@ -57,10 +84,10 @@ import NavBar from '../Navbar'
                             </div>
                         </div>
                     </div>
-
                 </div>
+                </Zoom>
             </section>
         </div>
-    )
+    )}
 }
 export default Home

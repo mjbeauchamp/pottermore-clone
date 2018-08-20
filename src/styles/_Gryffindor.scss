@@ -1,0 +1,112 @@
+.house {
+    
+    height: 100vh;
+    width: 100%;
+    .house-logo { 
+        background-image: url('https://wallpapertag.com/wallpaper/full/1/0/e/121577-free-red-gradient-background-1920x1080-for-ipad.jpg');   
+        background-size: cover;
+        background-position: 0 -300px;
+        padding-bottom: 50px;
+        h1{
+            margin-top: 10px;
+            font-size: 50px;
+        }
+        h2 {
+            font-size: 20px;
+            margin-top: 50px;
+        }
+        img {
+            margin-top: 100px;
+            width: 100px;
+        }
+    }
+    .house-about {
+        background-color: rgb(87, 80, 80);
+        padding: 20px;
+        height: 75vh;
+        .house-about-div {
+            background-color: rgb(179, 174, 174);
+            width: 900px;
+            margin: auto;
+            height: 500px;
+            padding: 20px;
+        }
+        img {
+            width: 50px;
+        }
+    }
+    .house-famous {
+        background-color: rgb(224, 147, 4);
+        padding: 50px;
+        .house-famous-list {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        img {
+            width: 100px;
+            border-radius:50%;
+        }
+    }
+    .house-welcome {
+        background-color: rgb(15, 84, 141);
+        padding: 50px;
+        h3 {
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+        .house-welcome-msg {
+            margin: 50px;
+            width: 500px;
+            padding: 50px; 
+            margin: auto;
+            background-color: rgb(170, 163, 163);
+        }
+    }
+
+}
+
+h1 {
+    /* Dark red */
+    color: #3f1519; 
+    /* red */
+    color: #641918;
+    /* light red */
+    color: #A71D31;
+    /* Ravenclaw blue */
+    color: #003D5B;
+    /* dark yellow */
+    color: #EDAE49;
+    /* gold */
+    color: #FB8B24;
+    /* off-white, cool */
+    color: #EAE6E5;
+    /* dove gray */
+    color: #8F8073;
+    /* light gray */
+    color: #EAE6E5;
+    color: #DCCCA3;
+    /* dark brown */
+    color: #231C07;
+    /* charcoal */
+    color: #1E2D24;
+    /* dark gray */
+    color: #30332E;
+    /* purple dark gray */
+    color: #2D2327;
+    /* dark blue */
+    color: #2D3047;
+    /* warm blue */
+    color: #0F4C5C;
+    /* light blue */
+    color: #2176AE;
+    /* dark green */
+    color: #2A433B;
+    /* bright green */
+    color: #23850B;
+    /* medium green */
+    color: #144906;
+    color: #103D05;
+    /* dark green */
+    color: #0A2503;
+}
