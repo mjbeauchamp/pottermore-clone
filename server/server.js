@@ -5,6 +5,7 @@ const axios = require('axios');
 const massive = require('massive');
 const authControllers = require('./controllers/auth-controllers');
 const sqControllers = require('./controllers/sqcontrollers');
+const storeControllers = require('./controllers/store-controllers');
 const session = require('express-session');
 
 //
@@ -43,29 +44,30 @@ app.get('/auth/all_usernames', authControllers.all_usernames);
 
 app.post('/auth/login', authControllers.login);
 
+app.get('/auth/logout', authControllers.logout);
+
+app.get('/api/current_user', authControllers.current_user);
+
 // Here will lie the endpoints for the sorting quiz.
 
 app.get('/api/sortingquiz/questions', sqControllers.sortingQuestions)
 
 app.get('/api/sortingquiz/answers', sqControllers.sortingAnswers)
-app.get('/auth/logout', authControllers.logout);
-
-app.get('/api/current_user', authControllers.current_user);
 
 //Add an item to the user's cart
-app.post('/api/cart', authControllers.addToCart)
+app.post('/api/cart', storeControllers.addToCart)
 //Get all items in specific users cart
-app.get('/api/cart',authControllers.getCart)
+app.get('/api/cart',storeControllers.getCart)
 //Get all items in the store
-app.get('/api/products', authControllers.getProducts)
+app.get('/api/products', storeControllers.getProducts)
 //Get Cart and item details
-app.get('/api/details',authControllers.cartDetails)
+app.get('/api/details',storeControllers.cartDetails)
 //Delete Item from shopping Cart
-app.delete('/api/product/:id',authControllers.deleteProduct)
+app.delete('/api/product/:id',storeControllers.deleteProduct)
 //Add Item To Cart
-app.put('/api/cart', authControllers.addToCart)
+app.put('/api/cart', storeControllers.addToCart)
 //Delete PRODUCT from shopping Cart
-app.put('/api/delete/',authControllers.deleteItem)
+app.put('/api/delete/',storeControllers.deleteItem)
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server docked in port ${SERVER_PORT}`)
