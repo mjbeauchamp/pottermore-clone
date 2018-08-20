@@ -20,7 +20,7 @@ class Login extends Component {
         let {username, password} = this.state;
         axios.post('/auth/login', {username: username, password: password})
             .then(response => {
-                console.log(response.data[0].id)
+                console.log(response.data[0])
                 console.log("You logged in!")
                 // this.props.gatherUserId(username);
                 this.setState({
