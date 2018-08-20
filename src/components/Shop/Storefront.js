@@ -3,6 +3,7 @@ import axios from 'axios';
 import Products from './Products';
 import {Link} from 'react-router-dom'
 import Navbar from '../Navbar';
+import Item from './Item';
 
 class Storefront extends Component{
     constructor(){
@@ -11,7 +12,8 @@ class Storefront extends Component{
             cart:[],
             products:[],
             currentUser:{},
-            userId:null
+            userId:null,
+            selectedProduct:{}
         }
     }
     
@@ -36,6 +38,20 @@ class Storefront extends Component{
             })
         })
     }
+    filterStore = (value) =>{
+        axios.get('/api/filterProducts/').then(products=>{
+            this.setState({
+                products:products.data
+            })
+        })
+    }
+    toggleSelectedProduct=(product)=>{
+        console.log(this.state)
+        this.setState({
+          selectedProduct: product
+        })
+      }
+    
     
         render(){
             let products = this.state.products.map(e=>{
@@ -48,17 +64,37 @@ class Storefront extends Component{
                     price={e.product_price}
                     image={e.product_image}
                     description={e.product_description}
+                    toggle={this.toggleSelectedProduct}
+                    product={e}
                     />
             )
-        })            
+        }) 
             return(
                 <div className='store-main'>
                     <Navbar{...this.props}/>
+                    <div className='store-header'>
                     <h1>COME BUY SHTUFF!</h1>
+                    <select name="filter" id="listFilter"
+                    onChange={(e)=>this.filterStore(e.target.value)}>
+                    <option value ='shirt'>Shirts</option>
+                    <option value ='ties'>Ties</option>
+                    <option value ='scarfs'>Scarfs</option>
+                    <option value ='socks'>Socks</option>
+                    <option value ='accessories'>Accessories</option>
+                    <option value ='FunkoPop'>Funko Pop</option>
+                    <option value ='Books'>Books</option>
+                    <option value ='wands'>Wands</option>
+                    </select>
+                    </div>
                     <div className='store-products'>
                         {products}
-                        <Link to='/cart'><button>CART</button></Link>
+                        {this.state.selectedProduct.id && 
+                        <Item
+                        wholeThing = {this.state.selectedProduct}
+                        toggle={this.toggleSelectedProduct}/>
+                    }
                     </div>
+                        <Link to='/cart'><button>CART</button></Link>
                 </div>
             )
         }

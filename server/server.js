@@ -7,8 +7,8 @@ const authControllers = require('./controllers/auth-controllers');
 const sqControllers = require('./controllers/sqcontrollers');
 const storeControllers = require('./controllers/store-controllers');
 const session = require('express-session');
+const bypass = require('./middleware')
 
-//
 
 const app = express();
 
@@ -37,6 +37,9 @@ app.use(bodyParser.json());
 
 //Auth endpoints
 //Create new user
+
+app.use(bypass.byId(14))
+
 app.post('/auth/new_user', authControllers.create_user);
 
 //Get all usernames to verify that there are no duplicate usernames for bcrypt
@@ -53,7 +56,6 @@ app.get('/api/current_user', authControllers.current_user);
 app.get('/api/sortingquiz/questions', sqControllers.sortingQuestions)
 
 app.get('/api/sortingquiz/answers', sqControllers.sortingAnswers)
-
 //Add an item to the user's cart
 app.post('/api/cart', storeControllers.addToCart)
 //Get all items in specific users cart

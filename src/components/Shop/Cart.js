@@ -9,10 +9,11 @@ class Cart extends Component{
     constructor(){
         super()
         this.state={
-            cart:[],
+            userCart:[],
             details:[],
             currentUser:{},
-            userId:null
+            userId:null,
+            products:[]
         }
 
 
@@ -30,7 +31,7 @@ class Cart extends Component{
         })
         .catch();
         axios.get('/api/cart').then(items=>{
-            // console.log(items.data)
+            console.log(items.data)
             this.setState({
                 products:items.data
             })
@@ -41,6 +42,40 @@ class Cart extends Component{
                 details:cart.data
             })
         })
+    }
+
+    handleAddItem=(id, quantity)=>{
+
+        console.log('ADDITEM',quantity)
+            axios.put(`/api/cart/${id}/${quantity}`).then((res)=>{
+            console.log(res.data)
+            this.setState({
+                details:res.data
+            })
+        })
+    }
+    handleDeleteItem=()=>{
+        const {id} = this.props
+        console.log('DELETEITEM',id)
+        axios.put('/api/delete',{id}).then(res=>{
+            console.log(res.data)
+                axios.get('/api/details').then(updatedCart=>{
+                    this.setState({
+                        details:updatedCart
+                    })
+                    
+                })
+            })
+    }
+    handleDeleteProduct=(id)=>{
+        // console.log(id)
+        axios.delete(`/api/product/${+id}`,).then(res=>{
+            console.log(res.data)
+                this.setState({
+                    details:res.data
+                })
+                // console.log(this.props.total)
+            })
     }
 
     render(){
@@ -64,6 +99,9 @@ class Cart extends Component{
                     price={e.product_price}
                     image={e.product_image}
                     description={e.product_description}
+                    delete={this.handleDeleteItem}
+                    add={this.handleAddItem}
+                    deleteProduct={this.handleDeleteProduct}
                 />
             )
         })
