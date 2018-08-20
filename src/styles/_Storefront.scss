@@ -6,12 +6,16 @@
     flex-direction: column;
     justify-content: center;
     margin:35px;
+    width:200px;
     border:3px solid white;
 
 }
 .product-display img{
-    height:300px;
+    height:100px;
     width:auto;
+}
+.store-header{
+    padding-top:80px;
 }
 .store-main{
     h1{font-size: 75px;
@@ -24,12 +28,15 @@
     overflow: hidden;
 }
 .store-products{
-    margin-top: 500px;
+    margin-top: 75px;
     display:flex;
     flex-wrap: wrap;
     overflow:scroll;
+    overflow-x: hidden;
+    width:100%
 }
 .product-display{
+    width:200px;
     background:transparent;
 }
 .buttons{
@@ -37,3 +44,41 @@
     display:flex;
     justify-content: space-around;
 }
+.hide-image{
+    img{
+        height:0;
+        width:0;
+    }
+    z-index: -1;
+    transition: z-index .5s linear;
+    opacity:0;
+    height:0px;
+    width:200px;
+    overflow:hidden;
+}
+.show-image{
+    .store-main{
+        background-color: white;
+    }
+    justify-content: center;
+    z-index:1;
+    width:200px;
+    position:absolute;
+    opacity:1;
+    }
+    .item-store{
+        display:flex;
+        flex-direction: column;
+        img{
+            height:300px;
+            width:auto;
+        }
+        border:2px solid white;
+        height:auto;
+        width:30%;
+        position: fixed;
+        bottom:20px;
+        left:35%;
+        background-color:red;
+        margin-left:50% auto;
+    }
