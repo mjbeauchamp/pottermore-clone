@@ -61,37 +61,6 @@ class Navbar extends Component {
             auth = <Link to="/">Login</Link>
         }
 
-        //Conditionally render links depending on what page you're on
-        // switch(path){
-        //     case "/sign_up":
-        //         home = <div className="home-link">
-        //                 <Link to="/"><i className="fas fa-home fa-lg"></i></Link>
-        //                 </div>
-        //         break;
-        //     case "/login":
-        //         home = <div className="home-link">
-        //                     <Link to="/"><i className="fas fa-home fa-lg"></i></Link>
-        //                 </div>
-        //         break;
-        //     case "/pick_unicorn":
-        //         home = <div className="home-link">
-        //                 <Link to="/"><i className="fas fa-home fa-lg"></i></Link>
-        //             </div>
-        //         logout = <div className="logout-button">
-        //             <button className="nav-logout" onClick={this.logout}>Logout</button>
-        //         </div>
-        //         break;
-        //     case "/create_unicorn":
-        //         home = <div className="home-link">
-        //                 <Link to="/"><i className="fas fa-home fa-lg"></i></Link>
-        //             </div>
-        //         logout = <div className="logout-button">
-        //             <button className="nav-logout" onClick={this.logout}>Logout</button>
-        //         </div>
-        //         break;
-        // }
-
-
         return (
             <div className="navbar">
             <div className={this.state.toggle ? 'nav-left' : 'nav-hidden'}>
@@ -99,17 +68,18 @@ class Navbar extends Component {
                 {store}
                 {dashboard}
             </div>
-                
+
             <div className='nav-mid' onClick={this.handleNavToggle}>
-                MENU
+                <img src={require('./snitch.png')} alt=""/>
+                <h3>MENU</h3>
             </div>
-            
+
             <div className={this.state.toggle ? 'nav-right' : 'nav-hidden-right'}>
                 {quizhome}
                 {cart}
                 {auth}
                 {logout}
-            </div>    
+            </div>   
 
                 {/* <Link to="/signup">Sign Up</Link> */}
 

@@ -10,12 +10,26 @@ class Storefront extends Component{
         this.state={
             cart:[],
             products:[],
-            user:{}
+            currentUser:{},
+            userId:null
         }
     }
     
    
     componentDidMount(){
+        axios.get("/api/current_user")
+        .then(response => {
+            if(response.data[0].id){
+                console.log(response.data[0].id)
+                this.setState({
+                    currentUser: response.data[0],
+                    userID: response.data[0].id
+                })
+            }
+        })
+        .catch();
+
+        
         axios.get('/api/products').then(products=>{
             this.setState({
                 products: products.data
@@ -36,21 +50,17 @@ class Storefront extends Component{
                     description={e.product_description}
                     />
             )
-        })
-            
+        })            
             return(
                 <div className='store-main'>
-                
-                <h1>COME BUY SHTUFF!</h1>
-                
-                  <div className='store-products'>
-                  {products}
+                    <Navbar{...this.props}/>
+                    <h1>COME BUY SHTUFF!</h1>
+                    <div className='store-products'>
+                        {products}
+                        <Link to='/cart'><button>CART</button></Link>
                     </div>
-                  <Link to='/cart'><button>CART</button></Link>
                 </div>
-
             )
-
-    }
+        }
 }
 export default Storefront
