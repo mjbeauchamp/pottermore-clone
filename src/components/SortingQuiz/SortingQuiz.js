@@ -1,33 +1,54 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import {NavLink} from 'react-router-dom'
 
 export class SortingQuiz extends Component{
     constructor(){
         super()
-
+        this.state = {
+            sortingQuestion:{},
+            sortingQuestions:[],
+            sortingAnswers:[],
+            sortingAnswer:{}
+        }
     }
 
     componentDidMount = () => {
-        axios.get('/api/sortingquiz/questions').then( (req, res) => {
-            // console.log(req.data)
+        axios.get('/api/sortingquiz/questions').then( (questionsReq) => {
+            this.setState({
+                sortingQuestions:questionsReq.data
+            })
         })
         .catch(err => 
-            console.log("The bird has flown the coop, please come back later.",err))
-
-        axios.get('/api/sortingquiz/answers').then( (req, res) => {
-            console.log(req.data)
+            console.log("The bird has flown the coop, please come back later.",err))   
+            
+        
+        axios.get('/api/sortingquiz/answers').then( (answersReq) => {
+            this.setState({
+                sortingAnswers:answersReq.data
+            })
         })
         .catch(err => 
             console.log("Error, cannot compute.",err))
     }
 
 
-    
+        
+                
+                
+                
     render (){
 
+        var question = this.state.sortingQuestions.map( (e,i) => {
+         
+            
+         
+        })
         return (
 
             <div className="SortingQuiz">
+
+            <NavLink className = 'backbtn' to = '/quizHome'> X  </NavLink>
 
                 <div className = 'questioncontainer'>
 
