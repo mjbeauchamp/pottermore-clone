@@ -16,7 +16,6 @@ class Navbar extends Component {
         axios.get("/api/current_user")
             .then(response => {
                 if(response.data[0].id){
-                    console.log(response.data[0].id)
                     this.setState({
                         currentUser: response.data[0],
                         userID: response.data[0].id
@@ -43,8 +42,6 @@ class Navbar extends Component {
     }
 
     render(){
-        console.log(this.state.currentUser)
-        console.log("User ID:" + this.state.userID)
         //Links to be rendered conditionally
         let logout;
         let dashboard;
