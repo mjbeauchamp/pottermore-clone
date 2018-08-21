@@ -72,8 +72,9 @@ class Navbar extends Component {
             </div>
 
             <div className='nav-mid' onClick={this.handleNavToggle}>
-                <img src={require('./snitch.png')} alt=""/>
-                <h3>MENU</h3>
+                <img id="snitch-left" src={require('./LeftWing.png')} alt=""/>
+                <img id="snitch-right" src={require('./RightWing.png')} alt="" />
+                <img id="snitch-body" src={require('./SnitchBody.png')} alt="" />
             </div>
 
             <div className={this.state.toggle ? 'nav-right' : 'nav-hidden-right'}>
@@ -81,7 +82,7 @@ class Navbar extends Component {
                 {cart}
                 {auth}
                 {logout}
-            </div>   
+            </div>
 
                 {/* <Link to="/signup">Sign Up</Link> */}
 
