@@ -42,7 +42,7 @@ export default class Gryffindor extends React.Component {
     render() {
         console.log(this.state.currentUser)
         console.log(this.state.famous[0])
- let newArr = []
+        let newArr = []
         if (this.state.famous[0]) {
             for (let i = 0; i < 7; i++) {
                 newArr.push(this.state.famous[i].name)
