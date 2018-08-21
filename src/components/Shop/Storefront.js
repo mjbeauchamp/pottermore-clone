@@ -13,7 +13,7 @@ class Storefront extends Component{
             products:[],
             currentUser:{},
             userId:null,
-            selectedProduct:{}
+            selectedProduct:{},
         }
     }
     
@@ -83,6 +83,7 @@ class Storefront extends Component{
                     <Navbar{...this.props}/>
                     <div className='store-header'>
                     <h1>COME BUY SHTUFF!</h1>
+                    <h3>Filter by:
                     <select name="filter" id="listFilter"
                     onChange={(e)=>this.filterStore(e.target.value)}>
                     <option value = 'all'>All</option>
@@ -95,6 +96,7 @@ class Storefront extends Component{
                     <option value ='book'>Books</option>
                     <option value ='wand'>Wands</option>
                     </select>
+                    </h3>
                     </div>
                     <div className='store-products'>
                         {products}

@@ -15,7 +15,8 @@
     width:auto;
 }
 .store-header{
-    padding-top:80px;
+    padding-top:180px;
+    color:white;
 }
 .store-main{
     h1{font-size: 75px;
@@ -53,7 +54,12 @@
     width:200px;
     position:fixed;
 }
-
+.item-popup{
+    position: fixed;
+    background:transparent;
+    height:100vh;
+    width:100%;
+}
     .item-store{
     display:flex;
     flex-direction: column;
