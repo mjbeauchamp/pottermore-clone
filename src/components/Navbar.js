@@ -71,10 +71,10 @@ class Navbar extends Component {
                 {dashboard}
             </div>
 
-            <div className='nav-mid' onClick={this.handleNavToggle}>
+            <div className='nav-mid'>
                 <img id="snitch-left" src={require('./LeftWing.png')} alt=""/>
                 <img id="snitch-right" src={require('./RightWing.png')} alt="" />
-                <img id="snitch-body" src={require('./SnitchBody.png')} alt="" />
+                <img id="snitch-body" src={require('./SnitchBody.png')} alt="" onClick={this.handleNavToggle} />
             </div>
 
             <div className={this.state.toggle ? 'nav-right' : 'nav-hidden-right'}>
