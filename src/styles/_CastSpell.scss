@@ -1,0 +1,288 @@
+.castSpell {
+    .navigation {
+        height: 100px;
+        width: 100%;
+        background-color: rgb(0, 0, 0);
+    }
+    .spell-nav {
+        background-color: rgb(90, 89, 89);
+        width: 100%;
+        div {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            ul{
+                display: flex;
+                li {
+                    margin: 30px 30px;
+                }
+            }
+        }
+    }
+    .spell-section {
+        background: rgb(5, 82, 155);
+        position: relative;
+        display: flex;
+        .spell-image {
+            position: relative;
+            width: calc(100% - 800px);
+            border: 2px solid black;
+            height: auto;
+            img{
+                position: absolute;
+                top: 25%;
+                left: 25%;
+            }
+        }
+        .spell-box {
+            position: relative;
+            border: 2px solid black;
+            width: 800px;
+            height: auto;
+            z-index: 10;
+        }
+    }
+    .feder {
+        display: block
+    }
+    .feder2 {
+        display: none;
+    }
+    .invisible {
+        background-color: green;
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        z-index: 10;
+        opacity: 0;
+    }
+    .boxes{
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: rgb(194, 14, 14);
+        border-radius: 50%;
+    }
+
+//////// level - 1 
+.visible-1 {
+    top: 50px;
+    left: 100px;
+}
+.visible-2 {
+    top: 170px;
+    left: 230px;
+}
+.visible-3 {
+    top: 400px;
+    left: 130px;
+}
+.visible-4 {
+    bottom: 100px;
+    left: 320px;
+}
+.visible-5 {
+    top: 400px;
+    right: 180px;
+}
+.visible-6 {
+    top: 200px;
+    right: 250px;
+}
+.visible-7 {
+    top: 70px;
+    right: 120px;
+    background-color: rgb(33, 247, 61);
+}
+.box-8 {
+    top: 70px;
+    left: 150px;  
+}
+.box-9{
+    top: 220px;
+    left: 230px;
+}
+.box-10{
+    bottom: 210px;
+    left: 140px
+}
+.box-11 {
+    bottom: 220px;
+    right: 185px;
+}
+.box-12{
+    top: 230px;
+    right: 200px;
+}
+.box-13 {
+    top: 70px;
+    right: 120px;
+}
+.box-14 {
+    top: 120px;
+    left: 210px;
+}
+.box-15 {
+    top: 290px;
+    left: 230px;
+}
+.box-16 {
+    top: 350px;
+    left: 180px;
+}
+.box-17 {
+    bottom: 150px;
+    left: 180px;
+}
+.box-18 {
+    bottom: 110px;
+    left: 250px;
+}
+.box-19 {
+    bottom: 110px;
+    right: 330px;
+}
+.box-20 {
+    bottom: 150px;
+    right: 230px;
+}
+.box-21{
+    bottom: 320px;
+    right: 160px;
+}
+.box-22 {
+    top: 280px;
+    right: 170px;
+}
+.box-23 {
+    top: 150px;
+    right: 240px;
+}
+.box-24 {
+    top: 90px;
+    right: 200px;
+}
+
+//////// level - 2
+
+.level2-1 {
+    bottom: 80px;
+    left: 390px;
+}
+.level2-2 {
+    bottom: 150px;
+    left: 280px;
+}
+.level2-3{
+    bottom: 80px;
+    left: 60px;
+}
+.level2-4{
+    bottom: 270px;
+    left: 180px;
+}
+.level2-5 {
+    bottom: 160px;
+    right: 100px;
+}
+.level2-6{
+    bottom: 320px;
+    right: 120px;
+}
+.level2-7 {
+    top: 60px;
+    left: 390px;
+}
+.level2-8 {
+    bottom: 130px;
+    left: 350px;
+}
+.level2-9 {
+    bottom: 150px;
+    left: 280px;
+}
+.level2-10 {
+    bottom: 140px;
+    left: 200px;
+}
+.level2-11 {
+    bottom: 110px;
+    left: 130px;
+}
+.level2-12 {
+    bottom: 80px;
+    left: 50px;
+}
+.level2-13{
+    bottom: 140px;
+    left: 20px;
+}
+.level2-14{
+    bottom: 230px;
+    left: 60px
+}
+.level2-15 {
+    bottom: 275px;
+    left: 180px;
+}
+.level2-16 {
+    bottom: 285px;
+    left: 280px;
+}
+.level2-17 {
+    bottom: 260px;
+    left: 370px
+}
+.level2-18 {
+    bottom: 210px;
+    right: 300px;
+}
+.level2-19 {
+    bottom: 170px;
+    right: 200px;
+}
+.level2-20 {
+    bottom: 150px;
+    right: 100px;
+}
+.level2-21 {
+    bottom: 230px;
+    right: 70px;
+}
+.level2-22 {
+    bottom: 320px;
+    right: 110px;
+}
+.level2-23 {
+    bottom: 430px;
+    right: 190px;
+}
+.level2-24{
+    top: 120px;
+    right: 280px;
+}
+.level2-25 {
+    top: 60px;
+    left: 390px;
+}
+.level2-26 {
+    top: 180px;
+    left: 390px;
+}
+.level2-27 {
+    top: 300px;
+    left: 390px;
+}
+.level2-28 {
+    bottom: 180px;
+    left: 390px
+}
+.level2-29 {
+    bottom: 180px;
+    left: 390px;
+    background-color: rgb(33, 247, 61);
+}
+
+
+}
+
