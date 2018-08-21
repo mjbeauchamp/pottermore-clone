@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 
-export class SortingQuiz extends Component{
+class SortingQuiz extends Component{
     constructor(){
         super()
 
