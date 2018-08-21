@@ -13,8 +13,10 @@ class Navbar extends Component {
     }
 
     componentDidMount(){
+        console.log('did mount')
         axios.get("/api/current_user")
             .then(response => {
+                console.log(response.data)
                 if(response.data[0].id){
                     this.setState({
                         currentUser: response.data[0],
@@ -45,20 +47,20 @@ class Navbar extends Component {
         //Links to be rendered conditionally
         let logout;
         let dashboard;
-        let home = <Link to="/home">Home</Link>;
-        let store = <Link to="/store">Store</Link>;
-        let quizhome = <Link to="/quizhome">Quiz</Link>;
+        let home = <Link to="/home">HOME</Link>;
+        let store = <Link to="/store">STORE</Link>;
+        let quizhome = <Link to="/quizhome">QUIZ</Link>;
         let auth;
         let cart;
         //Pulling path from props for conditional routing
         let path = this.props.location.pathname;
 
         if(this.state.userID){
-            logout = <Link to='/' onClick={this.logout}>Logout</Link>
-            dashboard = <Link to="/dashboard">Dashboard</Link>
-            cart = <Link to="/cart">Cart</Link>
+            logout = <Link to='/' onClick={this.logout}>LOGOUT</Link>
+            dashboard = <Link to="/dashboard">DASHBOARD</Link>
+            cart = <Link to="/cart">CART</Link>
         } else if(!this.state.userID){
-            auth = <Link to="/">Login</Link>
+            auth = <Link to="/">LOGIN</Link>
         }
 
         return (
@@ -69,9 +71,10 @@ class Navbar extends Component {
                 {dashboard}
             </div>
 
-            <div className='nav-mid' onClick={this.handleNavToggle}>
-                <img src={require('./snitch.png')} alt=""/>
-                <h3>MENU</h3>
+            <div className='nav-mid'>
+                <img id="snitch-left" src={require('./LeftWing.png')} alt=""/>
+                <img id="snitch-right" src={require('./RightWing.png')} alt="" />
+                <img id="snitch-body" src={require('./SnitchBody.png')} alt="" onClick={this.handleNavToggle} />
             </div>
 
             <div className={this.state.toggle ? 'nav-right' : 'nav-hidden-right'}>
@@ -79,7 +82,7 @@ class Navbar extends Component {
                 {cart}
                 {auth}
                 {logout}
-            </div>   
+            </div>
 
                 {/* <Link to="/signup">Sign Up</Link> */}
 

@@ -6,6 +6,7 @@
   "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
   "main": "./server/server.js",
   "dependencies": {
+    "auth-bypass": "^1.0.5",
     "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",

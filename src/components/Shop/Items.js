@@ -14,38 +14,6 @@ class Items extends Component{
 
 
     }
-
-    handleAddItem=()=>{
-        const {id}=this.props
-            axios.put('/api/cart',{id}).then((res)=>{
-            console.log(res.data)
-            this.setState({
-                cart:res.data
-            })
-        })
-    }
-    handleDeleteItem=()=>{
-        const {id} = this.props
-        axios.put('/api/delete',{id}).then(res=>{
-            // console.log(res.data)
-                axios.get('/api/details').then(updatedCart=>{
-                    this.setState({
-                        cart:updatedCart
-                    })
-                    
-                })
-            })
-    }
-    handleDeleteProduct=(id)=>{
-        // console.log(id)
-        axios.delete('/api/product/'+id,).then(res=>{
-            console.log(res.data)
-                this.setState({
-                    details:res.data
-                })
-                // console.log(this.props.total)
-            })
-    }
     render(){
         return(
 
@@ -60,9 +28,8 @@ class Items extends Component{
                     <h3>Item Total:${Number(this.props.price.replace(/[$]+/g, '')*this.props.quantity).toFixed(2)}</h3>
                 </div>
                     <div className='buttons'>
-                        <button onClick={this.handleAddItem}>+1</button>
-                        <button onClick={this.handleDeleteItem}>-1</button>
-                        <button onClick={()=>this.handleDeleteProduct(this.props.id)}>Delete Item</button>
+                        <input type="number" value={this.props.quantity} onChange={(e)=> this.props.add(this.props.id, e.target.value )}/>
+                        <button onClick={()=>this.props.deleteProduct(this.props.id)}>Delete Item</button>
 
                     
                 </div>

@@ -9,10 +9,11 @@ class Cart extends Component{
     constructor(){
         super()
         this.state={
-            cart:[],
+            userCart:[],
             details:[],
             currentUser:{},
-            userId:null
+            userId:null,
+            products:[]
         }
 
 
@@ -24,35 +25,66 @@ class Cart extends Component{
                 console.log(response.data[0].id)
                 this.setState({
                     currentUser: response.data[0],
-                    userID: response.data[0].id
+                    userId: response.data[0].id
                 })
             }
         })
         .catch();
         axios.get('/api/cart').then(items=>{
-            // console.log(items.data)
+            console.log(items.data)
             this.setState({
                 products:items.data
             })
         })
-        axios.get('/api/details').then(cart =>{
-            console.log(cart.data)
+        this.getCartDetails();
+    }
+    getCartDetails=()=>{
+                axios.get('/api/details').then(cart =>{
+                    console.log(cart.data)
+                    this.setState({
+                        details:cart.data
+                    })
+                })
+
+    }
+
+    handleAddItem=(id, quantity)=>{
+
+        console.log('ADDITEM',quantity)
+            axios.put(`/api/cart/${id}/${quantity}`).then((res)=>{
+            console.log(res.data)
             this.setState({
-                details:cart.data
+                details:res.data
             })
         })
     }
+    handleDeleteItem=()=>{
+        const {id} = this.props
+        console.log('DELETEITEM',id)
+        axios.put('/api/delete',{id}).then(res=>{
+            console.log(res.data)
+                axios.get('/api/details').then(updatedCart=>{
+                    this.setState({
+                        details:updatedCart
+                    })
+                    
+                })
+            })
+    }
+    handleDeleteProduct=(id)=>{
+        axios.delete(`/api/product/${+id}`,).then(res=>{
+            console.log(res.data)
+                this.setState({
+                    details:res.data
+                })
+            })
+    }
 
     render(){
-        const total = [];
-        this.state.details.map((e,i)=>{
-           let cartTotal = (Number(e.product_price.replace(/[$]+/g, '')*e.quantity).toFixed(2));
-           total.push(cartTotal);
-           const sum = total.reduce((total,amount) => Number(total) + Number(amount));
-           return(
-               console.log(sum)
-           );
-        })
+      let total = this.state.details.reduce((acc,product)=>{
+        let cost = (Number(product.product_price.replace(/[$]+/g, '')*product.quantity))
+        return (acc + cost)
+      }, 0);
         
         let items =  this.state.details.map(e=>{
             return(
@@ -64,6 +96,9 @@ class Cart extends Component{
                     price={e.product_price}
                     image={e.product_image}
                     description={e.product_description}
+                    delete={this.handleDeleteItem}
+                    add={this.handleAddItem}
+                    deleteProduct={this.handleDeleteProduct}
                 />
             )
         })
@@ -71,11 +106,11 @@ class Cart extends Component{
 
         return(
                 <div className='cart-main'>
-                <h1>Cart</h1>
+                    <h1>Cart</h1>
                 <div className='shop-items'>
                   {items}
                 
-                    <h1>Total:${total.reduce((total,amount) => Number(total) + Number(amount),0).toFixed(2)}</h1>
+                    <h1>Total:${total.toFixed(2)}</h1>
                 </div>
                   
                   <Link to='/store'><button>STORE</button></Link>
