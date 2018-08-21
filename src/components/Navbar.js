@@ -47,20 +47,20 @@ class Navbar extends Component {
         //Links to be rendered conditionally
         let logout;
         let dashboard;
-        let home = <Link to="/home">Home</Link>;
-        let store = <Link to="/store">Store</Link>;
-        let quizhome = <Link to="/quizhome">Quiz</Link>;
+        let home = <Link to="/home">HOME</Link>;
+        let store = <Link to="/store">STORE</Link>;
+        let quizhome = <Link to="/quizhome">QUIZ</Link>;
         let auth;
         let cart;
         //Pulling path from props for conditional routing
         let path = this.props.location.pathname;
 
         if(this.state.userID){
-            logout = <Link to='/' onClick={this.logout}>Logout</Link>
-            dashboard = <Link to="/dashboard">Dashboard</Link>
-            cart = <Link to="/cart">Cart</Link>
+            logout = <Link to='/' onClick={this.logout}>LOGOUT</Link>
+            dashboard = <Link to="/dashboard">DASHBOARD</Link>
+            cart = <Link to="/cart">CART</Link>
         } else if(!this.state.userID){
-            auth = <Link to="/">Login</Link>
+            auth = <Link to="/">LOGIN</Link>
         }
 
         return (
