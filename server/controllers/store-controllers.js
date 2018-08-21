@@ -25,7 +25,7 @@ module.exports = {
         try{
             const db=req.app.get('db')
             let details = await db.cart_details()
-            
+            console.log(details)
             return res.status(200).send(details)
         }catch(err){
             res.status(500).send(err)
@@ -69,7 +69,7 @@ module.exports = {
                     
                     return res.status(200).send(newItem);
                 }else{
-                    const updatedItem = await db.add_quantity([+req.session.userid, id])
+                    const updatedItem = await db.add_from_store([+req.session.userid, id])
                     
                     return res.status(200).send(updatedItem);
                 }
@@ -78,4 +78,16 @@ module.exports = {
                 console.log(err)
             }
     },
+    update: async (req,res) =>{
+        try{
+            const db = req.app.get('db')
+            const newItem = await db.update([+req.params.id, +req.params.quantity,+req.session.userid])
+            return res.status(200).send(newItem) 
+        }catch(err){
+            res.status(500).send(err)
+                console.log(err)
+            }
+        
+
+    }
 }

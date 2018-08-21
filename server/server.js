@@ -70,6 +70,7 @@ app.delete('/api/product/:id',storeControllers.deleteProduct)
 app.put('/api/cart', storeControllers.addToCart)
 //Delete PRODUCT from shopping Cart
 app.put('/api/delete/',storeControllers.deleteItem)
+app.put('/api/cart/:id/:quantity', storeControllers.update)
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server docked in port ${SERVER_PORT}`)

@@ -25,7 +25,7 @@ class Cart extends Component{
                 console.log(response.data[0].id)
                 this.setState({
                     currentUser: response.data[0],
-                    userID: response.data[0].id
+                    userId: response.data[0].id
                 })
             }
         })
@@ -36,12 +36,16 @@ class Cart extends Component{
                 products:items.data
             })
         })
-        axios.get('/api/details').then(cart =>{
-            console.log(cart.data)
-            this.setState({
-                details:cart.data
-            })
-        })
+        this.getCartDetails();
+    }
+    getCartDetails=()=>{
+                axios.get('/api/details').then(cart =>{
+                    console.log(cart.data)
+                    this.setState({
+                        details:cart.data
+                    })
+                })
+
     }
 
     handleAddItem=(id, quantity)=>{
@@ -68,26 +72,19 @@ class Cart extends Component{
             })
     }
     handleDeleteProduct=(id)=>{
-        // console.log(id)
         axios.delete(`/api/product/${+id}`,).then(res=>{
             console.log(res.data)
                 this.setState({
                     details:res.data
                 })
-                // console.log(this.props.total)
             })
     }
 
     render(){
-        const total = [];
-        this.state.details.map((e,i)=>{
-           let cartTotal = (Number(e.product_price.replace(/[$]+/g, '')*e.quantity).toFixed(2));
-           total.push(cartTotal);
-           const sum = total.reduce((total,amount) => Number(total) + Number(amount));
-           return(
-               console.log(sum)
-           );
-        })
+      let total = this.state.details.reduce((acc,product)=>{
+        let cost = (Number(product.product_price.replace(/[$]+/g, '')*product.quantity))
+        return (acc + cost)
+      }, 0);
         
         let items =  this.state.details.map(e=>{
             return(
@@ -109,11 +106,11 @@ class Cart extends Component{
 
         return(
                 <div className='cart-main'>
-                <h1>Cart</h1>
+                    <h1>Cart</h1>
                 <div className='shop-items'>
                   {items}
                 
-                    <h1>Total:${total.reduce((total,amount) => Number(total) + Number(amount),0).toFixed(2)}</h1>
+                    <h1>Total:${total.toFixed(2)}</h1>
                 </div>
                   
                   <Link to='/store'><button>STORE</button></Link>
