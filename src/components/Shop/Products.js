@@ -15,12 +15,12 @@ class Product extends Component{
             toast: true,
             position: 'center',
             showConfirmButton: false,
-            timer: 3000
+            timer: 2000
           });
           
           toast({
             type: 'success',
-            title: 'Added to cart'
+            title: 'Item added to trunk!'
           })
     }
 
@@ -31,7 +31,7 @@ class Product extends Component{
                 <h3>{this.props.name}</h3>
                 <div className="product-display">
                     <img onClick={()=>this.props.toggle(this.props.product)} src={this.props.image} alt="product"/>
-                    <h3>{this.props.price}</h3>
+                    <h3 className = 'money'>{this.props.price}</h3>
                     </div>
 
                     <button className='' onClick={this.handleAdd}>Add to Cart</button>
