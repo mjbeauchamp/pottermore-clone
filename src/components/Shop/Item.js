@@ -9,8 +9,8 @@ class Item extends Component{
     render(){
         
         return(
-
-            <div onClick = {()=>this.props.toggle({})} className='item-store'>
+            <div onClick = {()=>this.props.toggle({})} className = 'item-popup'>
+            <div className='item-store'>
             
                 <div className="item-header">
                     <h3>{this.props.wholeThing.product_name}</h3>
@@ -21,16 +21,9 @@ class Item extends Component{
                     <hr/>
                     <h3>{this.props.wholeThing.product_price}</h3>
                 </div>
-
-                    
                 </div>
-
-
-
-
-
-        )
-    }
-
+            </div>
+            )
+        }
 }
 export default Item;

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import swal from 'sweetalert2';
 
 
 
@@ -10,6 +11,17 @@ class Product extends Component{
             axios.post('/api/cart',{id}).then(()=>{
             
         })
+        const toast = swal.mixin({
+            toast: true,
+            position: 'center',
+            showConfirmButton: false,
+            timer: 3000
+          });
+          
+          toast({
+            type: 'success',
+            title: 'Added to cart'
+          })
     }
 
     render(){
