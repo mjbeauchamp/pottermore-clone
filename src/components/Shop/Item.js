@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+
 
 
 
@@ -9,8 +9,10 @@ class Item extends Component{
     render(){
         
         return(
+        <div className='store-popup' onClick = {()=>this.props.toggle({})}>
 
-            <div onClick = {()=>this.props.toggle({})} className='item-store'>
+
+        <div  className='item-store'>
             
                 <div className="item-header">
                     <h3>{this.props.wholeThing.product_name}</h3>
@@ -24,6 +26,7 @@ class Item extends Component{
 
                     
                 </div>
+        </div>
 
 
 

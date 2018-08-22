@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {NavLink} from 'react-router-dom'
 
-export class SortingQuiz extends Component{
+class SortingQuiz extends Component{
     constructor(){
         super()
         this.state = {

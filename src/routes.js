@@ -8,6 +8,7 @@ import Cart from './components/Shop/Cart'
 import UserDashboard from './components/UserDashboard'
 import QuizHome from './components/QuizHome/QuizHome'
 import SortingQuiz from './components/SortingQuiz/SortingQuiz'
+import CastSpell from './components/CastSpell/CastSpell';
 
 export default (
     <Switch>
@@ -19,5 +20,6 @@ export default (
         <Route path = '/cart' component = {Cart}/>
         <Route path = '/quizhome' component = {QuizHome}/>
         <Route path = '/sortingquiz' component = {SortingQuiz}/>
+        <Route path='/castspell' component={CastSpell} />
     </Switch>
 )

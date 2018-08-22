@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Item from './Item';
+import swal from 'sweetalert2';
 
 
 
@@ -11,6 +11,17 @@ class Product extends Component{
             axios.post('/api/cart',{id}).then(()=>{
             
         })
+        const toast = swal.mixin({
+            toast: true,
+            position: 'center',
+            showConfirmButton: false,
+            timer: 2000
+          });
+          
+          toast({
+            type: 'success',
+            title: 'Item added to trunk!'
+          })
     }
 
     render(){
@@ -20,7 +31,7 @@ class Product extends Component{
                 <h3>{this.props.name}</h3>
                 <div className="product-display">
                     <img onClick={()=>this.props.toggle(this.props.product)} src={this.props.image} alt="product"/>
-                    <h3>{this.props.price}</h3>
+                    <h3 className = 'money'>{this.props.price}</h3>
                     </div>
 
                     <button className='' onClick={this.handleAdd}>Add to Cart</button>

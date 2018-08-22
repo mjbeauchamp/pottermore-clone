@@ -9,7 +9,7 @@ class Storefront extends Component{
     constructor(){
         super()
         this.state={
-            cart:[],
+            filter:[],
             products:[],
             currentUser:{},
             userId:null,
@@ -34,16 +34,25 @@ class Storefront extends Component{
         
         axios.get('/api/products').then(products=>{
             this.setState({
-                products: products.data
+                products: products.data,
+                filter: products.data
             })
         })
     }
     filterStore = (value) =>{
-        axios.get('/api/filterProducts/').then(products=>{
+        let products = this.state.products
+        console.log(value)
+        if(value == 'all'){
             this.setState({
-                products:products.data
+                filter: this.state.products
             })
-        })
+        }else{
+            let filteredItems = products.filter(items => items.product_type == value)
+            console.log(filteredItems)
+            this.setState({
+                filter:filteredItems
+            })
+        }
     }
     toggleSelectedProduct=(product)=>{
         console.log(this.state)
@@ -54,7 +63,7 @@ class Storefront extends Component{
     
     
         render(){
-            let products = this.state.products.map(e=>{
+            let products = this.state.filter.map(e=>{
             return(
                     <Products
                     key={e.id}
@@ -73,19 +82,21 @@ class Storefront extends Component{
                 <div className='store-main'>
                     <Navbar{...this.props}/>
                     <div className='store-header'>
-                    <h1>COME BUY SHTUFF!</h1>
+                    <h1>Welcome to Diagon Alley</h1>
                     <select name="filter" id="listFilter"
                     onChange={(e)=>this.filterStore(e.target.value)}>
+                    <option value = 'all'>All</option>
                     <option value ='shirt'>Shirts</option>
-                    <option value ='ties'>Ties</option>
-                    <option value ='scarfs'>Scarfs</option>
+                    <option value ='tie'>Ties</option>
+                    <option value ='scarf'>Scarfs</option>
                     <option value ='socks'>Socks</option>
                     <option value ='accessories'>Accessories</option>
-                    <option value ='FunkoPop'>Funko Pop</option>
-                    <option value ='Books'>Books</option>
-                    <option value ='wands'>Wands</option>
+                    <option value ='funko pop'>Funko Pop</option>
+                    <option value ='book'>Books</option>
+                    <option value ='wand'>Wands</option>
                     </select>
                     </div>
+                        <Link to='/cart'><button>Go to my Trunk</button></Link>
                     <div className='store-products'>
                         {products}
                         {this.state.selectedProduct.id && 
@@ -94,7 +105,6 @@ class Storefront extends Component{
                         toggle={this.toggleSelectedProduct}/>
                     }
                     </div>
-                        <Link to='/cart'><button>CART</button></Link>
                 </div>
             )
         }
