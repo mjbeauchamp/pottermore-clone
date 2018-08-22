@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Items from './Items';
 import {Link} from 'react-router-dom';
-
+import Navbar from '../Navbar';
 
 
 class Cart extends Component{
@@ -22,7 +22,6 @@ class Cart extends Component{
         axios.get("/api/current_user")
         .then(response => {
             if(response.data[0].id){
-                console.log(response.data[0].id)
                 this.setState({
                     currentUser: response.data[0],
                     userId: response.data[0].id
@@ -31,7 +30,6 @@ class Cart extends Component{
         })
         .catch();
         axios.get('/api/cart').then(items=>{
-            console.log(items.data)
             this.setState({
                 products:items.data
             })
@@ -40,7 +38,6 @@ class Cart extends Component{
     }
     getCartDetails=()=>{
                 axios.get('/api/details').then(cart =>{
-                    console.log(cart.data)
                     this.setState({
                         details:cart.data
                     })
@@ -49,10 +46,7 @@ class Cart extends Component{
     }
 
     handleAddItem=(id, quantity)=>{
-
-        console.log('ADDITEM',quantity)
             axios.put(`/api/cart/${id}/${quantity}`).then((res)=>{
-            console.log(res.data)
             this.setState({
                 details:res.data
             })
@@ -85,7 +79,7 @@ class Cart extends Component{
         let cost = (Number(product.product_price.replace(/[$]+/g, '')*product.quantity))
         return (acc + cost)
       }, 0);
-        
+        let tax = (total * 0.0685).toFixed(2)
         let items =  this.state.details.map(e=>{
             return(
                 <Items
@@ -105,20 +99,18 @@ class Cart extends Component{
       
 
         return(
-                <div className='cart-main'>
-                    <h1>Cart</h1>
-                <div className='shop-items'>
+            <div className='cart-main'>
+            <Navbar{...this.props}/>
+                <div className='cart-items'>
                   {items}
-                
-                    <h1>Total:${total.toFixed(2)}</h1>
+                  <h4>Tax:${tax}</h4>
+                    <h4>Cart Total:${(Number(total)+Number(tax)).toFixed(2)}</h4>
+                    <Link to ='/store'>
+                    <button>Continue Shopping</button>
+                    </Link>
                 </div>
-                  
-                  <Link to='/store'><button>STORE</button></Link>
-                    
                 </div>
-
             )
-
     }
 }
 export default Cart;
