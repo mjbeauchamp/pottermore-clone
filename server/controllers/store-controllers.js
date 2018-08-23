@@ -43,7 +43,7 @@ module.exports = {
             }
     },
     deleteItem: async (req,res)=>{
-        try{res
+        try{
             let {id} = req.body
             const db = req.app.get('db')
                  let item = await db.delete_item([+req.session.userid, id])
