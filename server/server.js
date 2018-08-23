@@ -72,6 +72,9 @@ app.put('/api/cart', storeControllers.addToCart)
 app.put('/api/delete/',storeControllers.deleteItem)
 app.put('/api/cart/:id/:quantity', storeControllers.update)
 
+// Dashboard
+app.get('/api/wizards', authControllers.getHouse);
+
 app.listen(SERVER_PORT, () => {
     console.log(`Server docked in port ${SERVER_PORT}`)
 });
