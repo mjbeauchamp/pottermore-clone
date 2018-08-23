@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Navbar from './Navbar'
 import SignUp from './SignUp';
+import video from './CastSpell/652244.mp4'
 
 //import {connect} from 'react-redux'
 //import {gatherUserId} from '../../ducks/reducer'
@@ -50,7 +51,10 @@ class Login extends Component {
             <div className='login auth-container' onKeyDown={e => this.onEnter(e)}>
                 <Navbar {...this.props}  />
 
-                <div className='auth-background'></div>
+                <div className='auth-background'>
+                <video autoPlay muted loop width='100%' >
+                    <source src={video} type='video/mp4' />
+                </video></div>
                     <div className={ !this.state.toggle ? 'show' : ' show hide'}>
                         <h1 className="auth-title auth-green">Login</h1>
                         <input

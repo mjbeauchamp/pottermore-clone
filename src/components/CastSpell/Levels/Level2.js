@@ -1,18 +1,19 @@
 import React from 'react'
-import RubberBand from 'react-reveal/RubberBand';
+import Fade from 'react-reveal/Fade';
+import Flash from 'react-reveal/Flash';
 import {SketchField, Tools} from 'react-sketch';
 
-class Level1 extends React.Component {
+class Level2 extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             score: [],
             points: 0,
-            correctFinalWord: "qwerty",
             success: false,
             almost: false,
             fail: false,
-            visible: true
+            visible: true,
+            start: false
         }
     }
 
@@ -40,13 +41,13 @@ class Level1 extends React.Component {
         console.log(newArray)
         if (newArray === this.state.score.join("")) {
             console.log('yes')
-            if(finalPoints >= 15 ){
+            if(finalPoints >= 18 ){
                 console.log('Great job Harry!!')
                 this.setState({ 
                     success: true,
                     visible: false
                 })
-            } else if (finalPoints >= 5) {
+            } else if (finalPoints >= 15) {
                 console.log("Almost there!")
                 this.setState({ 
                     almost: true,
@@ -61,10 +62,23 @@ class Level1 extends React.Component {
         }
         console.log(this.state.score.join())
     }
+
+    handleStart = () => {
+        this.setState({start: true})
+    }
     render() {
+        console.log(this.state.visible)
     return(
         <section className='spell-section'>
                 <div className='spell-box'>
+                    <div className='level2-arrow1'><img src={require("./Untitledarrow2.png")} alt=""/></div>
+                    <div className='level2-arrow2'><img src={require("./Untitledarrow2.png")} alt=""/></div>
+                    <div className='level2-arrow3'><img src={require("./Untitledarrow2.png")} alt=""/></div>
+                    <div className='level2-arrow4'><img src={require("./Untitledarrow2.png")} alt=""/></div>
+                    <div className='level2-arrow5'><img src={require("./Untitledarrow2.png")} alt=""/></div>
+                    <div className='level2-arrow6'><img src={require("./Untitledarrow2.png")} alt=""/></div>
+                    <div className='level2-arrow7'><img src={require("./Untitledarrow3.png")} alt=""/></div>
+                    <div onClick={this.handleStart} className="level2-start">Click Here To Start</div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="level2-1 boxes"></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="level2-2 boxes"></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="level2-3 boxes"></div>
@@ -73,27 +87,27 @@ class Level1 extends React.Component {
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="level2-6 boxes"></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="level2-7 boxes"></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="level2-29 boxes"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'a')} className="level2-8 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'b')} className="level2-9 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'c')} className="level2-10 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'d')} className="level2-11 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'e')} className="level2-12 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'f')} className="level2-13 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'g')} className="level2-14 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'h')} className="level2-15 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'i')} className="level2-16 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'j')} className="level2-17 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'k')} className="level2-18 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'l')} className="level2-19 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'m')} className="level2-20 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'n')} className="level2-21 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'o')} className="level2-22 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'p')} className="level2-23 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'p')} className="level2-24 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'p')} className="level2-25 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'p')} className="level2-26 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'p')} className="level2-27 invisible"></div>
-                    <div onMouseEnter={this.spellFinished} className="level2-28 invisible"></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'a')} className={!this.state.start ? "level2-8 invisible hide-boxes" : 'level2-8 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'b')} className={!this.state.start ? "level2-9 invisible hide-boxes" : 'level2-9 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'c')} className={!this.state.start ? "level2-10 invisible hide-boxes" : 'level2-10 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'d')} className={!this.state.start ? "level2-11 invisible hide-boxes" : 'level2-11 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'e')} className={!this.state.start ? "level2-12 invisible hide-boxes" : 'level2-12 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'f')} className={!this.state.start ? "level2-13 invisible hide-boxes" : 'level2-13 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'g')} className={!this.state.start ? "level2-14 invisible hide-boxes" : 'level2-14 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'h')} className={!this.state.start ? "level2-15 invisible hide-boxes" : 'level2-15 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'i')} className={!this.state.start ? "level2-16 invisible hide-boxes" : 'level2-16 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'j')} className={!this.state.start ? "level2-17 invisible hide-boxes" : 'level2-17 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'k')} className={!this.state.start ? "level2-18 invisible hide-boxes" : 'level2-18 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'l')} className={!this.state.start ? "level2-19 invisible hide-boxes" : 'level2-19 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'m')} className={!this.state.start ? "level2-20 invisible hide-boxes" : 'level2-20 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'n')} className={!this.state.start ? "level2-21 invisible hide-boxes" : 'level2-21 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'o')} className={!this.state.start ? "level2-22 invisible hide-boxes" : 'level2-22 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'p')} className={!this.state.start ? "level2-23 invisible hide-boxes" : 'level2-23 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'q')} className={!this.state.start ? "level2-24 invisible hide-boxes" : 'level2-24 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'r')} className={!this.state.start ? "level2-25 invisible hide-boxes" : 'level2-25 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'s')} className={!this.state.start ? "level2-26 invisible hide-boxes" : 'level2-26 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'t')} className={!this.state.start ? "level2-27 invisible hide-boxes" : 'level2-27 invisible show-boxes' }></div>
+                    <div onMouseEnter={this.spellFinished} className={!this.state.start ? "level2-28 invisible hide-boxes" : 'level2-28 invisible show-boxes' }></div>
                     <SketchField 
                         height='700px'
                         tool={Tools.Pencil} 
@@ -108,11 +122,19 @@ class Level1 extends React.Component {
                     <img src="https://vignette.wikia.nocookie.net/tractors/images/4/40/Feather.svg/revision/latest?cb=20130119142802" alt=""/>
                 </div>
 
-                <div className={this.state.success ? 'feder' : 'feder2'}>
-                    <RubberBand when={this.state.success} >
-                        <img src="https://vignette.wikia.nocookie.net/tractors/images/4/40/Feather.svg/revision/latest?cb=20130119142802" alt=""/>
-                    </RubberBand>
+                <div className={this.state.success ? 'feder' : 'feder2'}>        
+                    <Fade when={this.state.success} delay={1500} duration={1500} >
+                        <img src="https://i.pinimg.com/originals/1d/10/e7/1d10e72e0c5a39af8398489a1adffc38.png" alt=""/>
+                    </Fade>
                 </div>
+                <div className={this.state.almost ? 'feder' : 'feder2'}>
+                    <Flash when={this.state.almost} delay={800} duration={2000} >
+                        <img src="https://vignette.wikia.nocookie.net/tractors/images/4/40/Feather.svg/revision/latest?cb=20130119142802" alt=""/>
+                    </Flash>
+                </div>
+                    
+
+                {/* </div> */}
 
                 {/* <div className={this.state.almost ? 'feder' : 'feder2'}>
                     <HeadShake when={this.state.almost} count={2} duration={2000}>
@@ -125,4 +147,4 @@ class Level1 extends React.Component {
     )}
 }
 
-export default Level1
+export default Level2

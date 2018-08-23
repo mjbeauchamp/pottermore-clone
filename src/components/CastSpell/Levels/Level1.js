@@ -1,7 +1,10 @@
-import React from 'react'
+import React from 'react';
+import axios from 'axios';
 import Jump from 'react-reveal/Jump';
 import HeadShake from 'react-reveal/HeadShake';
 import {SketchField, Tools} from 'react-sketch';
+import swal from 'sweetalert2';
+
 
 class Level1 extends React.Component {
     constructor(props) {
@@ -13,8 +16,24 @@ class Level1 extends React.Component {
             success: false,
             almost: false,
             fail: false,
-            visible: true
+            visible: true,
+            start: false,
+            currentUser: {},
+            userID: null
         }
+    }
+
+    componentDidMount = () => {
+        axios.get("/api/current_user")
+            .then(response => {
+                if(response.data[0].id){
+                    this.setState({
+                        currentUser: response.data[0],
+                        userID: response.data[0].id
+                    })
+                }
+            })
+            .catch();
     }
 
     // When user hits a point, push to array with the "id" letter for that point
@@ -42,7 +61,13 @@ class Level1 extends React.Component {
         if (newArray === this.state.score.join("")) {
             console.log('yes')
             if(finalPoints >= 15 ){
-                console.log('Great job Harry!!')
+                console.log('Great job Harry!!');
+                swal({
+                    title: `Great Job ${this.state.currentUser.username}`,
+                    showConfirmButton: false,
+                    timer: 1000
+                })
+
                 this.setState({ 
                     success: true,
                     visible: false
@@ -62,10 +87,21 @@ class Level1 extends React.Component {
         }
         console.log(this.state.score.join())
     }
+    handleStart = () => {
+        this.setState({start: true})
+    }
     render() {
     return(
         <section className='spell-section'>
                 <div className='spell-box'>
+                <div className='level1-arrow1'><img src={require("./Untitledarrow2.png")} alt=""/></div>
+                <div className='level1-arrow2'><img src={require("./Untitledarrow2.png")} alt=""/></div>
+                <div className='level1-arrow3'><img src={require("./Untitledarrow2.png")} alt=""/></div>
+                <div className='level1-arrow4'><img src={require("./Untitledarrow2.png")} alt=""/></div>
+                <div className='level1-arrow5'><img src={require("./Untitledarrow2.png")} alt=""/></div>
+                <div className='level1-arrow6'><img src={require("./Untitledarrow2.png")} alt=""/></div>
+
+                <div onClick={this.handleStart} className="level1-start">Click Here To Start</div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="visible-1 boxes"></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="visible-2 boxes"></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="visible-3 boxes"></div>
@@ -73,23 +109,23 @@ class Level1 extends React.Component {
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="visible-5 boxes"></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="visible-6 boxes"></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="visible-7 boxes"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'a')} className="box-8 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'b')} className="box-14 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'c')} className="box-9 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'d')} className="box-15 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'e')} className="box-16 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'f')} className="box-10 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'g')} className="box-17 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'h')} className="box-18 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'i')} className="box-19 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'j')} className="box-20 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'k')} className="box-11 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'l')} className="box-21 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'m')} className="box-22 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'n')} className="box-12 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'o')} className="box-23 invisible"></div>
-                    <div onMouseEnter={e => this.handleMouseEnter(e,'p')} className="box-24 invisible"></div>
-                    <div onMouseEnter={this.spellFinished} className="box-13 invisible"></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'a')} className={!this.state.start ? "box-8 invisible hide-boxes" : 'box-8 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'b')} className={!this.state.start ? "box-14 invisible hide-boxes" : 'box-14 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'c')} className={!this.state.start ? "box-9 invisible hide-boxes" : 'box-9 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'d')} className={!this.state.start ? "box-15 invisible hide-boxes" : 'box-15 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'e')} className={!this.state.start ? "box-16 invisible hide-boxes" : 'box-16 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'f')} className={!this.state.start ? "box-10 invisible hide-boxes" : 'box-10 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'g')} className={!this.state.start ? "box-17 invisible hide-boxes" : 'box-17 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'h')} className={!this.state.start ? "box-18 invisible hide-boxes" : 'box-18 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'i')} className={!this.state.start ? "box-19 invisible hide-boxes" : 'box-19 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'j')} className={!this.state.start ? "box-20 invisible hide-boxes" : 'box-20 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'k')} className={!this.state.start ? "box-11 invisible hide-boxes" : 'box-11 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'l')} className={!this.state.start ? "box-21 invisible hide-boxes" : 'box-21 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'m')} className={!this.state.start ? "box-22 invisible hide-boxes" : 'box-22 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'n')} className={!this.state.start ? "box-12 invisible hide-boxes" : 'box-12 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'o')} className={!this.state.start ? "box-23 invisible hide-boxes" : 'box-23 invisible show-boxes' }></div>
+                    <div onMouseEnter={e => this.handleMouseEnter(e,'p')} className={!this.state.start ? "box-24 invisible hide-boxes" : 'box-24 invisible show-boxes' }></div>
+                    <div onMouseEnter={this.spellFinished} className={!this.state.start ? "box-13 invisible hide-boxes" : 'box-13 invisible show-boxes' }></div>
                     <SketchField 
                         height='700px'
                         tool={Tools.Pencil} 
@@ -105,7 +141,7 @@ class Level1 extends React.Component {
                 </div>
 
                 <div className={this.state.success ? 'feder' : 'feder2'}>
-                    <Jump when={this.state.success} duration={5000}>
+                    <Jump when={this.state.success} delay={1000} duration={4000}>
                         <img src="https://vignette.wikia.nocookie.net/tractors/images/4/40/Feather.svg/revision/latest?cb=20130119142802" alt=""/>
                     </Jump>
                 </div>

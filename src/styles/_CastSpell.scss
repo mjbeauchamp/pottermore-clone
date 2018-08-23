@@ -27,6 +27,7 @@
             position: relative;
             width: calc(100% - 800px);
             border: 2px solid black;
+            background-image: url('https://pre00.deviantart.net/720f/th/pre/f/2013/338/5/5/pottermore_background___gryffindor_common_room_1_by_xxtayce-d6wp5ot.jpg');
             height: auto;
             img{
                 position: absolute;
@@ -42,19 +43,28 @@
             z-index: 10;
         }
     }
-    .feder {
-        display: block
+    .castspell-background {
+        background-image: url('https://pre00.deviantart.net/720f/th/pre/f/2013/338/5/5/pottermore_background___gryffindor_common_room_1_by_xxtayce-d6wp5ot.jpg');
+        background-size: cover;
+        background-position: 0 -50px;
+        width: 100%;
+        height: 705px;
     }
-    .feder2 {
-        display: none;
-    }
+    .feder { 
+        display: block;
+        transition: 1.5s;
+     }
+    .feder2 { 
+        opacity: 0;
+        transition: 1.5s;
+     }
     .invisible {
         background-color: green;
         position: absolute;
         width: 35px;
         height: 35px;
         z-index: 10;
-        opacity: 0;
+        // opacity: 0;
     }
     .boxes{
         position: absolute;
@@ -62,12 +72,88 @@
         height: 30px;
         background-color: rgb(194, 14, 14);
         border-radius: 50%;
+        // box-shadow: 0px 0px  100px 20px black;
     }
+    .hide-boxes { display: none }
+    .show-boxes { display: block }
+    .spell3-animation {
+        position: relative;
+        .img { 
+            width: 100px;
+            position: absolute;
+            top: 120px;
+            left: 100px;
+            img {width: 100px}
+        }
+        .light-on {
+            background-color: #fff;
+            display: block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            position: absolute;
+            top: 140px;
+            left: 155px;
+            box-shadow: 0px 0px 200px 100px yellow;
+            transition: 2s;
+        }
+        .light-off { 
+            opacity: 0;
+            transition: 2s;
+        }
+    }
+    
 
 //////// level - 1 
+.level1-arrow1 {
+    position: absolute;
+    top: 100px;
+    left: 140px;
+    transform: rotate(40deg);
+    img { width: 100px }
+}
+.level1-arrow2 {
+    position: absolute;
+    top: 300px;
+    left: 160px;
+    transform: rotate(120deg)
+}
+.level1-arrow3 {
+    position: absolute;
+    bottom: 160px;
+    left: 100px;
+    transform: rotateX(180deg) rotate(320deg);
+    img { width: 200px }
+}
+.level1-arrow4 {
+    position: absolute;
+    bottom: 160px;
+    right: 190px;
+    transform: rotateX(180deg) rotate(30deg);
+    img { width: 200px }
+}
+.level1-arrow5 {
+    position: absolute;
+    transform: rotateX(180deg) rotate(110deg);
+    top: 290px;
+    right: 140px;
+}
+.level1-arrow6 {
+    position: absolute;
+    top: 120px;
+    right: 150px;
+    transform: rotate(320deg)
+}
+.level1-start {
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    z-index: 2;
+}
 .visible-1 {
     top: 50px;
     left: 100px;
+    background-color: greenyellow;
 }
 .visible-2 {
     top: 170px;
@@ -92,7 +178,6 @@
 .visible-7 {
     top: 70px;
     right: 120px;
-    background-color: rgb(33, 247, 61);
 }
 .box-8 {
     top: 70px;
@@ -164,10 +249,63 @@
 }
 
 //////// level - 2
-
+.level2-arrow1 {
+    position: absolute;
+    bottom: 135px;
+    left: 315px;
+    transform: rotateX(180deg) rotate(150deg);
+    img{ width: 80px}
+}
+.level2-arrow2 {
+    position: absolute;
+    transform: rotateX(180deg) rotate(200deg);
+    bottom: 145px;
+    left: 110px;
+}
+.level2-arrow3 {
+    position: absolute;
+    bottom: 200px;
+    left: 40px;
+    transform: rotate(300deg)
+}
+.level2-arrow4 {
+    position: absolute;
+    bottom: 260px;
+    left: 300px;
+    transform: rotate(15deg);
+    img { width: 250px;}
+}
+.level2-arrow5 {
+    position: absolute;
+    bottom: 260px;
+    right: 40px;
+    transform: rotateX(180deg) rotate(100deg);
+    img { width: 100px}
+}
+.level2-arrow6 {
+    position: absolute;
+    top: 180px;
+    right: 120px;
+    transform: rotateX(180deg) rotate(130deg);
+    img { width: 250px }
+}
+.level2-arrow7 {
+    position: absolute;
+    left: 310px;
+    top: 240px;
+    transform: rotate(90deg);
+    img { width: 200px}
+}
+.level2-start {
+    position: absolute;
+    bottom: 50px;
+    left: 350px;
+    z-index: 2;
+}
 .level2-1 {
     bottom: 80px;
     left: 390px;
+    background-color: greenyellow;    
 }
 .level2-2 {
     bottom: 150px;
@@ -280,9 +418,155 @@
 .level2-29 {
     bottom: 180px;
     left: 390px;
-    background-color: rgb(33, 247, 61);
 }
 
+//// Level 3
+.level3-arrow1 {
+    position: absolute;
+    top: 110px;
+    right: 140px;
+    transform: rotate(45deg);
+    img {width: 150px;}
+}
+.level3-arrow2 {
+    position: absolute;
+    top: 350px;
+    right: 150px;
+    transform: rotate(140deg);
+    img { width: 180px}
+}
+.level3-arrow3 {
+    position: absolute;
+    top: 360px;
+    left: 130px;
+    transform: rotate(220deg);
+    img { width: 180px}
+}
+.level3-arrow4 {
+    position: absolute;
+    top: 110px;
+    left: 160px;
+    transform: rotate(325deg);
+    img { width: 165px;}
+}
+.level3-arrow5 {
+    position: absolute;
+    top: 250px;
+    left: 285px;
+    transform: rotate(90deg);
+    img { width: 240px}
+}
+.level3-start {
+    position: absolute;
+    top: 20px;
+    right: 250px;
+    z-index: 2;
+}
+.level3-1 {
+    top: 50px;
+    right: 300px;
+    background-color: greenyellow;
+}
+.level3-2 {
+    top: 220px;
+    right: 130px;
+}
+.level3-3 {
+    top: 440px;
+    right: 390px;
+}
+.level3-4 {
+    top: 220px;
+    left: 130px;
+}
+.level3-5 {
+    top: 50px;
+    left: 390px;
+}
+.level3-6 {
+    bottom: 100px;
+    left: 390px;
+}
+.level3-8 {
+    top: 55px;
+    right: 240px;
+}
+.level3-9 {
+    top: 100px;
+    right: 180px;
+}
+.level3-10 {
+    top: 160px;
+    right: 140px;
+}
+.level3-11 {
+    top: 260px;
+    right: 140px;
+}
+.level3-12 {
+    top: 320px;
+    right: 180px;
+}
+.level3-13 {
+    top: 380px;
+    right: 230px;
+}
+.level3-14 {
+    top: 430px;
+    right: 300px;
+}
+.level3-15 {
+    top: 440px;
+    left: 375px;
+}
+.level3-16 {
+    top: 430px;
+    left: 300px;
+}
+.level3-17 {
+    top: 380px;
+    left: 230px;
+}
+.level3-18 {
+    top: 320px;
+    left: 180px;
+}
+.level3-19 {
+    top: 260px;
+    left: 140px;
+}
+.level3-20 {
+    top: 160px;
+    left: 150px;
+}
+.level3-21 {
+    top: 110px;
+    left: 200px;
+}
+.level3-22 {
+    top: 70px;
+    left: 270px;
+}
+.level3-23 {
+    top: 50px;
+    left: 340px;
+}
+.level3-24 {
+    top: 120px;
+    left: 390px;
+}
+.level3-25 {
+    top: 260px;
+    left: 390px;
+}
+.level3-26 {
+    top: 360px;
+    left: 390px;
+}
+.level3-27 {
+    bottom: 100px;
+    left: 390px;
+}
 
 }
 
