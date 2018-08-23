@@ -5,6 +5,7 @@ import Gryffindor from './Houses/Gryffindor';
 import Hufflepuff from './Houses/Hufflepuff';
 import Ravenclaw from './Houses/Ravenclaw';
 import Slytherin from './Houses/Slytherin'
+import swal from 'sweetalert2'
 
 class UserDashboard extends Component{
     constructor(){
@@ -30,23 +31,43 @@ class UserDashboard extends Component{
             .catch();
             axios.get('/api/wizards')
             .then(response => {
-                console.log('asdasd: ', response.data)
+                console.log('asdasd: ', response)
                 if(response.data[0]) {
-                    console.log('bla')
+                    this.setState({ wizards: response.data})
                 }
             })
     }
 
     render(){
+        let gryf, slyt, raven, huffl
+        if(this.state.wizards[0]){
+            if (this.state.wizards[0].house_id === 2){
+                gryf = <Gryffindor/>
+            } else if (this.state.wizards[0].house_id === 1) {
+                huffl = <Hufflepuff/>
+            } else if (this.state.wizards[0].house_id === 3) {
+                raven = <Ravenclaw/>
+            } else if (this.state.wizards[0].house_id === 4) {
+                slyt = <Slytherin/>
+            } else {
+                swal({
+                    title: 'Welcome to Hogwarts! ',
+                    text: 'Get started by taking the sorting quiz to join your own Hogwarts House!'
+                })
+                this.props.history.push('/quizhome')
+            }
+        }
+        
+        
+        
         if (this.state.currentUser)
         return (
             <div>
                 <Navbar {...this.props} />
-                {/* <Gryffindor/> */}
-                {/* <Slytherin/> */}
-                {/* <Ravenclaw/> */}
-                {/* <Hufflepuff/> */}
-                
+                {gryf}
+                {raven}
+                {huffl}
+                {slyt}   
             </div>
         )
     }

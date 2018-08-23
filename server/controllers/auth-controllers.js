@@ -88,7 +88,8 @@ module.exports = {
     },
     getHouse: (req, res) => {
         const dbInstance = req.app.get('db');
-        const userName = req.session.username;
+        const userName = req.session.userid;
+        // console.log(req.session.userid)
 
         dbInstance.wizards([userName])
         .then(response => res.status(200).send(response))
