@@ -56,6 +56,9 @@ app.get('/api/current_user', authControllers.current_user);
 app.get('/api/sortingquiz/questions', sqControllers.sortingQuestions)
 
 app.get('/api/sortingquiz/answers', sqControllers.sortingAnswers)
+
+app.put('/api/sortingquiz/house/:housename', sqControllers.schoolHouse)
+
 //Add an item to the user's cart
 app.post('/api/cart', storeControllers.addToCart)
 //Get all items in specific users cart

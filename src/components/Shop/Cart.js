@@ -3,6 +3,7 @@ import axios from 'axios';
 import Items from './Items';
 import {Link} from 'react-router-dom';
 import Navbar from '../Navbar';
+import swal from 'sweetalert2';
 
 
 class Cart extends Component{
@@ -28,7 +29,9 @@ class Cart extends Component{
                 })
             }
         })
-        .catch();
+        .catch(err=>{
+            swal("Fuck man, LOG IN DAMNIT!", err)
+        });
         axios.get('/api/cart').then(items=>{
             this.setState({
                 products:items.data
@@ -103,8 +106,10 @@ class Cart extends Component{
             <Navbar{...this.props}/>
                 <div className='cart-items'>
                   {items}
-                  <h4>Tax:${tax}</h4>
+                  <div className='cart-footer'>
+                    <h4>Tax:${tax}</h4>
                     <h4>Cart Total:${(Number(total)+Number(tax)).toFixed(2)}</h4>
+                    </div>
                     <Link to ='/store'>
                     <button>Continue Shopping</button>
                     </Link>

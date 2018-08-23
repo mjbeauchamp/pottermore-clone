@@ -27,6 +27,14 @@
         height:auto;
         width:100%;
     }
+    button{
+        height:30px;
+        box-shadow:5px 5px 20px black;
+        border-radius:40%;
+        color:red;
+        padding:5px;
+        margin:5px;
+    }
 }
 .card-header{
     display:flex;
@@ -43,15 +51,7 @@
 .card-footer{
     width:15%;
     input{
-
         width:35px;
-    }
-    button{
-        box-shadow:5px 5px 20px black;
-        border-radius:40%;
-        color:red;
-        padding:5px;
-        margin:5px;
     }
     
     h3{
@@ -59,7 +59,7 @@
     }
 }
 .money{
-    color:#EDAE49;
+    color:red;
 }
 .cart-footer{
     h4{
