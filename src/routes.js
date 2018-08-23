@@ -20,6 +20,6 @@ export default (
         <Route path = '/cart' component = {Cart}/>
         <Route path = '/quizhome' component = {QuizHome}/>
         <Route path = '/sortingquiz' component = {SortingQuiz}/>
-        <Route path='/castspell' component={CastSpell} />
+        <Route path = '/castspell' component={CastSpell} />
     </Switch>
 )

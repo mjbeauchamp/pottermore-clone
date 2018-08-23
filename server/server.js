@@ -38,7 +38,7 @@ app.use(bodyParser.json());
 //Auth endpoints
 //Create new user
 
-app.use(bypass.byId(14))
+// app.use(bypass.byId(8))
 
 app.post('/auth/new_user', authControllers.create_user);
 
@@ -56,6 +56,9 @@ app.get('/api/current_user', authControllers.current_user);
 app.get('/api/sortingquiz/questions', sqControllers.sortingQuestions)
 
 app.get('/api/sortingquiz/answers', sqControllers.sortingAnswers)
+
+app.put('/api/sortingquiz/house/:housename', sqControllers.schoolHouse)
+
 //Add an item to the user's cart
 app.post('/api/cart', storeControllers.addToCart)
 //Get all items in specific users cart
