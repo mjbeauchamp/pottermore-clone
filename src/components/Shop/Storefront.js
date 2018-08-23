@@ -82,7 +82,7 @@ class Storefront extends Component{
                 <div className='store-main'>
                     <Navbar{...this.props}/>
                     <div className='store-header'>
-                    <h1>COME BUY SHTUFF!</h1>
+                    <h1>Welcome to Diagon Alley</h1>
                     <select name="filter" id="listFilter"
                     onChange={(e)=>this.filterStore(e.target.value)}>
                     <option value = 'all'>All</option>
@@ -96,6 +96,7 @@ class Storefront extends Component{
                     <option value ='wand'>Wands</option>
                     </select>
                     </div>
+                        <Link to='/cart'><button>Go to my Trunk</button></Link>
                     <div className='store-products'>
                         {products}
                         {this.state.selectedProduct.id && 
@@ -104,7 +105,6 @@ class Storefront extends Component{
                         toggle={this.toggleSelectedProduct}/>
                     }
                     </div>
-                        <Link to='/cart'><button>CART</button></Link>
                 </div>
             )
         }
