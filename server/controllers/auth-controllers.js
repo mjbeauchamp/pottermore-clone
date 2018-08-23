@@ -85,5 +85,13 @@ module.exports = {
         } else {
             res.status(200).send("No current user");
         }
-    }    
+    },
+    getHouse: (req, res) => {
+        const dbInstance = req.app.get('db');
+        const userName = req.session.username;
+
+        dbInstance.wizards([userName])
+        .then(response => res.status(200).send(response))
+        .catch(err => console.log(err))
+    }
 }

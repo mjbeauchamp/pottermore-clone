@@ -11,7 +11,8 @@ class UserDashboard extends Component{
         super();
         this.state = {
             currentUser: {},
-            userID: null
+            userID: null,
+            wizards:[]
         }
     }
 
@@ -19,7 +20,7 @@ class UserDashboard extends Component{
         axios.get("/api/current_user")
             .then(response => {
                 if(response.data[0].id){
-                    console.log(response.data[0].id)
+                    // console.log(response.data[0].id)
                     this.setState({
                         currentUser: response.data[0],
                         userID: response.data[0].id
@@ -27,13 +28,21 @@ class UserDashboard extends Component{
                 }
             })
             .catch();
+            axios.get('/api/wizards')
+            .then(response => {
+                console.log('asdasd: ', response.data)
+                if(response.data[0]) {
+                    console.log('bla')
+                }
+            })
     }
 
     render(){
+        if (this.state.currentUser)
         return (
             <div>
                 <Navbar {...this.props} />
-                <Gryffindor/>
+                {/* <Gryffindor/> */}
                 {/* <Slytherin/> */}
                 {/* <Ravenclaw/> */}
                 {/* <Hufflepuff/> */}

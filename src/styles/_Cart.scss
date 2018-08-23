@@ -19,14 +19,14 @@
     justify-content: space-between;
     height:auto;
     width:50%;
-    img{
-        height:auto;
-        width:100%;
-    }
     margin:0 auto;
     border-bottom:2px solid black;
     padding-bottom:10px;
     padding-top:10px;
+    img{
+        height:auto;
+        width:100%;
+    }
 }
 .card-header{
     display:flex;
@@ -38,26 +38,36 @@
     h1{
         font-size: 30px;
     }
-    width:70%;
+    width:50%;
 }
 .card-footer{
+    width:15%;
     input{
+
         width:35px;
     }
     button{
         box-shadow:5px 5px 20px black;
-        border-radius:25%;
-        border:1px;
+        border-radius:40%;
         color:red;
         padding:5px;
         margin:5px;
     }
     
-    width:10%;
     h3{
         padding:10px 10px;
     }
 }
 .money{
-    color:red;
+    color:#EDAE49;
+}
+.cart-footer{
+    h4{
+    padding:10px;
+    }
+    display:flex;
+    flex-direction: column;
+    align-content:center;
+    text-align:right;
+    width:75%;
 }

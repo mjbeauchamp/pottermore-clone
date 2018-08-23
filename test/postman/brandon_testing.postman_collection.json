@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "2209e7f2-90ba-4e36-88bb-3e5264a87f67",
+		"name": "brandon_testing",
+		"description": "These are some test to make sure that we are getting products from the store correctly.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:4000/api/products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e797af95-4d15-401c-9c7b-98266d581c90",
+						"type": "text/javascript",
+						"exec": [
+							"const responseJSON = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function() {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Returned data is an array\", function() {",
+							"  pm.expect(Array.isArray(responseJSON)).to.eql(true);",
+							"});",
+							"",
+							"pm.test(\"Returned data has a length of 77\", function() {",
+							"  pm.expect(responseJSON.length).to.eql(77);",
+							"});",
+							"",
+							"pm.test(\"Returned data has product name of Ravenclaw Scarf\", function(){",
+							"    pm.expect(responseJSON[0].product_name).to.eql('Ravenclaw Scarf')",
+							"})",
+							"pm.test(\"Returned data has property product_description\", function(){",
+							"    pm.expect(responseJSON[76]).to.have.property('product_description')",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:4000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
