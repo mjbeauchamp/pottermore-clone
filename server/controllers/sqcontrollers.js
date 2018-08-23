@@ -23,7 +23,17 @@ module.exports = {
             console.log(err)
             res.status(500).send({errorMessage: "Oops! Something went wrong."})
         })
+    },
+    schoolHouse: (req, res) => {
+        const db = req.app.get('db')
+        const wizardID = req.session.userid
+        const wizardHouse = req.params.housename
+        db.update_userhouse([wizardHouse, wizardID]).then(uhres => {
+            res.status(200).send(uhres)
+        })
+        .catch( err => {
+            console.log(err)
+            res.status(500).send({errorMessage: "Oops! Something went wrong."})
+        })
     }
-
-
 }

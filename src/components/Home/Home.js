@@ -6,6 +6,7 @@ import { fadeIn, fadeInUp } from 'react-animations'
 import Radium, {StyleRoot} from 'radium';
 import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
+import {NavLink} from 'react-router-dom'
 
 const styles = {
     fadeIn: {
@@ -40,14 +41,14 @@ const styles = {
                 </div>
                 <Fade bottom duration={2000}>
                 <div className='go-store' >
-                    <button>Enter Store</button>
+                    <NavLink to='/store'><button>Enter Store</button></NavLink>
                 </div>
                 </Fade>
               
             </section>
             
             <section className='news'>
-            <Zoom bottom duration={2500}>
+            <Fade bottom duration={2000}>
             
                 <div className='news-paper'>
                     <img src="http://www.oregontraildays.com/images/old-paper-1-clr-nails2.png" alt="paper"/>
@@ -85,7 +86,7 @@ const styles = {
                         </div>
                     </div>
                 </div>
-                </Zoom>
+                </Fade>
             </section>
         </div>
     )}

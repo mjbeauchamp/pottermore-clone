@@ -1,28 +1,22 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-
-
-
 class Product extends Component{
-    handleAdd=()=>{
-        const {id} = this.props
-        console.log(this.props)
-            axios.post('/api/cart',{id}).then(()=>{
-            
-        })
-    }
 
     render(){
         return(
 
             <div className='products-main'>
-                <h3>{this.props.name}</h3>
                 <div className="product-display">
+                <div className="product-image">
                     <img onClick={()=>this.props.toggle(this.props.product)} src={this.props.image} alt="product"/>
-                    <h3>{this.props.price}</h3>
+                </div>
                     </div>
+                <div className="product-footer">
+                <h3>{this.props.name}</h3>
+                    <h3 className = 'money'>{this.props.price}</h3>
+                    <button className='' onClick={()=>this.props.handleAdd(this.props.id)}>Add to Cart</button>
+                
+                </div>
 
-                    <button className='' onClick={this.handleAdd}>Add to Cart</button>
                 </div>
         )
     }

@@ -43,7 +43,7 @@ module.exports = {
             }
     },
     deleteItem: async (req,res)=>{
-        try{res
+        try{
             let {id} = req.body
             const db = req.app.get('db')
                  let item = await db.delete_item([+req.session.userid, id])
@@ -81,13 +81,16 @@ module.exports = {
     update: async (req,res) =>{
         try{
             const db = req.app.get('db')
-            const newItem = await db.update([+req.params.id, +req.params.quantity,+req.session.userid])
-            return res.status(200).send(newItem) 
+            if(+req.params.quantity<=0){
+                const nothing = await db.delete_product([+req.session.userid, +req.params.id])
+                return res.status(200).send(nothing)
+            }else{
+                const newItem = await db.update([+req.params.id, +req.params.quantity,+req.session.userid])
+                return res.status(200).send(newItem) 
+            }
         }catch(err){
             res.status(500).send(err)
-                console.log(err)
-            }
-        
-
+            console.log(err)
+        }
     }
 }

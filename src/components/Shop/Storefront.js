@@ -4,6 +4,7 @@ import Products from './Products';
 import {Link} from 'react-router-dom'
 import Navbar from '../Navbar';
 import Item from './Item';
+import swal from 'sweetalert2';
 
 class Storefront extends Component{
     constructor(){
@@ -13,11 +14,12 @@ class Storefront extends Component{
             products:[],
             currentUser:{},
             userId:null,
-            selectedProduct:{}
+            selectedProduct:{},
+            cart:[],
+            quantity:0
         }
     }
     
-   
     componentDidMount(){
         axios.get("/api/current_user")
         .then(response => {
@@ -30,13 +32,24 @@ class Storefront extends Component{
             }
         })
         .catch();
-
+        
         
         axios.get('/api/products').then(products=>{
             this.setState({
                 products: products.data,
                 filter: products.data
             })
+        })
+        axios.get('/api/cart').then(items=>{
+            var number = 0
+            items.data.forEach(e=>{
+                number += Number(e.quantity)
+            })
+            this.setState({
+                quantity:number,
+                cart:items.data
+            })
+            
         })
     }
     filterStore = (value) =>{
@@ -57,12 +70,56 @@ class Storefront extends Component{
     toggleSelectedProduct=(product)=>{
         console.log(this.state)
         this.setState({
-          selectedProduct: product
+            selectedProduct: product
         })
-      }
+    }
+    quantity=()=>{
+        var number = 0
+        this.state.cart.forEach(e=>{
+            number += Number(e.quantity)
+            return number
+        })
+        this.setState({
+            number:number
+        })
+    }
+    handleAdd=(id)=>{
+            axios.post('/api/cart',{id}).then(()=>{
+            
+                const toast1 = swal.mixin({
+                    toast: true,
+                    position: 'center',
+                    showConfirmButton: false,
+                    timer: 2000
+                  });
+                  toast1({
+                    type: 'success',
+                    title: 'Item added to trunk!'
+                  })
+                  this.setState({
+                      quantity:this.state.quantity +=1
+                  })
+        }).catch(err=>{
+            const toast2 = swal.mixin({
+                toast: false,
+                position: 'center',
+                showConfirmButton: true,
+              });
+              
+              toast2({
+                type: 'failure',
+                title: 'Uh-Oh'
+              })
+            console.log(err)
+        
+        })
+    }
+
     
     
-        render(){
+    render(){
+            console.log(this.state.cart)
+            
             let products = this.state.filter.map(e=>{
             return(
                     <Products
@@ -75,6 +132,7 @@ class Storefront extends Component{
                     description={e.product_description}
                     toggle={this.toggleSelectedProduct}
                     product={e}
+                    handleAdd={this.handleAdd}
                     />
             )
         }) 
@@ -82,7 +140,10 @@ class Storefront extends Component{
                 <div className='store-main'>
                     <Navbar{...this.props}/>
                     <div className='store-header'>
-                    <h1>COME BUY SHTUFF!</h1>
+                    <h1>WELCOME</h1>
+                    <p>to</p>
+                    <h1 className='da'>DIAGON ALLEY</h1>
+                    <div className="filter-cart">
                     <select name="filter" id="listFilter"
                     onChange={(e)=>this.filterStore(e.target.value)}>
                     <option value = 'all'>All</option>
@@ -95,6 +156,14 @@ class Storefront extends Component{
                     <option value ='book'>Books</option>
                     <option value ='wand'>Wands</option>
                     </select>
+                    <div className="cart-quantity">
+                        <Link to='/cart'>
+                        <i class="fas fa-shopping-cart fa-3x"><p>{this.state.quantity}</p></i>
+                    
+                        </Link>
+                    </div>
+                    </div>
+                    
                     </div>
                     <div className='store-products'>
                         {products}
@@ -104,7 +173,6 @@ class Storefront extends Component{
                         toggle={this.toggleSelectedProduct}/>
                     }
                     </div>
-                        <Link to='/cart'><button>CART</button></Link>
                 </div>
             )
         }

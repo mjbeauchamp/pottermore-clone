@@ -1,43 +1,75 @@
+.store-products{
+    display:flex;
+    flex-wrap: wrap;
+    width:100%;
+    justify-content: center;
+    padding:50px;
+}
 .products-main{
     color:white;
-    background: transparent;
     display: flex;
+    width:23%;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: center;
-    margin:35px;
-    width:200px;
-    border:3px solid white;
-
+    // justify-content: center;
+    margin:0px 30px;
+    height:500px;
 }
-.product-display img{
-    height:100px;
-    width:auto;
+.product-display {
+    img{
+        padding-top:20px;
+        margin: 0 auto;
+        height:auto;
+        width:80%;
+    }
+    width:100%;
+    height:auto;
+    background-color: #fff;
+    justify-content: center;
 }
 .store-header{
-    padding-top:80px;
+    h1{
+        padding:15px 0;
+        color:white;
+    }
+    p{
+        font-size:30px;
+    }
+    .da{
+        font-size:55px;
+
+    }
+
+    font-size:40px;
+    padding-top:180px;
+    font-family: 'Stoke', serif;
+    color:white;
+}
+.product-image{
+    margin-bottom:20px;
+    height:100%;
+    width:100%;
+}
+.product-footer{
+   h3, button{
+       
+       font-size:23px;
+       padding:5px;
+   }
+    display:flex;
+    flex-direction:column;
+    padding:20px;
+    font-family: 'Vollkorn', serif;
 }
 .store-main{
-    h1{font-size: 75px;
-    color:white;}
-    background-color: black;
-    height:100vh;
+    a{
+    color:white;
+  
+    }
+    background-color: maroon;
     width:100%;
     display:flex;
     flex-direction:column;
-    overflow: hidden;
-}
-.store-products{
-    margin-top: 75px;
-    display:flex;
-    flex-wrap: wrap;
-    overflow:scroll;
-    overflow-x: hidden;
-    width:100%
-}
-.product-display{
-    width:200px;
-    background:transparent;
 }
 .buttons{
     padding:15px 10px;
@@ -53,7 +85,12 @@
     width:200px;
     position:fixed;
 }
-
+.item-popup{
+    position: fixed;
+    background:transparent;
+    height:100vh;
+    width:100%;
+}
     .item-store{
     display:flex;
     flex-direction: column;
@@ -67,5 +104,25 @@
     img{
     height:300px;
     width:auto;
+    }
+}
+.filter-cart{
+    select{
+        margin-right:100px;
+    }
+    padding-top:20px;
+    font-size:15px;
+}
+
+.cart-quantity{
+    position: relative;
+    display:inline;
+    p{
+        color:black;
+        font-size:20px;
+        position:absolute;
+        bottom:85%;
+        left:40%;
+        // transform: translate(50%)
     }
 }
