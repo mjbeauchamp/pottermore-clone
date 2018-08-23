@@ -74,10 +74,8 @@ module.exports = {
         const dbInstance = req.app.get('db');
         if(req.session.userid){
             const userId = req.session.userid;
-            console.time("Database Query")
             dbInstance.current_user([userId])
                 .then( user => {
-                    console.timeEnd("Database Query")
                     res.status(200).send( user )
                 })
                 .catch( err => {

@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {NavLink} from 'react-router-dom'
+import swal from 'sweetalert2'
+import {Redirect} from 'react-router-dom'
+
 
 class SortingQuiz extends Component{
     constructor(){
@@ -16,7 +19,8 @@ class SortingQuiz extends Component{
             Gryffindor:0,
             Hufflepuff:0,
             Ravenclaw:0,
-            Slytherin:0
+            Slytherin:0,
+            clicks: 0
         }
     }
 
@@ -81,8 +85,11 @@ class SortingQuiz extends Component{
         
     }
     
-    newAnswerBtn = () => {
-        
+    redirectFn = () => {
+        this.props.history.push('/dashboard')
+    }
+
+    newAnswerBtn = async () => {
         
         //house points************************
         
@@ -119,6 +126,72 @@ class SortingQuiz extends Component{
             break;
         }  
         
+        //ending the quiz function
+        if(this.state.Gryffindor >= 30 || this.state.Hufflepuff >= 30|| this.state.Ravenclaw >= 30|| this.state.Slytherin >= 30){
+
+            var selectedHouse = '';
+            if(this.state.Gryffindor >= 30){
+                selectedHouse = 'Gryffindor'
+            }
+            else if(this.state.Hufflepuff >= 30){
+                selectedHouse = 'Hufflepuff'
+            }
+            else if(this.state.Ravenclaw >= 30){
+                selectedHouse = 'Ravenclaw'
+            }
+            else if(this.state.Slytherin >= 30){
+                selectedHouse = 'Slytherin'
+            }
+
+        
+
+            const {value: house} = await swal({
+                title: 'Great Job',
+                text: `Congratulations, you have finished your quiz. 
+                 After a glimpse into who you are, you would do best in ${selectedHouse}.  That being said, you may choose whichever house you want.`,
+                input: 'select',
+                inputOptions: {
+                  'Gryffindor': 'Gryffindor',
+                  'Slytherin': 'Slytherin',
+                  'Hufflepuff': 'Hufflepuff',
+                  'Ravenclaw': 'Ravenclaw'
+                },
+                inputPlaceholder: 'Choose Your House',
+                showCancelButton: false,
+                inputValidator: (value) => {
+                  return new Promise((resolve) => {
+                    if (value === 'Gryffindor') {
+                      resolve()
+                    } else if(value === 'Hufflepuff') {
+                        resolve()
+                    } else if(value === 'Ravenclaw') {
+                        resolve()
+                    } else if(value === 'Slytherin') {
+                        resolve()
+                    } else {
+                      resolve('You must select a house')
+                    }
+                  })
+                },
+                allowOutsideClick:false
+            })
+
+            axios.put(`/api/sortingquiz/house/${house}`).then( req => {
+                console.log(house)
+            })
+
+            if (house) {
+                swal({
+                    title:"Welcome to: " + house,
+                    confirmButtonText:   'OK',
+                    onAfterClose: this.redirectFn()
+                    
+                })
+            }
+
+
+        }
+
         // splice array of used question*****
         
         
@@ -143,21 +216,34 @@ class SortingQuiz extends Component{
                 index: newIndex
             })
         }
+        else if (newIndex = this.state.answerLength){
+            newIndex = this.state.answerLength - this.state.answerLength
+            this.setState({
+                index:newIndex
+            })
+        }
     }
     
     decreaseAIndex = () => {
         var newIndex = this.state.index;
-        if(newIndex > 0){
+        if(newIndex >= 1){
             newIndex--
             this.setState({
                 index: newIndex
             })
         }
+        else if (newIndex = 1){
+            newIndex = this.state.answerLength
+            this.setState({
+                index:newIndex
+            })
+        }
     }
     
+
+    //*********************** could use points of houses for when to determine to end the quis instead of using an amount of questions************* */
     
     render (){
-        
         
         return (
             
@@ -181,8 +267,7 @@ class SortingQuiz extends Component{
                     </div>
 
                     <div className = 'answertext'>
-                        {this.state.questionAnswer[this.state.index]} <br/>
-                        {this.state.answerHouse[this.state.index]}
+                        {this.state.questionAnswer[this.state.index]}
                     </div>
 
                     <div className = 'bottombtns'>
