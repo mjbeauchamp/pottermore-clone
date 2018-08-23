@@ -38,7 +38,7 @@ app.use(bodyParser.json());
 //Auth endpoints
 //Create new user
 
-// app.use(bypass.byId(14))
+// app.use(bypass.byId(8))
 
 app.post('/auth/new_user', authControllers.create_user);
 
