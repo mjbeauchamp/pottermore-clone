@@ -52,7 +52,7 @@ class Login extends Component {
 
                 <div className='auth-background'></div>
                     <div className={ !this.state.toggle ? 'show' : ' show hide'}>
-                        <h1 className="auth-title auth-green">Login</h1>
+                        <h1 className="auth-title">LOGIN</h1>
                         <input
                             className="auth-input"
                             type="text"

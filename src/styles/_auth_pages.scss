@@ -2,9 +2,9 @@
 .auth-container {
     display: flex;
     flex-direction: column;
-
     overflow: hidden;
     height: 100vh;
+
     .auth-background {
         background-image: linear-gradient(rgba(0, 0, 0, 0.479), rgba(0, 0, 0, 0.521)), url('https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/login-background.jpg');
         background-size: cover;
@@ -48,7 +48,7 @@
         flex-direction: column;
         align-items: center;
     }
-    
+
     .hide-signup {
         height: 0;
         opacity: 0;
@@ -60,8 +60,9 @@
         font-size: 50px;
         margin-bottom: 30px;
         // font-weight: bold;
-        font-family: 'Modern Antiqua', cursive;
+        font-family: 'Domine', serif;
         letter-spacing: 2px;
+        color: white;
     }
     .signup-btn { margin: 10px }
 
@@ -80,10 +81,11 @@
         padding: 10px;
         width: 320px;
         border-radius: 10px;
-        color: white;
+        color: #EAE6E5;
         margin: 10px auto;
         box-shadow: 3px 3px 10px black;
     }
+    
     .auth-green { color: rgb(58, 255, 32)}
     .auth-red { color: rgb(236, 57, 57)}
     p { color: white; }
