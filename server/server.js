@@ -38,7 +38,7 @@ app.use(bodyParser.json());
 //Auth endpoints
 //Create new user
 
-app.use(bypass.byId(14))
+// app.use(bypass.byId(14))
 
 app.post('/auth/new_user', authControllers.create_user);
 
@@ -71,6 +71,9 @@ app.put('/api/cart', storeControllers.addToCart)
 //Delete PRODUCT from shopping Cart
 app.put('/api/delete/',storeControllers.deleteItem)
 app.put('/api/cart/:id/:quantity', storeControllers.update)
+
+// Dashboard
+app.get('/api/wizards', authControllers.getHouse);
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server docked in port ${SERVER_PORT}`)
