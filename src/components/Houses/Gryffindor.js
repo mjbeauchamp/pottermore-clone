@@ -15,16 +15,8 @@ export default class Gryffindor extends React.Component {
     componentDidMount = () => {
         axios.get('https://www.potterapi.com/v1/characters/?house=Gryffindor&key=$2a$10$OzX6uXIalwnz48Y.oPJuk.vt5VUMvdZc.FMoY.4PPibGHry0t8Pjm')
         .then(response => {
-            console.log(response)
-            // let newArr = []
-            // for (let i = 1; i <= 7; i++) {
-            //     newArr.push(response.data[i].name)
-            // }
             this.setState({ famous: response.data})
-                
         }).catch(err => console.log(err))
-
-
         axios.get("/api/current_user")
             .then(response => {
                 if(response.data[0].id){
@@ -34,8 +26,7 @@ export default class Gryffindor extends React.Component {
                     })
                 }
             })
-            .catch();
-            
+            .catch(err => console.log(err));
     }
 
 
@@ -63,11 +54,11 @@ export default class Gryffindor extends React.Component {
                     <h4>WELCOME TO HOUSE</h4>
                     <h3>Gryffindor</h3>
                     <img src="http://tpetricek.github.io/Talks/2016/philosophy-of-types/images/literate.png" alt=""/>
-                    <p>You probably know that some of Ravenclaw’s most renowned members include Gilderoy Lockhart and Luna Lovegood. But did you know Ravenclaw’s Grey Lady is the least talkative Hogwarts house ghost, or that Ravenclaw’s common room boasts the most stunning views of the castle grounds?</p>
+                    <p>You probably know that some of Gryffindor’s most renowned members include Albus Dumbledore and Harry Potter. But did you know the sword of Gryffindor was made a thousand years ago by goblins, or that Head of House Minerva McGonagall’s hobbies include correcting articles in Transfiguration Today and supporting the Montrose Magpies?</p>
                     <br/>
-                    <p>Here you can discover more about your beloved house through writing by J.K. Rowling, articles by Pottermore and all the latest Ravenclaw news.</p>
+                    <p>Here you can discover more about your beloved house through writing by J.K. Rowling, articles by Pottermore and all the latest Gryffindor news.</p>
                     <br/>
-                    <p>You can also share your Ravenclaw pride with your friends, with downloadable wallpaper and house emblems.</p>
+                    <p>You can also share your Gryffindor pride with your friends, with downloadable wallpaper and house emblems.</p>
                 </div>
             </section>
 
@@ -116,7 +107,11 @@ export default class Gryffindor extends React.Component {
                 <h2>Gryffindor Welcome Message</h2>
                 <h3>By J.K. Rowling</h3>
                 <div className='house-welcome-msg'>
-                    <p>Congratulations! I’m Prefect Robert Hilliard, and I’m delighted to welcome you to RAVENCLAW HOUSE. Our emblem is the eagle, which soars where others cannot climb; our house colours are blue and bronze, and our common room is found at the top of Ravenclaw Tower, behind a door with an enchanted knocker. The arched windows set into the walls of our circular common room look down at the school grounds: the lake, the Forbidden Forest, the Quidditch pitch and the Herbology gardens. No other house in the school has such stunning views.</p>
+                    <p>Congratulations! I’m Prefect Percy Weasley, and I’m delighted to welcome you to GRYFFINDOR HOUSE. Our emblem is the lion, the bravest of all creatures; our house colours are scarlet and gold, and our common room lies up in Gryffindor Tower.</p>
+                    <br/>
+                    <p>This is, quite simply, the best house at Hogwarts. It’s where the bravest and boldest end up – for instance: Albus Dumbledore! Yes, Dumbledore himself, the greatest wizard of our time, was a Gryffindor! If that’s not enough for you, I don’t know what is.</p>
+                    <br/>
+                    <p>I won’t keep you long, as all you need to do to find out more about your house is to follow Harry Potter and his friends as I lead them up to their dormitories. Enjoy your time at Hogwarts – but how could you fail to? You’ve become part of the best house in the school.</p>
                 </div>
             </section>
 

@@ -74,10 +74,8 @@ module.exports = {
         const dbInstance = req.app.get('db');
         if(req.session.userid){
             const userId = req.session.userid;
-            console.time("Database Query")
             dbInstance.current_user([userId])
                 .then( user => {
-                    console.timeEnd("Database Query")
                     res.status(200).send( user )
                 })
                 .catch( err => {
@@ -90,7 +88,8 @@ module.exports = {
     },
     getHouse: (req, res) => {
         const dbInstance = req.app.get('db');
-        const userName = req.session.username;
+        const userName = req.session.userid;
+        // console.log(req.session.userid)
 
         dbInstance.wizards([userName])
         .then(response => res.status(200).send(response))

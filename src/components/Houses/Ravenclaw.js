@@ -14,16 +14,8 @@ export default class Gryffindor extends React.Component {
     componentDidMount = () => {
         axios.get('https://www.potterapi.com/v1/characters/?house=Ravenclaw&key=$2a$10$OzX6uXIalwnz48Y.oPJuk.vt5VUMvdZc.FMoY.4PPibGHry0t8Pjm')
         .then(response => {
-            console.log(response)
-            // let newArr = []
-            // for (let i = 1; i <= 7; i++) {
-            //     newArr.push(response.data[i].name)
-            // }
             this.setState({ famous: response.data})
-                
         }).catch(err => console.log(err))
-
-
         axios.get("/api/current_user")
             .then(response => {
                 if(response.data[0].id){
@@ -33,8 +25,7 @@ export default class Gryffindor extends React.Component {
                     })
                 }
             })
-            .catch();
-            
+            .catch(err => console.log(err));
     }
 
 
@@ -60,7 +51,7 @@ export default class Gryffindor extends React.Component {
             <section className='house-about'>
                 <div className='house-about-div'>
                     <h4>WELCOME TO HOUSE</h4>
-                    <h3>Gryffindor</h3>
+                    <h3>Ravenclaw</h3>
                     <img src="http://tpetricek.github.io/Talks/2016/philosophy-of-types/images/literate.png" alt=""/>
                     <p>You probably know that some of Ravenclaw’s most renowned members include Gilderoy Lockhart and Luna Lovegood. But did you know Ravenclaw’s Grey Lady is the least talkative Hogwarts house ghost, or that Ravenclaw’s common room boasts the most stunning views of the castle grounds?</p>
                     <br/>
@@ -106,7 +97,7 @@ export default class Gryffindor extends React.Component {
             </section>
 
             <section className='house-welcome'>
-                <h2>Gryffindor Welcome Message</h2>
+                <h2>Ravenclaw Welcome Message</h2>
                 <h3>By J.K. Rowling</h3>
                 <div className='house-welcome-msg'>
                     <p>Congratulations! I’m Prefect Robert Hilliard, and I’m delighted to welcome you to RAVENCLAW HOUSE. Our emblem is the eagle, which soars where others cannot climb; our house colours are blue and bronze, and our common room is found at the top of Ravenclaw Tower, behind a door with an enchanted knocker. The arched windows set into the walls of our circular common room look down at the school grounds: the lake, the Forbidden Forest, the Quidditch pitch and the Herbology gardens. No other house in the school has such stunning views.</p>

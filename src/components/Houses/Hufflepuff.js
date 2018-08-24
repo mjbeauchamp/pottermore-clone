@@ -14,16 +14,8 @@ export default class Gryffindor extends React.Component {
     componentDidMount = () => {
         axios.get('https://www.potterapi.com/v1/characters/?house=Hufflepuff&key=$2a$10$OzX6uXIalwnz48Y.oPJuk.vt5VUMvdZc.FMoY.4PPibGHry0t8Pjm')
         .then(response => {
-            console.log(response)
-            // let newArr = []
-            // for (let i = 1; i <= 7; i++) {
-            //     newArr.push(response.data[i].name)
-            // }
             this.setState({ famous: response.data})
-                
         }).catch(err => console.log(err))
-
-
         axios.get("/api/current_user")
             .then(response => {
                 if(response.data[0].id){
@@ -33,8 +25,7 @@ export default class Gryffindor extends React.Component {
                     })
                 }
             })
-            .catch();
-            
+            .catch(err => console.log(err));
     }
 
 
@@ -60,18 +51,18 @@ export default class Gryffindor extends React.Component {
             <section className='house-about'>
                 <div className='house-about-div'>
                     <h4>WELCOME TO HOUSE</h4>
-                    <h3>Gryffindor</h3>
+                    <h3>Hufflepuff</h3>
                     <img src="http://tpetricek.github.io/Talks/2016/philosophy-of-types/images/literate.png" alt=""/>
-                    <p>You probably know that some of Ravenclaw’s most renowned members include Gilderoy Lockhart and Luna Lovegood. But did you know Ravenclaw’s Grey Lady is the least talkative Hogwarts house ghost, or that Ravenclaw’s common room boasts the most stunning views of the castle grounds?</p>
+                    <p>You probably know that some of Hufflepuff’’s most renowned members include Nymphadora Tonks and Cedric Diggory. But did you know that Hufflepuff’s house ghost, the Fat Friar, still resents the fact he was never made a cardinal? Or that Hufflepuff has produced the fewest Dark wizards of any house at Hogwarts?</p>
                     <br/>
-                    <p>Here you can discover more about your beloved house through writing by J.K. Rowling, articles by Pottermore and all the latest Ravenclaw news.</p>
+                    <p>Here you can discover more about your beloved house through writing by J.K. Rowling, articles by Pottermore and all the latest Hufflepuff news.</p>
                     <br/>
-                    <p>You can also share your Ravenclaw pride with your friends, with downloadable wallpaper and house emblems.</p>
+                    <p>You can also share your Hufflepuff pride with your friends, with downloadable wallpaper and house emblems.</p>
                 </div>
             </section>
 
             <section className='house-famous'>
-                <h2>Famous Gryffindor characters</h2>
+                <h2>Famous Hufflepuff characters</h2>
                 <hr/>
                 <div className='house-famous-list'>
                     <div className='house-famous-info'>
@@ -106,10 +97,12 @@ export default class Gryffindor extends React.Component {
             </section>
 
             <section className='house-welcome'>
-                <h2>Gryffindor Welcome Message</h2>
+                <h2>Hufflepuff Welcome Message</h2>
                 <h3>By J.K. Rowling</h3>
                 <div className='house-welcome-msg'>
-                    <p>Congratulations! I’m Prefect Robert Hilliard, and I’m delighted to welcome you to RAVENCLAW HOUSE. Our emblem is the eagle, which soars where others cannot climb; our house colours are blue and bronze, and our common room is found at the top of Ravenclaw Tower, behind a door with an enchanted knocker. The arched windows set into the walls of our circular common room look down at the school grounds: the lake, the Forbidden Forest, the Quidditch pitch and the Herbology gardens. No other house in the school has such stunning views.</p>
+                    <p>Congratulations! I’m Prefect Gabriel Truman, and I’m delighted to welcome you to HUFFLEPUFF HOUSE. Our emblem is the badger, an animal that is often underestimated, because it lives quietly until attacked, but which, when provoked, can fight off animals much larger than itself, including wolves. Our house colours are yellow and black, and our common room lies one floor below the ground, on the same corridor as the kitchens.</p>
+                    <br/>
+                    <p>Now, there are a few things you should know about Hufflepuff house. First of all, let’s deal with a perennial myth about the place, which is that we’re the least clever house. WRONG. Hufflepuff is certainly the least boastful house, but we’ve produced just as many brilliant witches and wizards as any other. Want proof? Look up Grogan Stump, one of the most popular Ministers for Magic of all time. He was a Hufflepuff – as were the successful Ministers Artemesia Lufkin and Dugald McPhail. Then there’s the world authority on magical creatures, Newt Scamander; Bridget Wenlock, the famous thirteenth-century Arithmancer who first discovered the magical properties of the number seven, and Hengist of Woodcroft, who founded the all-wizarding village of Hogsmeade, which lies very near Hogwarts School. Hufflepuffs all.</p>
                 </div>
             </section>
 
