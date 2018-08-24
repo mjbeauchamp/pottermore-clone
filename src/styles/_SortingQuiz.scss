@@ -3,60 +3,61 @@
 .SortingQuiz {
     height: 100vh;
     max-height: 100vh;
-    background-color: rgb(249, 250, 255);
     display: flex;
     justify-content: center;
     align-content: center;
-    .backbtn {
-        height:50px;
-        width:50px;
-        background-color: grey;
-        border-radius: 10px;
-        padding:15px;
-        text-decoration: none;
-    }
+
     .questioncontainer{
-        margin: auto 0;
-        width: 40%;
-        height: 90%;
+        margin:0;
+        width: 50%;
+        height: 100%;
         background-color: red;
 
+        .backbtn {
+            height:50px;
+            width:50px;
+            background-color: grey;
+            border-radius: 10px;
+            padding:10px;
+            text-decoration: none;           
+        }
         .questiontext {
-
-            margin: 6% auto;
+            margin: 45% auto;
             width: 90%;
             height: 90%;
-            background-color: orange;
+            font-size:24px;
         }
     }
     .answercontainer {
         margin: auto 0;
         width: 50%;
-        height: 90%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
         background-color: purple;
+
         .answertoggleup {
-            width: 50px;
+            width: 75px;
             height: 50px;
-            background-color: green;
         }
         .answertext {
+            padding-top: 25%;
             width: 300px;
             height: 400px;
-            background-color: pink;
+            font-size:24px;
         }
         .answertoggledown {
-            width: 50px;
+            width: 75px;
             height: 50px;
-            background-color: green;
         }
         .answerselectbtn {
-            width: 50px;
-            height: 50px;
-            background-color: aqua;
+            width: 75px;
+            height: 30px;
+            background-color: rgb(123, 122, 145);
+            border-radius: 10px;
+            border:1px solid black;
         }
     }
 

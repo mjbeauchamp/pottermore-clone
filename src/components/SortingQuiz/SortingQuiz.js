@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {NavLink} from 'react-router-dom'
 import swal from 'sweetalert2'
-import {Redirect} from 'react-router-dom'
 
 
 class SortingQuiz extends Component{
@@ -176,9 +175,7 @@ class SortingQuiz extends Component{
                 allowOutsideClick:false
             })
 
-            axios.put(`/api/sortingquiz/house/${house}`).then( req => {
-                console.log(house)
-            })
+            axios.put(`/api/sortingquiz/house/${house}`).then( req => {})
 
             if (house) {
                 swal({
@@ -249,11 +246,11 @@ class SortingQuiz extends Component{
             
             <div className="SortingQuiz">
 
-            <NavLink className = 'backbtn' to = '/quizHome'> X  </NavLink>
 
                 <div className = 'questioncontainer'>
+                    <NavLink className = 'backbtn' to = '/quizHome'> X  </NavLink>
 
-                    <div className = 'questiontext'>
+                    <div className = 'questiontext'  style = {{backgroundImage:`url('${this.state.backgroundimage}')`}}>
                         {this.state.sortingQuestion.question}
                     </div>
 
@@ -279,7 +276,7 @@ class SortingQuiz extends Component{
                         </div>
 
                         <button className = 'answerselectbtn' onClick = {this.newAnswerBtn}>
-                            Push me, I dare you!
+                            Select
                         </button>
 
                     </div>
