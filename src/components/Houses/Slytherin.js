@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 export default class Gryffindor extends React.Component {
     constructor() {
@@ -58,6 +59,12 @@ export default class Gryffindor extends React.Component {
                     <p>Here you can discover more about your beloved house through writing by J.K. Rowling, articles by Pottermore and all the latest Slytherin news.</p>
                     <br/>
                     <p>You can also share your Slytherin pride with your friends, with downloadable wallpaper and house emblems.</p>
+                </div>
+            </section>
+
+            <section className='castspell-section'>
+                <div className="castspell-div">
+                    <Link className="castspell-link" to="/castspell">Learn to cast magic spells!</Link>
                 </div>
             </section>
 

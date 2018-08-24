@@ -93,6 +93,7 @@ class Level1 extends React.Component {
     render() {
     return(
         <section className='spell-section'>
+                <div>
                 <div className='spell-box'>
                 <div className='level1-arrow1'><img src={require("./Untitledarrow2.png")} alt=""/></div>
                 <div className='level1-arrow2'><img src={require("./Untitledarrow2.png")} alt=""/></div>
@@ -133,6 +134,7 @@ class Level1 extends React.Component {
                         lineWidth={10} 
                         blur='10'
                         />
+                </div>
                 </div>
                 <div className='spell-image'>
 
