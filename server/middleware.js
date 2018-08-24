@@ -1,5 +1,3 @@
-
-
 module.exports = {
     byId: (userID) => {
         return function (req, res, next) {

@@ -11,7 +11,7 @@ class SignUp extends Component {
             first_name: '',
             last_name: '',
             username: '',
-            password: '',
+            password: ''
         }
     }
 
@@ -58,7 +58,7 @@ class SignUp extends Component {
         return (
             <div  onKeyDown={e => this.onEnter(e)}>
 
-                    <h1 className="auth-title auth-red">Sign Up</h1>
+                    <h1 className="auth-title">SIGN UP</h1>
 
                     <input 
                         autoFocus={true} 

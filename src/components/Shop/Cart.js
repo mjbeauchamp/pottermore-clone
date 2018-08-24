@@ -39,6 +39,7 @@ class Cart extends Component{
         })
         this.getCartDetails();
     }
+    
     getCartDetails=()=>{
                 axios.get('/api/details').then(cart =>{
                     this.setState({
@@ -72,18 +73,18 @@ class Cart extends Component{
         axios.delete(`/api/product/${+id}`,).then(res=>{
             console.log(res.data)
                 this.setState({
-                    details:res.data
+                    products:res.data
                 })
             })
     }
 
     render(){
-      let total = this.state.details.reduce((acc,product)=>{
+      let total = this.state.products.reduce((acc,product)=>{
         let cost = (Number(product.product_price.replace(/[$]+/g, '')*product.quantity))
         return (acc + cost)
       }, 0);
         let tax = (total * 0.0685).toFixed(2)
-        let items =  this.state.details.map(e=>{
+        let items =  this.state.products.map(e=>{
             return(
                 <Items
                     id={e.product_id}
@@ -100,19 +101,23 @@ class Cart extends Component{
             )
         })
       
-
+        
         return(
             <div className='cart-main'>
             <Navbar{...this.props}/>
+                    <Link className='cs' to ='/store'>
+                    Continue Shopping            
+                    </Link>
                 <div className='cart-items'>
+                
+                
+                
+
                   {items}
                   <div className='cart-footer'>
                     <h4>Tax:${tax}</h4>
                     <h4>Cart Total:${(Number(total)+Number(tax)).toFixed(2)}</h4>
                     </div>
-                    <Link to ='/store'>
-                    <button>Continue Shopping</button>
-                    </Link>
                 </div>
                 </div>
             )
