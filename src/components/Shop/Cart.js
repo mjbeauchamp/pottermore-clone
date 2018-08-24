@@ -73,7 +73,7 @@ class Cart extends Component{
         axios.delete(`/api/product/${+id}`,).then(res=>{
             console.log(res.data)
                 this.setState({
-                    details:res.data
+                    products:res.data
                 })
             })
     }
@@ -101,19 +101,23 @@ class Cart extends Component{
             )
         })
       
-
+        
         return(
             <div className='cart-main'>
             <Navbar{...this.props}/>
+                    <Link className='cs' to ='/store'>
+                    Continue Shopping            
+                    </Link>
                 <div className='cart-items'>
+                
+                
+                
+
                   {items}
                   <div className='cart-footer'>
                     <h4>Tax:${tax}</h4>
                     <h4>Cart Total:${(Number(total)+Number(tax)).toFixed(2)}</h4>
                     </div>
-                    <Link to ='/store'>
-                    <button>Continue Shopping</button>
-                    </Link>
                 </div>
                 </div>
             )
