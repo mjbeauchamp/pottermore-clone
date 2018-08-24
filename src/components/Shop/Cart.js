@@ -39,6 +39,7 @@ class Cart extends Component{
         })
         this.getCartDetails();
     }
+    
     getCartDetails=()=>{
                 axios.get('/api/details').then(cart =>{
                     this.setState({
@@ -78,12 +79,12 @@ class Cart extends Component{
     }
 
     render(){
-      let total = this.state.details.reduce((acc,product)=>{
+      let total = this.state.products.reduce((acc,product)=>{
         let cost = (Number(product.product_price.replace(/[$]+/g, '')*product.quantity))
         return (acc + cost)
       }, 0);
         let tax = (total * 0.0685).toFixed(2)
-        let items =  this.state.details.map(e=>{
+        let items =  this.state.products.map(e=>{
             return(
                 <Items
                     id={e.product_id}

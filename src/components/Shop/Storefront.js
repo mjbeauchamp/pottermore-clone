@@ -158,7 +158,7 @@ class Storefront extends Component{
                     </select>
                     <div className="cart-quantity">
                         <Link to='/cart'>
-                        <i class="fas fa-shopping-cart fa-3x"><p>{this.state.quantity}</p></i>
+                        <i className="fas fa-shopping-cart fa-3x"><p>{this.state.quantity}</p></i>
                     
                         </Link>
                     </div>
