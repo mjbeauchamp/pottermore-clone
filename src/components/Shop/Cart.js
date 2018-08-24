@@ -73,7 +73,7 @@ class Cart extends Component{
         axios.delete(`/api/product/${+id}`,).then(res=>{
             console.log(res.data)
                 this.setState({
-                    details:res.data
+                    products:res.data
                 })
             })
     }
