@@ -43,7 +43,7 @@
         flex-direction: column;
         align-items: center;
     }
-    
+
     .hide-signup {
         height: 0;
         opacity: 0;
@@ -55,8 +55,9 @@
         font-size: 50px;
         margin-bottom: 30px;
         // font-weight: bold;
-        font-family: 'Modern Antiqua', cursive;
+        font-family: 'Domine', serif;
         letter-spacing: 2px;
+        color: white;
     }
     .signup-btn { margin: 10px }
 
@@ -75,10 +76,11 @@
         padding: 10px;
         width: 320px;
         border-radius: 10px;
-        color: white;
+        color: #EAE6E5;
         margin: 10px auto;
         box-shadow: 3px 3px 10px black;
     }
+    
     .auth-green { color: rgb(58, 255, 32)}
     .auth-red { color: rgb(236, 57, 57)}
     p { color: white; }

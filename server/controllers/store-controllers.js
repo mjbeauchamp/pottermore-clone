@@ -3,14 +3,16 @@
 module.exports = {
 
     getCart: async(req,res)=>{
+        console.log("current user ID", req.session.userid)
         try{
             const db = req.app.get('db')
             let cart = await db.get_cart([+req.session.userid])
+            console.log(cart)
             return res.status(200).send(cart)
             }catch(err){res.sendStatus(500)
                 console.log(err)
             }
-        },
+    },
     getProducts: async (req, res) => {
         try{
             const db = req.app.get('db')
@@ -25,7 +27,6 @@ module.exports = {
         try{
             const db=req.app.get('db')
             let details = await db.cart_details()
-            console.log(details)
             return res.status(200).send(details)
         }catch(err){
             res.status(500).send(err)

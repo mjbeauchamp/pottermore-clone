@@ -56,7 +56,7 @@ class Login extends Component {
                     <source src={video} type='video/mp4' />
                 </video></div>
                     <div className={ !this.state.toggle ? 'show' : ' show hide'}>
-                        <h1 className="auth-title auth-green">Login</h1>
+                        <h1 className="auth-title">LOGIN</h1>
                         <input
                             className="auth-input"
                             type="text"
