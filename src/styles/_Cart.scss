@@ -1,40 +1,68 @@
 .cart-main{
-    height:100vh;
+    background-color: purple;
     width:100%;
     display:flex;
+    flex-direction:column;
 }
 .cart-items{
+    height:auto;
+    padding-top:50px;
+    width:100%;
     h4{
         font-size: 25px;
     }
-    a{
-        color:inherit;
+    button{
+       
+        color:white;
+        padding:20px
     }
-    height:auto;
-    padding-top:110px;
-    width:100%;
+    a{
+        display:block;
+        color:white;
+        text-decoration: none;
+        width:100px;
+        height:25px;
+        margin:0 auto;
+        padding:20px;
+    }
 }
+.cs{
+    box-shadow:2px 2px 3px black;
+    background-color:#DCCCA3;
+    margin: 0 auto;
+    text-decoration: none;
+    color:white;
+    margin-top:155px;
+    padding:10px;
+    height:55px;
+    width:100px;
+
+}
+
 .cart-card{
+    background-color: white;
     display:flex;
     justify-content: space-between;
     height:auto;
-    width:50%;
+    width:60%;
     margin:0 auto;
     border-bottom:2px solid black;
-    padding-bottom:10px;
-    padding-top:10px;
+    padding:10px 25px;
     img{
         height:auto;
         width:100%;
     }
 }
 .card-header{
+    font-family: 'Vollkorn', serif;
     display:flex;
     flex-direction:column;
     justify-content:center;
     width:15%;
 }
 .card-body{
+    padding:25px;
+    font-family: 'Vollkorn', serif;
     h1{
         font-size: 30px;
     }
