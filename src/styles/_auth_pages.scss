@@ -61,7 +61,9 @@
     }
     .signup-btn { 
         margin: 10px;
+        margin-top: 20px;
         border-radius: 2px;
+        font-family: 'Stoke';
     }
 
     input{
@@ -75,7 +77,7 @@
     }
     .auth-submit {
         font-size: 20px;
-        background-color: rgb(22, 204, 6);
+        background-color: #0F4C5C;
         padding: 20px;
         width: 320px;
         border-radius: 2px;
@@ -88,7 +90,7 @@
     .auth-red { color: rgb(236, 57, 57)}
     p { color: white; }
     .auth-span{ 
-        color: #8F8073;
+        color: #bcb1a7;
         cursor: pointer;
      }
 
