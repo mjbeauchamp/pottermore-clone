@@ -69,6 +69,8 @@ app.get('/api/products', storeControllers.getProducts)
 app.get('/api/details',storeControllers.cartDetails)
 //Delete Item from shopping Cart
 app.delete('/api/product/:id',storeControllers.deleteProduct)
+//Delete Shopping cart
+app.delete('/api/cart', storeControllers.deleteCart)
 //Add Item To Cart
 app.put('/api/cart', storeControllers.addToCart)
 //Delete PRODUCT from shopping Cart

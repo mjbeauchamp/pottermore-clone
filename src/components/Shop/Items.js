@@ -4,16 +4,7 @@ import React, {Component} from 'react';
 
 
 class Items extends Component{
-    constructor(){
-        super()
-        this.state={
-            cart:[],
-            details:[],
-            user:{}
-        }
-
-
-    }
+ 
     render(){
         return(
 
