@@ -70,7 +70,7 @@ class CursorTrail extends React.Component {
                     <div
                       key={node.key}
                       style={{
-                        backgroundColor: 'red',
+                        backgroundColor: 'rgba(255, 255, 255, 0.671)',
                         marginTop: -5,
                         width: 5,
                         height: 5,
@@ -124,12 +124,13 @@ class CursorTrail extends React.Component {
                   <div
                     key={node.key}
                     style={{
-                      backgroundColor: 'yellow',
+                      backgroundColor: 'rgba(255, 255, 255, 0.971)',
                       marginTop: -5,
                       width: 5,
                       height: 5,
                       borderRadius: 25,
-                      opacity: 0.7,
+                      opacity: 0.8,
+                      boxShadow:'0 0 20px 7px white',
                       WebkitTransform: `translate3d(${x - 25}px, ${y -
                         25}px, 0)`,
                       transform: `translate3d(${x - 25}px, ${y - 25}px, 0)`,
@@ -178,7 +179,7 @@ class CursorTrail extends React.Component {
                   <div
                     key={node.key}
                     style={{
-                      backgroundColor: 'blue',
+                      backgroundColor: 'rgba(211, 188, 188, 0.767)',
                       marginTop: -5,
                       width: 5,
                       height: 5,
