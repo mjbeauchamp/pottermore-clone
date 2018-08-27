@@ -1,35 +1,30 @@
 .castSpell {
-    .navigation {
-        height: 100px;
-        width: 100%;
-        background-color: rgb(0, 0, 0);
-    }
-    .spell-nav {
-        background-color: rgb(90, 89, 89);
-        width: 100%;
-        div {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            ul{
-                display: flex;
-                li {
-                    margin: 30px 30px;
-                }
-            }
-        }
+    .castspell-nav-container {
+        display: none;
     }
     .spell-section {
-        background: rgb(5, 82, 155);
         position: relative;
         display: flex;
+        height: 100vh;
+        button {
+            color: black;
+            background-color: rgb(253, 242, 226);
+            padding: 5px;
+            box-shadow: 2px 2px 5px white;
+            outline: none;
+            cursor: pointer;
+        }
+        .castspell-back-btn {
+            position: absolute;
+            left: 700px;
+            top:30px;
+        }
         .spell-image {
             position: relative;
             width: calc(100% - 800px);
-            border: 2px solid black;
             background-image: url('https://pre00.deviantart.net/720f/th/pre/f/2013/338/5/5/pottermore_background___gryffindor_common_room_1_by_xxtayce-d6wp5ot.jpg');
             background-size: cover;
-            height: auto;
+            height: 100vh;
             img{
                 position: absolute;
                 top: 25%;
@@ -38,7 +33,6 @@
         }
         .spell-box {
             position: relative;
-            border: 2px solid black;
             width: 800px;
             height: auto;
             z-index: 10;
@@ -49,29 +43,31 @@
         background-size: cover;
         background-position: 0 -50px;
         width: 100%;
-        height: 705px;
+        height: 100vh;
     }
     .feder { 
         display: block;
         transition: 1.5s;
+        transition-delay: 1s;
      }
     .feder2 { 
         opacity: 0;
         transition: 1.5s;
+        transition-delay: 1s;
      }
     .invisible {
         background-color: green;
         position: absolute;
-        width: 35px;
+        width: 45px;
         height: 35px;
         z-index: 10;
-        // opacity: 0;
+        opacity: 0;
     }
     .boxes{
         position: absolute;
         width: 30px;
         height: 30px;
-        background-color: rgb(194, 14, 14);
+        background-color: rgb(128, 99, 141);
         border-radius: 50%;
         // box-shadow: 0px 0px  100px 20px black;
     }
@@ -97,10 +93,88 @@
             left: 155px;
             box-shadow: 0px 0px 200px 100px yellow;
             transition: 2s;
+            transition-delay: 1s;
         }
         .light-off { 
             opacity: 0;
             transition: 2s;
+            transition-delay: 1s;
+        }
+    }
+
+
+    /////   svg animations 
+    .castspell-container {
+        margin-top: 30px;
+        .pp{
+            margin-top: 20px;
+            color: white;
+            font-size: 35px;
+            word-spacing: 5px;
+            font-family: 'Satisfy'
+        }
+    }
+    .svg-level1-stars-2 {
+        opacity: 1;
+        animation: 8s stars forwards
+    }
+    .svg-level1-stars-3 {
+        opacity: 1;
+        animation: 3s stars forwards
+    }
+    .svg-level1-stars-1 {
+        opacity: 1;
+        animation: 6s stars forwards
+    }
+    
+    .svg-spell-1 {
+        stroke-dasharray: 1800;
+        stroke-dashoffset: 1800;
+        animation: 6s spell-1 forwards;
+        animation-delay: 1s;
+    }
+    .svg-spell-2 {
+        stroke-dasharray: 1900;
+        stroke-dashoffset: 1900;
+        animation: 6s spell-2 forwards;
+        animation-delay: 1s;
+    }
+    .svg-spell-3 {
+        stroke-dasharray: 1600;
+        stroke-dashoffset: 1600;
+        animation: 6s spell-3 forwards;
+        animation-delay: 1s;
+    }
+    @keyframes stars {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes spell-1 {
+        from {
+            stroke-dashoffset: 1800
+        }
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+    @keyframes spell-2 {
+        from {
+            stroke-dashoffset: 1900
+        }
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+    @keyframes spell-3 {
+        from {
+            stroke-dashoffset: 1600
+        }
+        to {
+            stroke-dashoffset: 0;
         }
     }
     
@@ -121,14 +195,14 @@
 }
 .level1-arrow3 {
     position: absolute;
-    bottom: 160px;
+    top: 500px;
     left: 100px;
     transform: rotateX(180deg) rotate(320deg);
     img { width: 200px }
 }
 .level1-arrow4 {
     position: absolute;
-    bottom: 160px;
+    top: 500px;
     right: 190px;
     transform: rotateX(180deg) rotate(30deg);
     img { width: 200px }
@@ -147,14 +221,15 @@
 }
 .level1-start {
     position: absolute;
-    top: 30px;
-    left: 50px;
+    top: 10px;
+    left: 60px;
     z-index: 2;
 }
+
 .visible-1 {
     top: 50px;
     left: 100px;
-    background-color: greenyellow;
+    background-color: rgb(238, 213, 102);
 }
 .visible-2 {
     top: 170px;
@@ -165,7 +240,7 @@
     left: 130px;
 }
 .visible-4 {
-    bottom: 100px;
+    top: 580px;
     left: 320px;
 }
 .visible-5 {
@@ -189,11 +264,11 @@
     left: 230px;
 }
 .box-10{
-    bottom: 210px;
-    left: 140px
+    top: 460px;
+    left: 130px
 }
 .box-11 {
-    bottom: 220px;
+    top: 450px;
     right: 185px;
 }
 .box-12{
@@ -217,23 +292,23 @@
     left: 180px;
 }
 .box-17 {
-    bottom: 150px;
+    top: 510px;
     left: 180px;
 }
 .box-18 {
-    bottom: 110px;
+    top: 550px;
     left: 250px;
 }
 .box-19 {
-    bottom: 110px;
+    top: 550px;
     right: 330px;
 }
 .box-20 {
-    bottom: 150px;
+    top: 500px;
     right: 230px;
 }
 .box-21{
-    bottom: 320px;
+    top: 330px;
     right: 160px;
 }
 .box-22 {
@@ -252,7 +327,7 @@
 //////// level - 2
 .level2-arrow1 {
     position: absolute;
-    bottom: 135px;
+    top: 590px;
     left: 315px;
     transform: rotateX(180deg) rotate(150deg);
     img{ width: 80px}
@@ -260,26 +335,26 @@
 .level2-arrow2 {
     position: absolute;
     transform: rotateX(180deg) rotate(200deg);
-    bottom: 145px;
+    top: 600px;
     left: 110px;
 }
 .level2-arrow3 {
     position: absolute;
-    bottom: 200px;
+    top: 540px;
     left: 40px;
     transform: rotate(300deg)
 }
 .level2-arrow4 {
     position: absolute;
-    bottom: 260px;
+    top: 470px;
     left: 300px;
     transform: rotate(15deg);
     img { width: 250px;}
 }
 .level2-arrow5 {
     position: absolute;
-    bottom: 260px;
-    right: 40px;
+    top: 480px;
+    right: 50px;
     transform: rotateX(180deg) rotate(100deg);
     img { width: 100px}
 }
@@ -292,40 +367,40 @@
 }
 .level2-arrow7 {
     position: absolute;
-    left: 310px;
-    top: 240px;
+    left: 255px;
+    top: 270px;
     transform: rotate(90deg);
-    img { width: 200px}
+    img { width: 300px}
 }
 .level2-start {
     position: absolute;
-    bottom: 50px;
+    top: 700px;
     left: 350px;
     z-index: 2;
 }
 .level2-1 {
-    bottom: 80px;
+    top: 640px;
     left: 390px;
-    background-color: greenyellow;    
+    background-color: rgb(238, 213, 102); 
 }
 .level2-2 {
-    bottom: 150px;
+    top: 570px;
     left: 280px;
 }
 .level2-3{
-    bottom: 80px;
+    top: 640px;
     left: 60px;
 }
 .level2-4{
-    bottom: 270px;
+    top: 450px;
     left: 180px;
 }
 .level2-5 {
-    bottom: 160px;
+    top: 570px;
     right: 100px;
 }
 .level2-6{
-    bottom: 320px;
+    top: 350px;
     right: 120px;
 }
 .level2-7 {
@@ -333,68 +408,68 @@
     left: 390px;
 }
 .level2-8 {
-    bottom: 130px;
+    top: 600px;
     left: 350px;
 }
 .level2-9 {
-    bottom: 150px;
+    top: 570px;
     left: 280px;
 }
 .level2-10 {
-    bottom: 140px;
+    top: 580px;
     left: 200px;
 }
 .level2-11 {
-    bottom: 110px;
+    top: 600px;
     left: 130px;
 }
 .level2-12 {
-    bottom: 80px;
+    top: 640px;
     left: 50px;
 }
 .level2-13{
-    bottom: 140px;
-    left: 20px;
+    top: 580px;
+    left: 40px;
 }
 .level2-14{
-    bottom: 230px;
-    left: 60px
+    top: 490px;
+    left: 90px
 }
 .level2-15 {
-    bottom: 275px;
+    top: 450px;
     left: 180px;
 }
 .level2-16 {
-    bottom: 285px;
+    top: 440px;
     left: 280px;
 }
 .level2-17 {
-    bottom: 260px;
+    top: 450px;
     left: 370px
 }
 .level2-18 {
-    bottom: 210px;
+    top: 470px;
     right: 300px;
 }
 .level2-19 {
-    bottom: 170px;
+    top: 520px;
     right: 200px;
 }
 .level2-20 {
-    bottom: 150px;
+    top: 570px;
     right: 100px;
 }
 .level2-21 {
-    bottom: 230px;
+    top: 470px;
     right: 70px;
 }
 .level2-22 {
-    bottom: 320px;
-    right: 110px;
+    top: 350px;
+    right: 100px;
 }
 .level2-23 {
-    bottom: 430px;
-    right: 190px;
+    top: 250px;
+    right: 150px;
 }
 .level2-24{
     top: 120px;
@@ -413,159 +488,159 @@
     left: 390px;
 }
 .level2-28 {
-    bottom: 180px;
+    top: 530px;
     left: 390px
 }
 .level2-29 {
-    bottom: 180px;
+    top: 530px;
     left: 390px;
 }
 
 //// Level 3
 .level3-arrow1 {
     position: absolute;
-    top: 110px;
+    top: 140px;
     right: 140px;
     transform: rotate(45deg);
     img {width: 150px;}
 }
 .level3-arrow2 {
     position: absolute;
-    top: 350px;
+    top: 380px;
     right: 150px;
     transform: rotate(140deg);
     img { width: 180px}
 }
 .level3-arrow3 {
     position: absolute;
-    top: 360px;
+    top: 390px;
     left: 130px;
     transform: rotate(220deg);
     img { width: 180px}
 }
 .level3-arrow4 {
     position: absolute;
-    top: 110px;
+    top: 140px;
     left: 160px;
     transform: rotate(325deg);
     img { width: 165px;}
 }
 .level3-arrow5 {
     position: absolute;
-    top: 250px;
-    left: 285px;
+    top: 370px;
+    left: 255px;
     transform: rotate(90deg);
-    img { width: 240px}
+    img { width: 300px}
 }
 .level3-start {
     position: absolute;
-    top: 20px;
-    right: 250px;
+    top: 130px;
+    right: 270px;
     z-index: 2;
 }
 .level3-1 {
-    top: 50px;
+    top: 80px;
     right: 300px;
-    background-color: greenyellow;
+    background-color: rgb(238, 213, 102);
 }
 .level3-2 {
-    top: 220px;
+    top: 250px;
     right: 130px;
 }
 .level3-3 {
-    top: 440px;
-    right: 390px;
+    top: 470px;
+    right: 410px;
 }
 .level3-4 {
-    top: 220px;
+    top: 250px;
     left: 130px;
 }
 .level3-5 {
-    top: 50px;
+    top: 80px;
     left: 390px;
 }
 .level3-6 {
-    bottom: 100px;
+    top: 670px;
     left: 390px;
 }
 .level3-8 {
-    top: 55px;
+    top: 85px;
     right: 240px;
 }
 .level3-9 {
-    top: 100px;
+    top: 130px;
     right: 180px;
 }
 .level3-10 {
-    top: 160px;
+    top: 190px;
     right: 140px;
 }
 .level3-11 {
-    top: 260px;
+    top: 290px;
     right: 140px;
 }
 .level3-12 {
-    top: 320px;
+    top: 350px;
     right: 180px;
 }
 .level3-13 {
-    top: 380px;
+    top: 410px;
     right: 230px;
 }
 .level3-14 {
-    top: 430px;
+    top: 460px;
     right: 300px;
 }
 .level3-15 {
-    top: 440px;
+    top: 470px;
     left: 375px;
 }
 .level3-16 {
-    top: 430px;
+    top: 460px;
     left: 300px;
 }
 .level3-17 {
-    top: 380px;
+    top: 410px;
     left: 230px;
 }
 .level3-18 {
-    top: 320px;
+    top: 350px;
     left: 180px;
 }
 .level3-19 {
-    top: 260px;
+    top: 290px;
     left: 140px;
 }
 .level3-20 {
-    top: 160px;
+    top: 190px;
     left: 150px;
 }
 .level3-21 {
-    top: 110px;
+    top: 140px;
     left: 200px;
 }
 .level3-22 {
-    top: 70px;
+    top: 100px;
     left: 270px;
 }
 .level3-23 {
-    top: 50px;
+    top: 80px;
     left: 340px;
 }
 .level3-24 {
-    top: 120px;
+    top: 150px;
     left: 390px;
 }
 .level3-25 {
-    top: 260px;
+    top: 290px;
     left: 390px;
 }
 .level3-26 {
-    top: 360px;
+    top: 390px;
     left: 390px;
 }
 .level3-27 {
-    bottom: 100px;
+    top: 670px;
     left: 390px;
 }
 

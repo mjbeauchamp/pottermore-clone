@@ -1,0 +1,31 @@
+import React from 'react'
+
+export default 
+<svg width="400" height="350" viewBox="0 0 807 587" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="807" height="548" fill="black" fill-opacity="0"/>
+<g filter="url(#filter0_d)">
+<path className='svg-spell-2' d="M524 60C642.694 91.8949 695 189 689 252C683 315 610 372 555 403C500 434 430 448 355 431C280 414 158.295 347.057 151 252C143.723 157.18 212.061 99.0203 237 83C261.939 66.9797 352 26 425 50V548" stroke="white" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<path className='svg-level1-stars-1' d="M113.5 361L117.797 376.057L132.986 372.25L122.094 383.5L132.986 394.75L117.797 390.943L113.5 406L109.203 390.943L94.0144 394.75L104.906 383.5L94.0144 372.25L109.203 376.057L113.5 361Z" fill="white"/>
+<path className='svg-level1-stars-2' d="M736.5 108L740.797 123.057L755.986 119.25L745.094 130.5L755.986 141.75L740.797 137.943L736.5 153L732.203 137.943L717.014 141.75L727.906 130.5L717.014 119.25L732.203 123.057L736.5 108Z" fill="white"/>
+<path className='svg-level1-stars-1' d="M701.5 66L703.887 74.3651L712.325 72.25L706.275 78.5L712.325 84.75L703.887 82.6349L701.5 91L699.113 82.6349L690.675 84.75L696.725 78.5L690.675 72.25L699.113 74.3651L701.5 66Z" fill="white"/>
+<path className='svg-level1-stars-3' d="M732.5 164L734.887 172.365L743.325 170.25L737.275 176.5L743.325 182.75L734.887 180.635L732.5 189L730.113 180.635L721.675 182.75L727.725 176.5L721.675 170.25L730.113 172.365L732.5 164Z" fill="white"/>
+<path className='svg-level1-stars-2' d="M61.5 405L64.2693 414.704L74.0574 412.25L67.0385 419.5L74.0574 426.75L64.2693 424.296L61.5 434L58.7307 424.296L48.9426 426.75L55.9615 419.5L48.9426 412.25L58.7307 414.704L61.5 405Z" fill="white"/>
+<path className='svg-level1-stars-3' d="M160.5 424L162.505 431.027L169.593 429.25L164.511 434.5L169.593 439.75L162.505 437.973L160.5 445L158.495 437.973L151.407 439.75L156.489 434.5L151.407 429.25L158.495 431.027L160.5 424Z" fill="white"/>
+<path className='svg-level1-stars-1' d="M10.5 434L12.5053 441.027L19.5933 439.25L14.5106 444.5L19.5933 449.75L12.5053 447.973L10.5 455L8.49468 447.973L1.40673 449.75L6.48936 444.5L1.40673 439.25L8.49468 441.027L10.5 434Z" fill="white"/>
+<path className='svg-level1-stars-3' d="M775.5 143L777.505 150.027L784.593 148.25L779.511 153.5L784.593 158.75L777.505 156.973L775.5 164L773.495 156.973L766.407 158.75L771.489 153.5L766.407 148.25L773.495 150.027L775.5 143Z" fill="white"/>
+<path className='svg-level1-stars-2' d="M796.5 0L798.505 7.02668L805.593 5.25L800.511 10.5L805.593 15.75L798.505 13.9733L796.5 21L794.495 13.9733L787.407 15.75L792.489 10.5L787.407 5.25L794.495 7.02668L796.5 0Z" fill="white"/>
+<path className='svg-level1-stars-2' d="M796.5 91L798.505 98.0267L805.593 96.25L800.511 101.5L805.593 106.75L798.505 104.973L796.5 112L794.495 104.973L787.407 106.75L792.489 101.5L787.407 96.25L794.495 98.0267L796.5 91Z" fill="white"/>
+<path className='svg-level1-stars-1' d="M74.5 350L76.5053 357.027L83.5933 355.25L78.5106 360.5L83.5933 365.75L76.5053 363.973L74.5 371L72.4947 363.973L65.4067 365.75L70.4894 360.5L65.4067 355.25L72.4947 357.027L74.5 350Z" fill="white"/>
+<defs>
+<filter id="filter0_d" x="120.459" y="11.6364" width="609.004" height="575.364" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feOffset dx="5" dy="4"/>
+<feGaussianBlur stdDeviation="15"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.972549 0 0 0 0 0.956863 0 0 0 0 0.909804 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+</defs>
+</svg>

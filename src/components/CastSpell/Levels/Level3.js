@@ -1,6 +1,8 @@
 import React from 'react'
 import RubberBand from 'react-reveal/RubberBand';
+import swal from 'sweetalert2'
 import {SketchField, Tools} from 'react-sketch';
+import axios from 'axios'
 
 class Level3 extends React.Component {
     constructor(props) {
@@ -8,14 +10,29 @@ class Level3 extends React.Component {
         this.state = {
             score: [],
             points: 0,
+            correctFinalWord: "qwerty",
             success: false,
             almost: false,
             fail: false,
             visible: true,
-            start: false
+            start: false,
+            currentUser: {},
+            userID: null
         }
     }
 
+    componentDidMount = () => {
+        axios.get("/api/current_user")
+            .then(response => {
+                if(response.data[0].id){
+                    this.setState({
+                        currentUser: response.data[0],
+                        userID: response.data[0].id
+                    })
+                }
+            })
+            .catch();
+    }
     // When user hits a point, push to array with the "id" letter for that point
     //This lets us both keep a point total by using .length on the array, as well as prevent duplicate array entries by making sure the "id" letter isn't in the array
     handleMouseEnter =(e, letter) => {
@@ -37,44 +54,57 @@ class Level3 extends React.Component {
     spellFinished = () => {
         let finalPoints = this.state.points;
         let newArray = this.state.score.map(val => val).sort().join("");
-        console.log(newArray)
         if (newArray === this.state.score.join("")) {
-            console.log('yes')
             if(finalPoints >= 18 ){
-                console.log('Great job Harry!!')
+                swal({
+                    title: `Great Job, ${this.state.currentUser.username}!`,
+                    showConfirmButton: false,
+                    timer: 1000
+                })
+
                 this.setState({ 
                     success: true,
                     visible: false
                 })
-            } else if (finalPoints >= 10) {
-                console.log("Almost there!")
+            } else if (finalPoints >= 15) {
+                swal({
+                    title: `Almost there, ${this.state.currentUser.username}!`,
+                    showConfirmButton: false,
+                    timer: 1000
+                })
                 this.setState({ 
                     almost: true,
                     visible: false
                 })
             } else {
-                console.log('Try harder!')
+                swal({
+                    title: `Try Harder, ${this.state.currentUser.username}!`,
+                    showConfirmButton: false,
+                    timer: 1000
+                })
                 this.setState({ fail: true})
             }
         } else {
-            console.log('Try harder!')
         }
-        console.log(this.state.score.join())
     }
     handleStart = () => {
         this.setState({ start: true})
     }
     render() {
-        console.log(this.state.success)
     return(
         <section className='spell-section'>
                 <div className='spell-box'>
+                <button className='castspell-back-btn' onClick={this.props.handleSpellsList} >BACK</button>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
                     <div className='level3-arrow1'><img src={require("./Untitledarrow2.png")} alt=""/></div>
                     <div className='level3-arrow2'><img src={require("./Untitledarrow2.png")} alt=""/></div>
                     <div className='level3-arrow3'><img src={require("./Untitledarrow2.png")} alt=""/></div>
                     <div className='level3-arrow4'><img src={require("./Untitledarrow2.png")} alt=""/></div>
                     <div className='level3-arrow5'><img src={require("./Untitledarrow3.png")} alt=""/></div>
-                    <div onClick={this.handleStart} className="level3-start">Click Here To Start</div>
+                    <div onClick={this.handleStart}> <button className="level3-start"> Click To Start</button></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="level3-1 boxes"></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="level3-2 boxes"></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="level3-3 boxes"></div>
@@ -102,9 +132,9 @@ class Level3 extends React.Component {
                     <div onMouseEnter={e => this.handleMouseEnter(e,'s')} className={!this.state.start ? "level3-26 invisible hide-boxes" : 'level3-26 invisible show-boxes' }></div>
                     <div onMouseEnter={this.spellFinished} className={!this.state.start ? "level3-27 invisible hide-boxes" : 'level3-27 invisible show-boxes' }></div>
                     <SketchField 
-                        height='700px'
+                        height='680px'
                         tool={Tools.Pencil} 
-                        lineColor='black'
+                        lineColor='white'
                         lineWidth={10} 
                         blur='10'
                         />

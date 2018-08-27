@@ -4,18 +4,30 @@ import Level1 from './Levels/Level1'
 import Level2 from './Levels/Level2'
 import Level3 from './Levels/Level3'
 import makeCarousel from 'react-reveal/makeCarousel'
-import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
 import Slide from 'react-reveal/Slide'
 import styled, { css } from 'styled-components';
+import level1svg from '../Home/img/level1'
+import level2svg from '../Home/img/level2'
+import level3svg from '../Home/img/level3'
+import Particles from 'react-particles-js'
+import snow from '../Home/img/Particle'
 
 
 const width = '700px', height='500px';
 const Container = styled.div`
-    background-color: black;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://wallpaperstudio10.com/static/wpdb/wallpapers/1000x563/197316.jpg');
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 50px 10px #c2c2c2;
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    padding: 20px;
+    transform: translate(-50%, -40%);
     overflow: hidden;
     width: ${width};
     height: ${height};
@@ -33,6 +45,9 @@ const Arrow = styled.div`
   user-select: none;
   ${props => props.right ? css`left: 90%;` : css`left: 0%;`}
 `;
+const btn = styled.div`
+    font-size: 30px;
+`
 
 const CarouselUI = ({ position, handleClick, children }) => (
     <Container>
@@ -83,67 +98,82 @@ export default class CastSpell extends React.Component {
             level3: false
         })
     }
-
-
-
-
     render() {
-
-      
         var level, level2, level3;
         if(this.state.level1){
             level = <div className={this.state.level1 ? 'show-levels' : 'hide-levels'}>
-                    <Zoom duration={1500}>
-                        <Level1/>
-                    </Zoom>
+                    <Fade duration={2000}>
+                        {snow}
+                        <Level1 handleSpellsList={this.handleSpellsList}/>
+                    </Fade>
             </div>;
         } else if (this.state.level2) {
             level2 =  <div className={this.state.level2 ? 'show-levels' : 'hide-levels'}>
-                    <Zoom duration={1500}>
-                        <Level2/>
-                    </Zoom>
+                    <Fade duration={4000}>
+                        {snow}
+                        <Level2 handleSpellsList={this.handleSpellsList}/>
+                    </Fade>
             </div>
         } else if (this.state.level3) {
             level3 = <div className={this.state.level3 ? 'show-levels' : 'hide-levels'}>
-                    <Zoom duration={1500}>
-                        <Level3/>
-                    </Zoom>
+                    <Fade duration={4000}>
+                        {snow}
+                        <Level3 handleSpellsList={this.handleSpellsList}/>
+                    </Fade>
         </div>
         }
-
-
         return(
             <div className='castSpell'>
-            <section className='navigation'>
+                <div className={this.state.level1 || this.state.level2 || this.state.level3 ? 'castspell-nav-container' : false}>
                 <Navigation {...this.props}/>
-            </section>
-
+                </div>
             <section className='castspell-background'>
-            <button onClick={this.handleSpellsList} >back</button>
-
             <Carousel defaultWait={300000}>
+
                 <Slide right>
-                <div>
-                    <h1>Slide 1</h1>
-                    <p onClick={this.handleLevel1} style={{color: 'white'}}>Level - 1</p>
-                </div>
+                    <div className='castspell-container'>
+                        <div className='level-1-svg'>
+                            {level1svg}
+                        </div>
+                        <Fade duration={8000}>
+                            <div className='spell-name'>
+                                <p className='pp' onClick={this.handleLevel1} >Wingardium Leviosa</p>
+                            </div>
+                        </Fade >
+                    </div>
                 </Slide>
+
                 <Slide right>
-                <div>
-                    <h1>Slide 2</h1>
-                    <p onClick={this.handleLevel2} style={{color: 'white'}}>Level - 2</p>
-                </div>
+                    <div className='castspell-container'>
+                        <div className='level-1-svg'>
+                            {level3svg}
+                        </div>
+                        <Fade duration={8000}>
+                            <div className='spell-name'>
+                                <p className='pp' onClick={this.handleLevel2} >Bufonem Emittunt</p>
+                            </div>
+                        </Fade >
+                    </div>
                 </Slide>
+
                 <Slide right>
-                <div>
-                    <h1>Slide 3</h1>
-                    <p onClick={this.handleLevel3} style={{color: 'white'}} >Level - 3</p>
-                </div>
+                    <div className='castspell-container'>
+                        <div className='level-1-svg'>
+                            {level2svg}
+                        </div>
+                        <Fade duration={8000}>
+                            <div className='spell-name'>
+                                <p className='pp' onClick={this.handleLevel3} >Lumos</p>
+                            </div>
+                        </Fade >
+                    </div>
                 </Slide>
             </Carousel>
-                {level}
-                {level2}
-                {level3}
+                <section className='try-spell'>
+                    {level}
+                    {level2}
+                    {level3}
+                </section>
             </section>
             </div>
         )

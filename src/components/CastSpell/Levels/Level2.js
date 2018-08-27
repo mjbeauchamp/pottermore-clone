@@ -2,6 +2,8 @@ import React from 'react'
 import Fade from 'react-reveal/Fade';
 import Flash from 'react-reveal/Flash';
 import {SketchField, Tools} from 'react-sketch';
+import swal from 'sweetalert2'
+import axios from 'axios'
 
 class Level2 extends React.Component {
     constructor(props) {
@@ -9,14 +11,29 @@ class Level2 extends React.Component {
         this.state = {
             score: [],
             points: 0,
+            correctFinalWord: "qwerty",
             success: false,
             almost: false,
             fail: false,
             visible: true,
-            start: false
+            start: false,
+            currentUser: {},
+            userID: null
         }
     }
 
+    componentDidMount = () => {
+        axios.get("/api/current_user")
+            .then(response => {
+                if(response.data[0].id){
+                    this.setState({
+                        currentUser: response.data[0],
+                        userID: response.data[0].id
+                    })
+                }
+            })
+            .catch();
+    }
     // When user hits a point, push to array with the "id" letter for that point
     //This lets us both keep a point total by using .length on the array, as well as prevent duplicate array entries by making sure the "id" letter isn't in the array
     handleMouseEnter =(e, letter) => {
@@ -38,39 +55,52 @@ class Level2 extends React.Component {
     spellFinished = () => {
         let finalPoints = this.state.points;
         let newArray = this.state.score.map(val => val).sort().join("");
-        console.log(newArray)
         if (newArray === this.state.score.join("")) {
-            console.log('yes')
             if(finalPoints >= 18 ){
-                console.log('Great job Harry!!')
+                swal({
+                    title: `Great Job, ${this.state.currentUser.username}!`,
+                    showConfirmButton: false,
+                    timer: 1000
+                })
+
                 this.setState({ 
                     success: true,
                     visible: false
                 })
-            } else if (finalPoints >= 15) {
-                console.log("Almost there!")
+            } else if (finalPoints >= 13) {
+                swal({
+                    title: `Almost there, ${this.state.currentUser.username}!`,
+                    showConfirmButton: false,
+                    timer: 1000
+                })
                 this.setState({ 
                     almost: true,
                     visible: false
                 })
             } else {
-                console.log('Try harder!')
+                swal({
+                    title: `Try Harder, ${this.state.currentUser.username}!`,
+                    showConfirmButton: false,
+                    timer: 1000
+                })
                 this.setState({ fail: true})
             }
         } else {
-            console.log('Try harder!')
         }
-        console.log(this.state.score.join())
     }
 
     handleStart = () => {
         this.setState({start: true})
     }
     render() {
-        console.log(this.state.visible)
     return(
         <section className='spell-section'>
                 <div className='spell-box'>
+                <button className='castspell-back-btn' onClick={this.props.handleSpellsList} >BACK</button>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                     <div className='level2-arrow1'><img src={require("./Untitledarrow2.png")} alt=""/></div>
                     <div className='level2-arrow2'><img src={require("./Untitledarrow2.png")} alt=""/></div>
                     <div className='level2-arrow3'><img src={require("./Untitledarrow2.png")} alt=""/></div>
@@ -78,7 +108,7 @@ class Level2 extends React.Component {
                     <div className='level2-arrow5'><img src={require("./Untitledarrow2.png")} alt=""/></div>
                     <div className='level2-arrow6'><img src={require("./Untitledarrow2.png")} alt=""/></div>
                     <div className='level2-arrow7'><img src={require("./Untitledarrow3.png")} alt=""/></div>
-                    <div onClick={this.handleStart} className="level2-start">Click Here To Start</div>
+                    <div onClick={this.handleStart}> <button className="level2-start"> Click To Start</button></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="level2-1 boxes"></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="level2-2 boxes"></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="level2-3 boxes"></div>
@@ -109,9 +139,9 @@ class Level2 extends React.Component {
                     <div onMouseEnter={e => this.handleMouseEnter(e,'t')} className={!this.state.start ? "level2-27 invisible hide-boxes" : 'level2-27 invisible show-boxes' }></div>
                     <div onMouseEnter={this.spellFinished} className={!this.state.start ? "level2-28 invisible hide-boxes" : 'level2-28 invisible show-boxes' }></div>
                     <SketchField 
-                        height='700px'
+                        height='680px'
                         tool={Tools.Pencil} 
-                        lineColor='black'
+                        lineColor='white'
                         lineWidth={10} 
                         blur='10'
                         />
