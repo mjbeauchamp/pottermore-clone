@@ -4,6 +4,7 @@ import Jump from 'react-reveal/Jump';
 import HeadShake from 'react-reveal/HeadShake';
 import {SketchField, Tools} from 'react-sketch';
 import swal from 'sweetalert2';
+import Particles from 'react-particles-js'
 
 
 class Level1 extends React.Component {
@@ -57,13 +58,10 @@ class Level1 extends React.Component {
     spellFinished = () => {
         let finalPoints = this.state.points;
         let newArray = this.state.score.map(val => val).sort().join("");
-        console.log(newArray)
         if (newArray === this.state.score.join("")) {
-            console.log('yes')
             if(finalPoints >= 15 ){
-                console.log('Great job Harry!!');
                 swal({
-                    title: `Great Job ${this.state.currentUser.username}`,
+                    title: `Great Job, ${this.state.currentUser.username}!`,
                     showConfirmButton: false,
                     timer: 1000
                 })
@@ -72,20 +70,26 @@ class Level1 extends React.Component {
                     success: true,
                     visible: false
                 })
-            } else if (finalPoints >= 5) {
-                console.log("Almost there!")
+            } else if (finalPoints >= 13) {
+                swal({
+                    title: `Almost there, ${this.state.currentUser.username}!`,
+                    showConfirmButton: false,
+                    timer: 1000
+                })
                 this.setState({ 
                     almost: true,
                     visible: false
                 })
             } else {
-                console.log('Try harder!')
+                swal({
+                    title: `Try Harder, ${this.state.currentUser.username}!`,
+                    showConfirmButton: false,
+                    timer: 1000
+                })
                 this.setState({ fail: true})
             }
         } else {
-            console.log('Try harder!')
         }
-        console.log(this.state.score.join())
     }
     handleStart = () => {
         this.setState({start: true})
@@ -93,6 +97,12 @@ class Level1 extends React.Component {
     render() {
     return(
         <section className='spell-section'>
+                <div>
+                <button className='castspell-back-btn' onClick={this.props.handleSpellsList} >BACK</button>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <div className='spell-box'>
                 <div className='level1-arrow1'><img src={require("./Untitledarrow2.png")} alt=""/></div>
                 <div className='level1-arrow2'><img src={require("./Untitledarrow2.png")} alt=""/></div>
@@ -101,7 +111,7 @@ class Level1 extends React.Component {
                 <div className='level1-arrow5'><img src={require("./Untitledarrow2.png")} alt=""/></div>
                 <div className='level1-arrow6'><img src={require("./Untitledarrow2.png")} alt=""/></div>
 
-                <div onClick={this.handleStart} className="level1-start">Click Here To Start</div>
+                <div onClick={this.handleStart}> <button className="level1-start"> Click To Start</button></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="visible-1 boxes"></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="visible-2 boxes"></div>
                     <div onMouseEnter={e => this.handleMouseEnter(e)} className="visible-3 boxes"></div>
@@ -127,12 +137,13 @@ class Level1 extends React.Component {
                     <div onMouseEnter={e => this.handleMouseEnter(e,'p')} className={!this.state.start ? "box-24 invisible hide-boxes" : 'box-24 invisible show-boxes' }></div>
                     <div onMouseEnter={this.spellFinished} className={!this.state.start ? "box-13 invisible hide-boxes" : 'box-13 invisible show-boxes' }></div>
                     <SketchField 
-                        height='700px'
+                        height='680px'
                         tool={Tools.Pencil} 
-                        lineColor='black'
+                        lineColor='white'
                         lineWidth={10} 
                         blur='10'
                         />
+                </div>
                 </div>
                 <div className='spell-image'>
 

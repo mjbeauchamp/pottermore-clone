@@ -31,6 +31,7 @@ const styles = {
             <section className='header'>
             <Zoom duration={3000}>
                 <div className='header-text'>
+
                     {Wizard}
                 </div>
             </Zoom >    
@@ -46,6 +47,7 @@ const styles = {
                 </Fade>
               
             </section>
+
             
             <section className='news'>
             <Fade bottom duration={2000}>
