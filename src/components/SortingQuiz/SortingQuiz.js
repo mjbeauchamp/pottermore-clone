@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {NavLink} from 'react-router-dom'
 import swal from 'sweetalert2'
-import {Redirect} from 'react-router-dom'
 
 
 class SortingQuiz extends Component{
@@ -176,9 +175,7 @@ class SortingQuiz extends Component{
                 allowOutsideClick:false
             })
 
-            axios.put(`/api/sortingquiz/house/${house}`).then( req => {
-                console.log(house)
-            })
+            axios.put(`/api/sortingquiz/house/${house}`).then( req => {})
 
             if (house) {
                 swal({
@@ -249,40 +246,42 @@ class SortingQuiz extends Component{
             
             <div className="SortingQuiz">
 
-            <NavLink className = 'backbtn' to = '/quizHome'> X  </NavLink>
 
                 <div className = 'questioncontainer'>
+                    <NavLink className = 'backbtn' to = '/quizHome'> X  </NavLink>
 
-                    <div className = 'questiontext'>
+                    <div className = 'questiontext'  style = {{backgroundImage:`url('${this.state.backgroundimage}')`}}>
                         {this.state.sortingQuestion.question}
                     </div>
 
                 </div>
                 <div className = 'answercontainer'>
+                    <div className = 'answerdiv'>
+                        <div className = 'answertoggleupdiv'>
+                            <button onClick = {this.decreaseAIndex} className = 'answertoggleup'>
+                                {/* Previous Answer */}
+                            </button>
+                        </div>
 
-                    <div className = 'answertoggleup'>
-                        <button onClick = {this.decreaseAIndex}>
-                            Previous Answer
-                        </button>
-                    </div>
+                        <div className = 'answertext'>
+                            {this.state.questionAnswer[this.state.index]}
 
-                    <div className = 'answertext'>
-                        {this.state.questionAnswer[this.state.index]}
+                        </div>
+
+                        <div className = 'answertoggledowndiv'>
+                            <button onClick = {this.increaseAIndex} className = 'answertoggledown'>
+                                {/* Next Answer */}
+                            </button>
+                        </div>
                     </div>
 
                     <div className = 'bottombtns'>
 
-                        <div className = 'answertoggledown'>
-                            <button onClick = {this.increaseAIndex}>
-                                Next Answer
-                            </button>
-                        </div>
-
-                        <button className = 'answerselectbtn' onClick = {this.newAnswerBtn}>
-                            Push me, I dare you!
+                        <button className = 'answerselectbtn' id = 'selectbtn' onClick = {this.newAnswerBtn}>
+                            Select
                         </button>
-
                     </div>
+
 
                 </div>
                 <div className = 'footer'>
