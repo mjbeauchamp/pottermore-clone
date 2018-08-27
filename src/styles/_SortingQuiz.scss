@@ -22,7 +22,7 @@
             text-decoration: none;           
         }
         .questiontext {
-            margin: 45% auto;
+            margin: 35% auto;
             width: 90%;
             height: 90%;
             font-size:24px;
@@ -38,26 +38,52 @@
         align-items: center;
         background-color: purple;
 
-        .answertoggleup {
-            width: 75px;
-            height: 50px;
+        .answerdiv{
+            height:500px;
+            padding:10% 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            .answertoggleup {
+                width: 0; 
+                height: 0; 
+                border-left: 25px solid transparent;
+                border-right: 25px solid transparent;            
+                border-bottom: 25px solid green;
+            }
+            .answertext {
+                font-size:24px;
+                margin:130px;
+            }
+            .answertoggledown {
+                width: 0px;
+                height: 0px;
+                border-top: 25px solid green;
+                border-left: 25px solid transparent;
+                border-right: 25px solid transparent;
+                position: absolute;
+                bottom: 10px;
+                left:50%;
+                transform:translate(-50%)
+            }
+
         }
-        .answertext {
-            padding-top: 25%;
-            width: 300px;
-            height: 400px;
-            font-size:24px;
-        }
-        .answertoggledown {
-            width: 75px;
-            height: 50px;
-        }
+
         .answerselectbtn {
-            width: 75px;
+            margin: auto;
+            width: 60px;
             height: 30px;
-            background-color: rgb(123, 122, 145);
-            border-radius: 10px;
-            border:1px solid black;
+            background-color: rgb(255, 255, 255);
+            border-radius: 2px;
+            box-shadow: 3px 4px 10px rgb(49, 49, 49);
+            transition: 0.5s;
+        }
+
+        .answerselectbtn:hover{
+            color: white;
+            background-color: rgb(129, 146, 161);
+            box-shadow: 3px 4px 10px rgb(184, 184, 184);
         }
     }
 

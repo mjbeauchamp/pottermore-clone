@@ -19,24 +19,18 @@ class QuizHome extends React.Component {
                 <CursorTrail/>
 
                 <div>
-                    {/* nav bar will go here*/}
                     <Navbar {...this.props}/>
                 </div>
 
-                <div className = 'quizhometop'>
+                <div className = 'quizhome'>
                     <div className = 'quiztoptext'>Welcome to class</div>
-                </div>
-
-                <section className = 'sortingQuiz'>
-                    <NavLink className = 'sortingquizlink' to = '/sortingquiz'>
-                        <div className = 'sortingquiztext'>
-                            Sorting Hat
-                        </div>
-                    </NavLink>
-                </section>
-
-                <div>
-                    {/*This is where the footer will go.*/}
+                    <section className = 'sortingQuiz'>
+                        <NavLink className = 'sortingquizlink' to = '/sortingquiz'>
+                            <div className = 'sortingquiztext'>
+                                Sorting Hat
+                            </div>
+                        </NavLink>
+                    </section>
                 </div>
 
             </div>

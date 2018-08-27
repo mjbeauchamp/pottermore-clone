@@ -256,30 +256,32 @@ class SortingQuiz extends Component{
 
                 </div>
                 <div className = 'answercontainer'>
+                    <div className = 'answerdiv'>
+                        <div className = 'answertoggleupdiv'>
+                            <button onClick = {this.decreaseAIndex} className = 'answertoggleup'>
+                                {/* Previous Answer */}
+                            </button>
+                        </div>
 
-                    <div className = 'answertoggleup'>
-                        <button onClick = {this.decreaseAIndex}>
-                            Previous Answer
-                        </button>
-                    </div>
+                        <div className = 'answertext'>
+                            {this.state.questionAnswer[this.state.index]}
 
-                    <div className = 'answertext'>
-                        {this.state.questionAnswer[this.state.index]}
+                        </div>
+
+                        <div className = 'answertoggledowndiv'>
+                            <button onClick = {this.increaseAIndex} className = 'answertoggledown'>
+                                {/* Next Answer */}
+                            </button>
+                        </div>
                     </div>
 
                     <div className = 'bottombtns'>
 
-                        <div className = 'answertoggledown'>
-                            <button onClick = {this.increaseAIndex}>
-                                Next Answer
-                            </button>
-                        </div>
-
-                        <button className = 'answerselectbtn' onClick = {this.newAnswerBtn}>
+                        <button className = 'answerselectbtn' id = 'selectbtn' onClick = {this.newAnswerBtn}>
                             Select
                         </button>
-
                     </div>
+
 
                 </div>
                 <div className = 'footer'>
