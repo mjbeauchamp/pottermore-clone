@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Corben|Special+Elite');
+@import url('https://fonts.googleapis.com/css?family=Corben|Special+Elite|Princess+Sofia');
 .home  {
     .header {
         background-image:linear-gradient(rgba(0, 0, 0, 0.479), rgba(0, 0, 0, 0.521)), url(https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/background.jpg);
@@ -9,12 +9,26 @@
     }
     .header-text {
         position: relative;
-        top: 40%;
+        top: 30%;
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
         stroke: rgb(216, 215, 215);
         stroke-width: 2px;
+        font-family: 'Princess Sofia';
         fill: rgb(216, 215, 215);
+        p {
+            margin-bottom: 20px;
+            font-size: 25px;
+            margin-left: -100px;
+        }
+        span {
+            margin-left: -80px;
+            font-size: 60px;
+            display: inline-block;
+            margin-bottom: 7px;
+            color: white;
+        }
     }
     .store {
         background-image: url('https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/stone.jpg');
