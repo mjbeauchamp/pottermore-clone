@@ -13,10 +13,6 @@ export default class Gryffindor extends React.Component {
     }
 
     componentDidMount = () => {
-        axios.get('https://www.potterapi.com/v1/characters/?house=Ravenclaw&key=$2a$10$OzX6uXIalwnz48Y.oPJuk.vt5VUMvdZc.FMoY.4PPibGHry0t8Pjm')
-        .then(response => {
-            this.setState({ famous: response.data})
-        }).catch(err => console.log(err))
         axios.get("/api/current_user")
             .then(response => {
                 if(response.data[0].id){
@@ -44,10 +40,10 @@ export default class Gryffindor extends React.Component {
 
     return (
         <div className='house'>
-            <section className='house-logo'>
-                <img src="https://vignette.wikia.nocookie.net/jspotter/images/e/e2/Gryffindor_House_Crest.png/revision/latest?cb=20140720030308" alt=""/>
+            <section className='house-logo' id='slytherin'>
                 <h1>{this.state.currentUser.first_name} {this.state.currentUser.last_name}</h1>
-                <h2>Welcome back to your house page</h2>
+                <h2>Welcome to your house page</h2>
+                <img src="https://vignette.wikia.nocookie.net/harrypotter/images/d/d3/0.61_Slytherin_Crest_Transparent.png/revision/latest?cb=20161020182557" alt=""/>
             </section>
             <section className='house-about'>
                 <div className='house-about-div'>
@@ -63,50 +59,39 @@ export default class Gryffindor extends React.Component {
             </section>
 
             <section className='castspell-section'>
-                <div className="castspell-div">
-                    <Link className="castspell-link" to="/castspell">Learn to cast magic spells!</Link>
-                </div>
+                <div className="castspell-div"></div>
+                <div className="link-div">
+                        <Link className="castspell-link" to="/castspell"> Learn to cast<br />magic spells!</Link>
+                    </div>
             </section>
 
-            <section className='house-famous'>
-                <h2>Famous Slytherin characters</h2>
-                <hr/>
+            <section className='house-famous slytherin-famous'>
+                <h2>Famous Slytherin Characters</h2>
+                <div className='line' style={{background: 'white', height: '2px', margin: '40px 0px'}}></div>
                 <div className='house-famous-list'>
                     <div className='house-famous-info'>
-                        <img src="https://www.pptgrounds.com/wp-content/uploads/2012/10/Abstract-Colors-Gradient-Backgrounds-1000x750.jpg" alt=""/>
-                        <h2>{newArr[0]}</h2>
+                        <div className='tom'></div>
+                        <h2>Tom Riddle</h2>
                     </div>
                     <div className='house-famous-info'>
-                        <img src="https://www.pptgrounds.com/wp-content/uploads/2012/10/Abstract-Colors-Gradient-Backgrounds-1000x750.jpg" alt=""/>
-                        <h2>{newArr[1]}</h2>
+                        <div className='draco'></div>
+                        <h2>Draco Malfoy</h2>
                     </div>
                     <div className='house-famous-info'>
-                        <img src="https://www.pptgrounds.com/wp-content/uploads/2012/10/Abstract-Colors-Gradient-Backgrounds-1000x750.jpg" alt=""/>
-                        <h2>{newArr[2]}</h2>
+                        <div className='snape'></div>
+                        <h2>Severus Snape</h2>
                     </div>
                     <div className='house-famous-info'>
-                        <img src="https://www.pptgrounds.com/wp-content/uploads/2012/10/Abstract-Colors-Gradient-Backgrounds-1000x750.jpg" alt=""/>
-                        <h2>{newArr[3]}</h2>
-                    </div>
-                    <div className='house-famous-info'>
-                        <img src="https://www.pptgrounds.com/wp-content/uploads/2012/10/Abstract-Colors-Gradient-Backgrounds-1000x750.jpg" alt=""/>
-                        <h2>{newArr[4]}</h2>
-                    </div>
-                    <div className='house-famous-info'>
-                        <img src="https://www.pptgrounds.com/wp-content/uploads/2012/10/Abstract-Colors-Gradient-Backgrounds-1000x750.jpg" alt=""/>
-                        <h2>{newArr[5]}</h2>
-                    </div>
-                    <div className='house-famous-info'>
-                        <img src="https://www.pptgrounds.com/wp-content/uploads/2012/10/Abstract-Colors-Gradient-Backgrounds-1000x750.jpg" alt=""/>
-                        <h2>{newArr[6]}</h2>
+                        <div className='pansy'></div>
+                        <h2>Pansy Parkinson</h2>
                     </div>
                 </div>
             </section>
 
-            <section className='house-welcome'>
-                <h2>Slytherin Welcome Message</h2>
-                <h3>By J.K. Rowling</h3>
-                <div className='house-welcome-msg'>
+            <section className='house-about'>
+                <div className='house-about-div'>
+                <h3>Slytherin Welcome Message</h3>
+                <h2>By J.K. Rowling</h2>
                     <p>Congratulations! I’m Prefect Gemma Farley, and I’m delighted to welcome you to SLYTHERIN HOUSE. Our emblem is the serpent, the wisest of creatures; our house colours are emerald green and silver, and our common room lies behind a concealed entrance down in the dungeons. As you’ll see, its windows look out into the depths of the Hogwarts lake. We often see the giant squid swooshing by – and sometimes more interesting creatures. We like to feel that our hangout has the aura of a mysterious, underwater shipwreck.</p>
                     <br/>
                     <p>Now, there are a few things you should know about Slytherin – and a few you should forget. Firstly, let’s dispel a few myths. You might have heard rumours about Slytherin house – that we’re all into the Dark Arts, and will only talk to you if your great-grandfather was a famous wizard, and rubbish like that. Well, you don’t want to believe everything you hear from competing houses. I’m not denying that we’ve produced our share of Dark wizards, but so have the other three houses – they just don’t like admitting it. And yes, we have traditionally tended to take students who come from long lines of witches and wizards, but nowadays you’ll find plenty of people in Slytherin house who have at least one Muggle parent.

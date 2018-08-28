@@ -44,10 +44,10 @@ export default class Gryffindor extends React.Component {
 
     return (
         <div className='house'>
-            <section className='house-logo'>
-                <img src="https://vignette.wikia.nocookie.net/jspotter/images/e/e2/Gryffindor_House_Crest.png/revision/latest?cb=20140720030308" alt=""/>
+            <section className='house-logo' id="hufflepuff">
                 <h1>{this.state.currentUser.first_name} {this.state.currentUser.last_name}</h1>
-                <h2>Welcome back to your house page</h2>
+                <h2>Welcome to your house page</h2>
+                <img src="https://vignette.wikia.nocookie.net/harrypotter/images/5/50/0.51_Hufflepuff_Crest_Transparent.png/revision/latest?cb=20161020182518" alt=""/>
             </section>
             <section className='house-about'>
                 <div className='house-about-div'>
@@ -63,50 +63,39 @@ export default class Gryffindor extends React.Component {
             </section>
 
             <section className='castspell-section'>
-                <div className="castspell-div">
-                    <Link className="castspell-link" to="/castspell">Learn to cast magic spells!</Link>
-                </div>
+                <div className="castspell-div"></div>
+                <div className="link-div">
+                        <Link className="castspell-link" to="/castspell"> Learn to cast<br />magic spells!</Link>
+                    </div>
             </section>
 
-            <section className='house-famous'>
-                <h2>Famous Hufflepuff characters</h2>
-                <hr/>
+            <section className='house-famous hufflepuff-famous'>
+                <h2>Famous Hufflepuff Characters</h2>
+                <div className='line'></div>
                 <div className='house-famous-list'>
                     <div className='house-famous-info'>
-                        <img src="https://www.pptgrounds.com/wp-content/uploads/2012/10/Abstract-Colors-Gradient-Backgrounds-1000x750.jpg" alt=""/>
-                        <h2>{newArr[0]}</h2>
-                    </div>
-                    <div className='house-famous-info'>
-                        <img src="https://www.pptgrounds.com/wp-content/uploads/2012/10/Abstract-Colors-Gradient-Backgrounds-1000x750.jpg" alt=""/>
-                        <h2>{newArr[1]}</h2>
-                    </div>
-                    <div className='house-famous-info'>
-                        <img src="https://www.pptgrounds.com/wp-content/uploads/2012/10/Abstract-Colors-Gradient-Backgrounds-1000x750.jpg" alt=""/>
+                        <div className='susan'></div>
                         <h2>{newArr[2]}</h2>
                     </div>
                     <div className='house-famous-info'>
-                        <img src="https://www.pptgrounds.com/wp-content/uploads/2012/10/Abstract-Colors-Gradient-Backgrounds-1000x750.jpg" alt=""/>
+                        <div className='cedric'></div>
                         <h2>{newArr[3]}</h2>
                     </div>
                     <div className='house-famous-info'>
-                        <img src="https://www.pptgrounds.com/wp-content/uploads/2012/10/Abstract-Colors-Gradient-Backgrounds-1000x750.jpg" alt=""/>
-                        <h2>{newArr[4]}</h2>
+                        <div className='hannah'></div>
+                        <h2>{newArr[0]}</h2>
                     </div>
                     <div className='house-famous-info'>
-                        <img src="https://www.pptgrounds.com/wp-content/uploads/2012/10/Abstract-Colors-Gradient-Backgrounds-1000x750.jpg" alt=""/>
+                        <div className='helga'></div>
                         <h2>{newArr[5]}</h2>
-                    </div>
-                    <div className='house-famous-info'>
-                        <img src="https://www.pptgrounds.com/wp-content/uploads/2012/10/Abstract-Colors-Gradient-Backgrounds-1000x750.jpg" alt=""/>
-                        <h2>{newArr[6]}</h2>
                     </div>
                 </div>
             </section>
 
-            <section className='house-welcome'>
-                <h2>Hufflepuff Welcome Message</h2>
-                <h3>By J.K. Rowling</h3>
-                <div className='house-welcome-msg'>
+            <section className='house-about'>
+                <div className='house-about-div'>
+                    <h3>Hufflepuff Welcome Message</h3>
+                    <h2>By J.K. Rowling</h2>
                     <p>Congratulations! I’m Prefect Gabriel Truman, and I’m delighted to welcome you to HUFFLEPUFF HOUSE. Our emblem is the badger, an animal that is often underestimated, because it lives quietly until attacked, but which, when provoked, can fight off animals much larger than itself, including wolves. Our house colours are yellow and black, and our common room lies one floor below the ground, on the same corridor as the kitchens.</p>
                     <br/>
                     <p>Now, there are a few things you should know about Hufflepuff house. First of all, let’s deal with a perennial myth about the place, which is that we’re the least clever house. WRONG. Hufflepuff is certainly the least boastful house, but we’ve produced just as many brilliant witches and wizards as any other. Want proof? Look up Grogan Stump, one of the most popular Ministers for Magic of all time. He was a Hufflepuff – as were the successful Ministers Artemesia Lufkin and Dugald McPhail. Then there’s the world authority on magical creatures, Newt Scamander; Bridget Wenlock, the famous thirteenth-century Arithmancer who first discovered the magical properties of the number seven, and Hengist of Woodcroft, who founded the all-wizarding village of Hogsmeade, which lies very near Hogwarts School. Hufflepuffs all.</p>
