@@ -95,7 +95,7 @@ class SignUp extends Component {
                         value={this.state.password}
                         maxLength="25"/>
                     <button className="auth-submit button" onClick={this.newUser}>Submit</button>
-                    <p className="signup-btn">Already have account? <span className='auth-span'  onClick={this.props.handleToggle}>Login </span></p>
+                    <p className="signup-btn">Already have account? <span className='auth-span'  onClick={this.props.handleToggle}> LOGIN </span></p>
                     
                 </div>
         )

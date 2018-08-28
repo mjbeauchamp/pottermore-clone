@@ -17,7 +17,7 @@
         height: 80vh;
         width: 400px;
         margin: 150px auto 0 auto;
-        padding-top: 20px;
+        padding-top: 55px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -59,33 +59,38 @@
         letter-spacing: 2px;
         color: white;
     }
-    .signup-btn { margin: 10px }
+    .signup-btn { 
+        margin: 10px;
+        margin-top: 20px;
+        border-radius: 2px;
+        font-family: 'Stoke';
+    }
 
     input{
         font-size: 16px;
         width: 300px;
-        border-radius: 10px;
+        border-radius: 5px;
         padding: 10px;
         margin: 10px auto;
         box-shadow: 3px 3px 10px black;
         outline: none;
     }
-    .auth-submit { 
+    .auth-submit {
         font-size: 20px;
-        background-color: rgb(22, 204, 6); 
-        padding: 10px;
+        background-color: #0F4C5C;
+        padding: 20px;
         width: 320px;
-        border-radius: 10px;
+        border-radius: 2px;
         color: #EAE6E5;
         margin: 10px auto;
         box-shadow: 3px 3px 10px black;
     }
-    
+
     .auth-green { color: rgb(58, 255, 32)}
     .auth-red { color: rgb(236, 57, 57)}
     p { color: white; }
     .auth-span{ 
-        color: #8F8073;
+        color: #bcb1a7;
         cursor: pointer;
      }
 

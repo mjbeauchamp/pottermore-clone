@@ -71,7 +71,7 @@ class Login extends Component {
                             value={this.state.password}/>
 
                         <button className="auth-submit button" onClick={this.login}>Submit</button>
-                        <p className="signup-btn">Don't have account? <span className='auth-span'  onClick={this.handleToggle}> Sign Up </span></p>
+                        <p className="signup-btn">Don't have account? <span className='auth-span'  onClick={this.handleToggle}> SIGN UP </span></p>
                     </div>
 
 
