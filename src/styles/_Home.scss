@@ -66,6 +66,7 @@
                 transform: translate(-50%, -50%);
                 font-family: 'Corben', cursive;
                 line-height: 80px;
+                cursor: pointer;
             }
     }
 
@@ -126,6 +127,12 @@
                 }
                 .gif-dumbl {
                     width: 270px;
+                    height: 200px;
+                    background-image: url("https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/giphy.gif");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    box-shadow: 10px 10px 50px 10px black inset, -10px -10px 50px 10px black inset, 0px 0px 20px black;
+                    margin-bottom: 5px;
                     filter: grayscale(100%);
                 }
                 .news-line_1 {
