@@ -2,7 +2,8 @@
 
 
 
-.quizhometop {
+.quizhome {
+
 height:100vh;
 width:100%;
 overflow: hidden;
@@ -11,14 +12,15 @@ background-size: cover;
 background-image: url('https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/classroom1.jpg');
 
     .quiztoptext {
-        padding:200px;
+        margin: 0 0 -50px 0;
+        padding:130px;
         font-size: 48px;
         color:white;
     }
 }
 
 .sortingQuiz {
-    margin: -150px auto 200px auto;
+    margin: auto;
     width:850px;
     height:350px;
     overflow: hidden;
@@ -30,6 +32,7 @@ background-image: url('https://s3-us-west-1.amazonaws.com/personal-project-1989/
 
     .sortingquizlink{
         text-decoration: none;
+        background-color: red;
     }
 
     .sortingquiztext {
@@ -37,6 +40,6 @@ background-image: url('https://s3-us-west-1.amazonaws.com/personal-project-1989/
         width: 100%;
         height: 100%;
         color:white;
-        font-size: 24px;
+        font-size: 36px;
     }
 }
