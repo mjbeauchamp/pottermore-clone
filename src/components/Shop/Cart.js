@@ -30,7 +30,7 @@ class Cart extends Component{
             }
         })
         .catch(err=>{
-            swal("Fuck man, LOG IN DAMNIT!", err)
+            swal("might want to log in.", err)
         });
         axios.get('/api/cart').then(items=>{
             this.setState({
@@ -38,6 +38,8 @@ class Cart extends Component{
             })
         })
         this.getCartDetails();
+
+        
     }
     
     getCartDetails=()=>{
@@ -52,7 +54,7 @@ class Cart extends Component{
     handleAddItem=(id, quantity)=>{
             axios.put(`/api/cart/${id}/${quantity}`).then((res)=>{
             this.setState({
-                details:res.data
+                products:res.data
             })
         })
     }
@@ -76,6 +78,13 @@ class Cart extends Component{
                     products:res.data
                 })
             })
+    }
+    handleDeleteCart=()=>{
+        axios.delete('/api/cart').then(res=>{
+            this.setState({
+                products:res.data
+            })
+        })
     }
 
     render(){
@@ -109,14 +118,12 @@ class Cart extends Component{
                     Continue Shopping            
                     </Link>
                 <div className='cart-items'>
-                
-                
-                
-
                   {items}
-                  <div className='cart-footer'>
+                  <div className='cart-checkout'>
                     <h4>Tax:${tax}</h4>
+                    <hr/>
                     <h4>Cart Total:${(Number(total)+Number(tax)).toFixed(2)}</h4>
+                    <button onClick={this.handleDeleteCart}>Checkout</button>
                     </div>
                 </div>
                 </div>

@@ -1,0 +1,304 @@
+.house {
+    height: 100vh;
+    width: 100%;
+    .house-famous-info div {
+        width: 100px;
+        height: 100px;
+        background-size: cover;
+        border-radius: 50%;
+        display: flex;
+    }
+    .house-famous-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #hufflepuff {
+        background:linear-gradient(rgba(215, 148, 3, 0.932), rgba(252, 252, 252, 0) ) #f2b800;
+        img {
+            width: 100px;
+        }
+    }
+    .hufflepuff-famous {
+        background-color: #f2b800;
+        .hannah {
+            background-image: url('https://i.pinimg.com/originals/ac/32/d4/ac32d40ee2a40534aa8da9b813d6ca85.png');
+        }
+        .susan {
+            background-image: url('https://vignette.wikia.nocookie.net/harrypotter/images/c/ce/Susan_bones.PNG/revision/latest?cb=20090728222447');
+        }
+        .cedric {
+            background-image: url('https://media1.popsugar-assets.com/files/thumbor/kUXLVSr1VNWIZmNMzX49yV4zlLw/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2010/05/19/3/192/1922283/bdayslide19/i/Before-He-Robert-Pattinson.jpg');
+        }
+        .helga {
+            background-image: url('https://i.pinimg.com/originals/b0/1c/c2/b01cc248fe103b8f10e81e807cf4cce6.jpg');
+        }
+    }
+    #ravenclaw {
+        background-color: #004e80;
+        color:white;
+        h1 {
+            color: white;
+        }
+        img {
+            width: 100px;
+        }
+    }
+    .ravenclaw-famous {
+        background-color: #004e80;
+        color: white;
+        .line {
+            background-color: white;
+        }
+        .chang {
+            background-image: url('https://vignette.wikia.nocookie.net/non-aliencreatures/images/4/41/Cho_Chang.png/revision/latest?cb=20170307234913');
+        }
+        .penelope {
+            background-image: url('https://vignette.wikia.nocookie.net/harrypotter/images/4/4b/Pepe4.jpg/revision/latest?cb=20160830005853');
+        }
+        .marietta {
+            background-image: url('https://vignette.wikia.nocookie.net/harrypotter/images/3/3f/Marietta1.jpg/revision/latest?cb=20120313191620&path-prefix=pl');
+        }
+        .filius {
+            background-image: url('https://vignette.wikia.nocookie.net/harrypotter/images/d/da/Flitwick.png/revision/latest?cb=20131021032814');
+        }
+    }
+
+    #slytherin {
+        background-color: #003e00;
+        color:white;
+        h1 {
+            color: white;
+        }
+        img {
+            width: 100px;
+        }
+    }
+    .slytherin-famous {
+        background-color: #003e00;
+        color: white;
+        .pansy {
+            background-image: url('https://vignette.wikia.nocookie.net/harrypotter/images/4/4b/Pansy_HBP.PNG/revision/latest?cb=20100522164449');
+        }
+        .tom {
+            background-image: url('https://vignette.wikia.nocookie.net/harrypotter/images/6/6d/Tom_Riddle_%2816_years_old%29.jpg/revision/latest?cb=20100706215126');
+        }
+        .draco {
+            background-image: url('https://pm1.narvii.com/6822/86ee4c765ffca4aa542b1da68d34000994a23e61v2_hq.jpg');
+        }
+        .snape {
+            background-image: url('https://vignette.wikia.nocookie.net/harrypotterwiki2/images/8/8e/Snape_As_He_First_Sees_Harry_1.png/revision/latest/scale-to-width-down/250?cb=20110605043457');
+            background-position: (-15px)
+        }
+    }
+    #gryffindor {
+        background-color: #8d0000;
+        color: white;
+        h1 {
+            color: white;
+        }
+        img {
+            width: 100px;
+        }
+    }
+    .gryffindor-famous {
+        background-color: #8d0000;
+        color: white;
+        .katie {
+            background-image: url('http://cdn.staticneo.com/w/harrypotter/thumb/c/c1/Katiebellib.PNG/200px-Katiebellib.PNG');
+        }
+        .sirius {
+            background-image: url('https://3.bp.blogspot.com/-y1Aai89B5_o/VwXWSVawzSI/AAAAAAAAA9Q/iaNd09WxYrY5u4Q_yLGvtSEwPziy_6qpQ/s320/Sirius%2BBlack.png');
+        }
+        .dumbledore {
+            background-image: url('https://i.pinimg.com/originals/37/7c/89/377c895a5fc7d44bff586db1918c8765.png');
+        }
+        .lavender {
+            background-image: url('https://vignette.wikia.nocookie.net/thehungergames/images/5/50/Lavender_Brown_2.png/revision/latest?cb=20120609155741');
+        }
+    }
+
+    .house-logo { 
+        padding-bottom: 30px;
+        h1{
+            font-size: 48px;
+            font-family: 'Stoke', serif;
+            padding-top: 145px;
+        }
+        h2 {
+            font-size: 50px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-family: 'Tangerine' 
+        }
+    }
+    .house-about {
+        background-color: #e8e8e4;
+        padding: 20px;
+        padding-top: 0px;
+        font-family: 'Vollkorn';
+        padding-bottom: 90px;
+        .house-about-div {
+            background-color: rgb(255, 255, 255);
+            box-shadow: 2px 2px 5px rgb(90, 90, 90);
+            width: 900px;
+            margin: auto;
+            height: auto;
+            padding: 60px 70px 90px 70px;
+            font-size: 20px;
+            word-spacing: 4px;
+            line-height: 1.5;
+            h3{
+                font-size: 50px;
+            }
+            h2 {
+                font-size: 30px;
+                margin-bottom: 20px;
+            }
+        }
+        img {
+            width: 50px;
+            margin: 20px;
+        }
+    }
+    .house-famous {
+        padding: 50px;
+        .house-famous-list {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .img {
+            width: 100px;
+            height: 100px;
+            border-radius:50%;
+        }
+
+        h2:first-child{
+            font-family: 'Stoke', serif;
+            font-size: 45px;
+        }
+        .line {
+            background: black;
+            width: 100%;
+            height: 3px;
+            margin-top: 20px;
+        }
+        h2 {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    }
+    .house-welcome {
+        background-color: rgb(15, 84, 141);
+        padding: 50px;
+        h3 {
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+        .house-welcome-msg {
+            margin: 50px;
+            width: 500px;
+            padding: 50px; 
+            margin: auto;
+            background-color: rgb(170, 163, 163);
+        }
+    }
+
+}
+
+.castspell-section {
+    background-color: #e8e8e4;
+    padding: 20px;
+    height: 75vh;
+    margin-top: -30px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+        .castspell-div {
+            position: absolute;
+            filter: blur(5px);
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Harry_Potter_Book_and_Wand.jpg/1024px-Harry_Potter_Book_and_Wand.jpg');
+            box-shadow: 2px 2px 5px rgb(90, 90, 90);
+            width: 900px;
+            margin: auto;
+            height: 500px;
+            padding: 20px;
+            padding-top: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .castspell-link {
+
+            font-family: 'Corben', cursive;
+            text-transform: uppercase;
+            text-decoration: none;
+            word-spacing: 5px;
+            font-size: 40px;
+            text-align: center;
+            letter-spacing: 2px;
+            line-height: 50px;
+            color: white;
+        }
+    .link-div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        width: 440px;
+        height: 250px;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        margin-bottom: 190px;  
+        box-shadow: 0px 0px 30px 5px black;    
+    }
+}
+
+h1 {
+    /* Dark red */
+    color: #3f1519; 
+    /* red */
+    color: #641918;
+    /* light red */
+    color: #A71D31;
+    /* Ravenclaw blue */
+    color: #003D5B;
+    /* dark yellow */
+    color: #EDAE49;
+    /* gold */
+    color: #FB8B24;
+    /* off-white, cool */
+    color: #EAE6E5;
+    /* dove gray */
+    color: #8F8073;
+    /* light gray */
+    color: #EAE6E5;
+    color: #DCCCA3;
+    /* dark brown */
+    color: #231C07;
+    /* charcoal */
+    color: #1E2D24;
+    /* dark gray */
+    color: #30332E;
+    /* purple dark gray */
+    color: #2D2327;
+    /* dark blue */
+    color: #2D3047;
+    /* warm blue */
+    color: #0F4C5C;
+    /* light blue */
+    color: #2176AE;
+    /* dark green */
+    color: #2A433B;
+    /* bright green */
+    color: #23850B;
+    /* medium green */
+    color: #144906;
+    color: #103D05;
+    /* dark green */
+    color: #0A2503;
+}

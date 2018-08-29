@@ -1,14 +1,13 @@
 @import 'reset';
-@import url('https://fonts.googleapis.com/css?family=Corben|Domine|Vollkorn|Stoke|Satisfy');
+@import url('https://fonts.googleapis.com/css?family=Corben|Domine|Vollkorn|Stoke|Satisfy|Tangerine|Sacramento');
 @import 'Navbar';
 @import 'Home';
 @import 'SpinNews';
 @import 'QuizHome';
-@import 'Login';
 //imports work just like a css stylesheet.  the order that they are imported is the order they are implemeted
 @import 'auth_pages';
 @import 'SortingQuiz';
 @import 'Storefront';
 @import 'Cart';
-@import 'Gryffindor';
+@import 'UserDashboard';
 @import 'CastSpell';

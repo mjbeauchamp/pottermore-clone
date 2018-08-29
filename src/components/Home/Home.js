@@ -29,12 +29,12 @@ const styles = {
         <div className='home'>
         <NavBar {...this.props} />
             <section className='header'>
-            <Zoom duration={3000}>
+            <Fade duration={5000}>
                 <div className='header-text'>
-
+                    <p style={{color: 'white'}} ><span>Welcome</span> <br/> to the </p> 
                     {Wizard}
                 </div>
-            </Zoom >    
+            </Fade >    
             </section>
             <section className='store' >
                 <div className='spinnews' >
@@ -66,7 +66,8 @@ const styles = {
                                 <p className='just'>Hogwarts Headmaster, founder of the Order of the Phoenix, with a fondness for sherbet lemons and knitting patterns. Hogwarts Headmaster, founder of the Order of the Phoenix, with a fondness for sherbet lemons and knitting patterns</p>
                             </div>
                             <div className='gif'>
-                                <img className='gif-dumbl' src="https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/giphy.gif" alt="dumbledore"/>
+                             <div className='gif-dumbl'></div>
+                                {/* <img className='gif-dumbl' src="https://s3-us-west-1.amazonaws.com/personal-project-1989/Group-Project/giphy.gif" alt="dumbledore"/> */}
                                 <p>Hogwarts Headmaster, founder of the Order of the Phoenix, with a fondness for sherbet lemons and knitting patterns</p>
                             </div>
                             <div>
