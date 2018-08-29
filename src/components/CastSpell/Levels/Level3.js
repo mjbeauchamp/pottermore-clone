@@ -143,8 +143,19 @@ class Level3 extends React.Component {
 
                 <div className='spell3-animation'>
                     <div className={this.state.success ? 'light-on' : 'light-off'}></div>
-                    <div className='img'>
-                        <img src="https://images.vexels.com/media/users/3/143180/isolated/preview/0b795437b59ba8597108706c48dad543-lightbulb-illustration-by-vexels.png" alt=""/>
+                    <div className='candle1'>
+                        <img src="https://pngimg.com/uploads/candle/candle_PNG7276.png" alt=""/>
+                        {/* https://images.vexels.com/media/users/3/143180/isolated/preview/0b795437b59ba8597108706c48dad543-lightbulb-illustration-by-vexels.png */}
+                    </div> 
+                    <div className={this.state.success ? 'light-on' : 'light-off'}></div>
+                    <div className='candle2'>
+                        <img src="https://pngimg.com/uploads/candle/candle_PNG7276.png" alt=""/>
+                        {/* https://images.vexels.com/media/users/3/143180/isolated/preview/0b795437b59ba8597108706c48dad543-lightbulb-illustration-by-vexels.png */}
+                    </div> 
+                    <div className={this.state.success ? 'light-on' : 'light-off'}></div>
+                    <div className='candle3'>
+                        <img src="https://pngimg.com/uploads/candle/candle_PNG7276.png" alt=""/>
+                        {/* https://images.vexels.com/media/users/3/143180/isolated/preview/0b795437b59ba8597108706c48dad543-lightbulb-illustration-by-vexels.png */}
                     </div>    
                 </div>
 
