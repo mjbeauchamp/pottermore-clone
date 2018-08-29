@@ -145,21 +145,22 @@ class Level1 extends React.Component {
                         />
                 </div>
                 </div>
+
                 <div className='spell-image'>
 
                 <div className={this.state.visible ? 'feder' : 'feder2'}>
-                    <img src="https://vignette.wikia.nocookie.net/tractors/images/4/40/Feather.svg/revision/latest?cb=20130119142802" alt=""/>
+                    <img className="feather" width="180px" src="https://i.pinimg.com/originals/74/86/5f/74865f616f843734ad2514eb81632a03.png" alt=""/>
                 </div>
 
                 <div className={this.state.success ? 'feder' : 'feder2'}>
                     <Jump when={this.state.success} delay={1000} duration={4000}>
-                        <img src="https://vignette.wikia.nocookie.net/tractors/images/4/40/Feather.svg/revision/latest?cb=20130119142802" alt=""/>
+                        <img className="feather" width="180px" src="https://i.pinimg.com/originals/74/86/5f/74865f616f843734ad2514eb81632a03.png" alt=""/>
                     </Jump>
                 </div>
 
                 <div className={this.state.almost ? 'feder' : 'feder2'}>
                     <HeadShake when={this.state.almost} count={2} duration={2000}>
-                    <img src="https://vignette.wikia.nocookie.net/tractors/images/4/40/Feather.svg/revision/latest?cb=20130119142802" alt=""/>
+                    <img className="feather" width="180px" src="https://i.pinimg.com/originals/74/86/5f/74865f616f843734ad2514eb81632a03.png" alt=""/>
                     </HeadShake>
                 </div>
 
