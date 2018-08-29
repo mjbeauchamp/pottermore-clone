@@ -27,7 +27,7 @@ class QuizHome extends React.Component {
                     <section className = 'sortingQuiz'>
                         <NavLink className = 'sortingquizlink' to = '/sortingquiz'>
                             <div className = 'sortingquiztext'>
-                                Sorting Hat
+                                Discover Your Hogwarts House
                             </div>
                         </NavLink>
                     </section>

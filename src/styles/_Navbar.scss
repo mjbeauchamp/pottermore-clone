@@ -81,6 +81,7 @@
     }
 
     .nav-mid:hover {
+        cursor: pointer;
         animation: snitch-hover 2s infinite ease-in;
 
         #snitch-left{
