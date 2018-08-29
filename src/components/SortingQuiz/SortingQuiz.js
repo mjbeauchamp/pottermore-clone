@@ -259,7 +259,6 @@ class SortingQuiz extends Component{
                     <div className = 'answerdiv'>
                         <div className = 'answertoggleupdiv'>
                             <button onClick = {this.decreaseAIndex} className = 'answertoggleup'>
-                                {/* Previous Answer */}
                             </button>
                         </div>
 
@@ -270,7 +269,6 @@ class SortingQuiz extends Component{
 
                         <div className = 'answertoggledowndiv'>
                             <button onClick = {this.increaseAIndex} className = 'answertoggledown'>
-                                {/* Next Answer */}
                             </button>
                         </div>
                     </div>
