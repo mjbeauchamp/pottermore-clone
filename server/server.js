@@ -51,13 +51,15 @@ app.get('/auth/logout', authControllers.logout);
 
 app.get('/api/current_user', authControllers.current_user);
 
-// Here will lie the endpoints for the sorting quiz.
+// Here will lie the endpoints for the quiz pages.
 
 app.get('/api/sortingquiz/questions', sqControllers.sortingQuestions)
 
 app.get('/api/sortingquiz/answers', sqControllers.sortingAnswers)
 
 app.put('/api/sortingquiz/house/:housename', sqControllers.schoolHouse)
+
+app.get(`/api/quizhome/togglequizselect`, authControllers.getHouse)
 
 //Add an item to the user's cart
 app.post('/api/cart', storeControllers.addToCart)
