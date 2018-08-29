@@ -149,12 +149,12 @@ class Level2 extends React.Component {
                 <div className='spell-image'>
 
                 <div className={this.state.visible ? 'feder' : 'feder2'}>
-                    <img src="https://vignette.wikia.nocookie.net/tractors/images/4/40/Feather.svg/revision/latest?cb=20130119142802" alt=""/>
+                    <img width="200px" src="http://pngimg.com/uploads/apple/apple_PNG12455.png" alt=""/>
                 </div>
 
                 <div className={this.state.success ? 'feder' : 'feder2'}>        
                     <Fade when={this.state.success} delay={1500} duration={1500} >
-                        <img src="https://i.pinimg.com/originals/1d/10/e7/1d10e72e0c5a39af8398489a1adffc38.png" alt=""/>
+                        <img width="100px" src="https://vignette.wikia.nocookie.net/disney/images/b/ba/Naveen_Frog_transparent.png/revision/latest?cb=20180227205838" alt=""/>
                     </Fade>
                 </div>
                 <div className={this.state.almost ? 'feder' : 'feder2'}>

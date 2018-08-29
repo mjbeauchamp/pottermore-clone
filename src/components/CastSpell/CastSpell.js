@@ -131,39 +131,39 @@ export default class CastSpell extends React.Component {
             <Carousel defaultWait={300000}>
 
                 <Slide right>
-                    <div className='castspell-container'>
-                        <div className='level-1-svg'>
-                            {level1svg}
-                        </div>
-                        <Fade duration={8000}>
-                            <div className='spell-name'>
-                                <p className='pp' onClick={this.handleLevel1} >Wingardium Leviosa</p>
-                            </div>
-                        </Fade >
-                    </div>
-                </Slide>
-
-                <Slide right>
-                    <div className='castspell-container'>
+                    <div className='castspell-container' onClick={this.handleLevel2}>
                         <div className='level-1-svg'>
                             {level3svg}
                         </div>
                         <Fade duration={8000}>
                             <div className='spell-name'>
-                                <p className='pp' onClick={this.handleLevel2} >Bufonem Emittunt</p>
+                                <p className='pp'  >Bufonem Emittunt</p>
                             </div>
                         </Fade >
                     </div>
                 </Slide>
 
                 <Slide right>
-                    <div className='castspell-container'>
+                    <div className='castspell-container' onClick={this.handleLevel1}>
+                        <div className='level-1-svg'>
+                            {level1svg}
+                        </div>
+                        <Fade duration={8000}>
+                            <div className='spell-name'>
+                                <p className='pp'  >Wingardium Leviosa</p>
+                            </div>
+                        </Fade >
+                    </div>
+                </Slide>
+
+                <Slide right>
+                    <div className='castspell-container' onClick={this.handleLevel3}>
                         <div className='level-1-svg'>
                             {level2svg}
                         </div>
                         <Fade duration={8000}>
                             <div className='spell-name'>
-                                <p className='pp' onClick={this.handleLevel3} >Lumos</p>
+                                <p className='pp'  >Lumos</p>
                             </div>
                         </Fade >
                     </div>

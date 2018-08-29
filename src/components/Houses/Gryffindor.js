@@ -29,8 +29,6 @@ export default class Gryffindor extends React.Component {
             .catch(err => console.log(err));
     }
 
-
-
     render() {
         let newArr = []
         if (this.state.famous[0]) {
