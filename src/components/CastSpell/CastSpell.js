@@ -129,7 +129,6 @@ export default class CastSpell extends React.Component {
                 </div>
             <section className='castspell-background'>
             <Carousel defaultWait={300000}>
-
                 <Slide right>
                     <div className='castspell-container' onClick={this.handleLevel2}>
                         <div className='level-1-svg'>

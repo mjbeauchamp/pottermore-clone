@@ -40,6 +40,7 @@ class UserDashboard extends Component{
 
     render(){
         let gryf, slyt, raven, huffl
+ 
         if(this.state.wizards[0]){
             if (this.state.wizards[0].house_id === 2){
                 gryf = <Gryffindor/>
@@ -57,9 +58,6 @@ class UserDashboard extends Component{
                 this.props.history.push('/quizhome')
             }
         }
-        
-        
-        
         if (this.state.currentUser)
         return (
             <div>
