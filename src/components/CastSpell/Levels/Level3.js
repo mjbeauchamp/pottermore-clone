@@ -142,10 +142,22 @@ class Level3 extends React.Component {
                 <div className='spell-image'>
 
                 <div className='spell3-animation'>
-                    <div className={this.state.success ? 'light-on' : 'light-off'}></div>
-                    <div className='img'>
-                        <img src="https://images.vexels.com/media/users/3/143180/isolated/preview/0b795437b59ba8597108706c48dad543-lightbulb-illustration-by-vexels.png" alt=""/>
-                    </div>    
+                    <div className={this.state.success ? 'light-on1' : 'light-off1'}></div>
+                    <div className='candle1'>
+                        <img src={this.state.success ? "https://pngimg.com/uploads/candle/candle_PNG7276.png": require('./candle-out.png')} alt=""/>
+                        {/* https://images.vexels.com/media/users/3/143180/isolated/preview/0b795437b59ba8597108706c48dad543-lightbulb-illustration-by-vexels.png */}
+                    </div>
+                    <div className={this.state.success ? 'light-on2' : 'light-off2'}></div>
+                    <div className={this.state.success ? 'light-on2' : 'light-off2'}></div>
+                    <div className='candle2'>
+                        <img src={this.state.success ? "https://pngimg.com/uploads/candle/candle_PNG7276.png": require('./candle-out.png')} alt=""/>
+                        {/* https://images.vexels.com/media/users/3/143180/isolated/preview/0b795437b59ba8597108706c48dad543-lightbulb-illustration-by-vexels.png */}
+                    </div>
+                    <div className={this.state.success ? 'light-on3' : 'light-off3'}></div>
+                    <div className='candle3'>
+                        <img src={this.state.success ? "https://pngimg.com/uploads/candle/candle_PNG7276.png": require('./candle-out.png')} alt=""/>
+                        {/* https://images.vexels.com/media/users/3/143180/isolated/preview/0b795437b59ba8597108706c48dad543-lightbulb-illustration-by-vexels.png */}
+                    </div>
                 </div>
 
                 {/* <div className={this.state.success ? 'feder' : 'feder2'}>

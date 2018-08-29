@@ -31,7 +31,7 @@ app.use(session({
 
 app.use(bodyParser.json());
 
-//app.use( express.static( `${__dirname}/../build` ) );
+app.use( express.static( `${__dirname}/../build` ) );
 
 //ENDPOINTS
 
