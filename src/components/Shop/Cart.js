@@ -22,17 +22,25 @@ class Cart extends Component{
     componentDidMount(){
         axios.get("/api/current_user")
         .then(response => {
-            if(response.data[0].id){
                 this.setState({
                     currentUser: response.data[0],
                     userId: response.data[0].id
                 })
-            }
+        }).catch(err=>{
+            swal({
+                title: "Looks like you're not logged in!",
+                animation: false,
+                customClass: 'animated tada'
+              })
         })
-        .catch(err=>{
-            swal("might want to log in.", err)
-        });
         axios.get('/api/cart').then(items=>{
+            if(items.data.length<=0){
+                swal({
+                    title: 'Looks like you have an empty cart!',
+                    animation: false,
+                    customClass: 'animated tada'
+                  })
+            }
             this.setState({
                 products:items.data
             })
@@ -58,32 +66,57 @@ class Cart extends Component{
             })
         })
     }
-    handleDeleteItem=()=>{
-        const {id} = this.props
-        console.log('DELETEITEM',id)
-        axios.put('/api/delete',{id}).then(res=>{
-            console.log(res.data)
-                axios.get('/api/details').then(updatedCart=>{
-                    this.setState({
-                        details:updatedCart
-                    })
+    // handleDeleteItem=()=>{
+    //     const {id} = this.props
+    //     axios.put('/api/delete',{id}).then(res=>{
+    //             axios.get('/api/details').then(updatedCart=>{
+    //                 this.setState({
+    //                     details:updatedCart
+    //                 })
                     
-                })
-            })
-    }
+    //             })
+    //         }).catch(err=>{
+    //             swal({
+    //                 title: 'Custom animation with Animate.css',
+    //                 animation: false,
+    //                 customClass: 'animated tada'
+    //               })
+    //         })
+    // }
     handleDeleteProduct=(id)=>{
         axios.delete(`/api/product/${+id}`,).then(res=>{
-            console.log(res.data)
-                this.setState({
-                    products:res.data
-                })
+            if(res.data.length<=0){
+                
+            }
+            this.setState({
+                products:res.data
+            })
+            }).catch(err=>{
+                swal(err)
             })
     }
     handleDeleteCart=()=>{
+        if(this.state.products.length<=0){
+            return swal({
+                title: "Unable to buy nothing",
+                animation: false,
+                customClass: 'animated tada'
+              })
+
+        }
         axios.delete('/api/cart').then(res=>{
             this.setState({
                 products:res.data
             })
+            swal({
+                position: 'center',
+                type: 'success',
+                title: 'Your order has been placed',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }).catch(err=>{
+            console.log(err)
         })
     }
 
@@ -103,7 +136,7 @@ class Cart extends Component{
                     price={e.product_price}
                     image={e.product_image}
                     description={e.product_description}
-                    delete={this.handleDeleteItem}
+                    // delete={this.handleDeleteItem}
                     add={this.handleAddItem}
                     deleteProduct={this.handleDeleteProduct}
                 />
