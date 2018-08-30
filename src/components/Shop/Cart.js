@@ -148,15 +148,15 @@ class Cart extends Component{
             <div className='cart-main'>
             <Navbar{...this.props}/>
                     <Link className='cs' to ='/store'>
-                    Continue Shopping            
+                    <p>Continue Shopping</p>         
                     </Link>
                 <div className='cart-items'>
                   {items}
-                  <div className='cart-checkout'>
-                    <h4>Tax:${tax}</h4>
-                    <hr/>
-                    <h4>Cart Total:${(Number(total)+Number(tax)).toFixed(2)}</h4>
-                    <button onClick={this.handleDeleteCart}>Checkout</button>
+                    <div className='cart-checkout'>
+                        <h4>Tax:${tax}</h4>
+                        <hr/>
+                        <h4>Cart Total:${(Number(total)+Number(tax)).toFixed(2)}</h4>
+                        <button onClick={this.handleDeleteCart}>Checkout</button>
                     </div>
                 </div>
                 </div>
