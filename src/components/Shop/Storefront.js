@@ -110,14 +110,10 @@ class Storefront extends Component{
                 title: 'Uh-Oh'
               })
             console.log(err)
-        
         })
     }
 
-    
-    
     render(){
-            
             let products = this.state.filter.map(e=>{
             return(
                     <Products
@@ -157,15 +153,15 @@ class Storefront extends Component{
                     <div className="cart-quantity">
                         <Link to='/cart'>
                         <i className="fas fa-shopping-cart fa-3x"><p>{this.state.quantity}</p></i>
-                    
+
                         </Link>
                     </div>
                     </div>
-                    
+
                     </div>
                     <div className='store-products'>
                         {products}
-                        {this.state.selectedProduct.id && 
+                        {this.state.selectedProduct.id &&
                         <Item
                         wholeThing = {this.state.selectedProduct}
                         toggle={this.toggleSelectedProduct}/>
