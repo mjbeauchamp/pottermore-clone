@@ -25,15 +25,24 @@
 }
 .cs{
     box-shadow:2px 2px 3px black;
-    background-color:#DCCCA3;
+    background-color:#EAE6E5;
     margin: 0 auto;
     text-decoration: none;
-    color:white;
-    margin-top:155px;
-    padding:10px;
-    height:55px;
-    width:100px;
+    color:black;
+    margin-top:145px;
+    padding: 10px;
+    height:65px;
+    width:130px;
+    border-radius: 2px;
+    font-family: "Stoke", sans-serif;
+    p {
+        padding-bottom: 5px;
+        margin: 5px;
+    }
+}
 
+.cs:hover {
+    
 }
 
 .cart-card{

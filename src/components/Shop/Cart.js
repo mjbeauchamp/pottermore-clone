@@ -185,7 +185,7 @@ class Cart extends Component{
             <div className='cart-main'>
             <Navbar{...this.props}/>
                     <Link className='cs' to ='/store'>
-                    Continue Shopping            
+                    <p>Continue Shopping</p>         
                     </Link>
                 <div className='cart-items'>
                   {items}
