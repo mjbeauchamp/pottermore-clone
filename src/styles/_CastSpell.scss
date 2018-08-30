@@ -1,4 +1,6 @@
 .castSpell {
+    width: 100%;
+    height: 100vh;
     .castspell-nav-container {
         display: none;
     }
@@ -23,13 +25,10 @@
             position: relative;
             width: calc(100% - 800px);
             background-image: url('https://pre00.deviantart.net/720f/th/pre/f/2013/338/5/5/pottermore_background___gryffindor_common_room_1_by_xxtayce-d6wp5ot.jpg');
+            background-position: -150px 0px; 
             background-size: cover;
             height: 100vh;
-            img{
-                position: absolute;
-                top: 25%;
-                left: 25%;
-            }
+            overflow: hidden;
         }
         .spell-box {
             position: relative;
@@ -41,20 +40,44 @@
     .castspell-background {
         background-image: url('https://pre00.deviantart.net/720f/th/pre/f/2013/338/5/5/pottermore_background___gryffindor_common_room_1_by_xxtayce-d6wp5ot.jpg');
         background-size: cover;
-        background-position: 0 -50px;
         width: 100%;
         height: 100vh;
     }
+    .feather{
+        transform: rotateY(180deg) rotate(310deg);
+        position: absolute;
+        top: 300px;
+        left: 300px;
+    }
     .feder { 
         display: block;
-        transition: 1.5s;
+        transition: 3s;
         transition-delay: 1s;
+        // transform: rotateY(180deg) rotate(310deg);
+        position: relative;
      }
     .feder2 { 
         opacity: 0;
-        transition: 1.5s;
+        transition: 3s;
         transition-delay: 1s;
+        transform: rotateY(360deg) rotate(380deg);
+        position: relative;
+        
      }
+
+     .apple {
+
+        position: absolute;
+        top: 410px;
+        left: 190px;
+     }
+
+     .frog {
+        position: absolute;
+        top: 440px;
+        left: 180px;
+     }
+
     .invisible {
         background-color: green;
         position: absolute;
@@ -75,27 +98,91 @@
     .show-boxes { display: block }
     .spell3-animation {
         position: relative;
-        .img { 
+        .candle1 { 
             width: 100px;
             position: absolute;
-            top: 120px;
-            left: 100px;
-            img {width: 100px}
+            top: 370px;
+            left: 526px;
+            img {width: 110px};
+            z-index: 10;
+            transition: 2s all;
         }
-        .light-on {
-            background-color: #fff;
-            display: block;
-            width: 40px;
-            height: 40px;
+        .candle2 { 
+            width: 100px;
+            position: absolute;
+            top: 380px;
+            left: 116px;
+            img {width: 110px};
+            transition: 2s all;
+        }
+        .candle3 { 
+            width: 100px;
+            position: absolute;
+            top: 345px;
+            left: 365px;
+            img {width: 110px};
+            z-index: 10;
+            transition: 2s all;
+        }
+        .candle-on {
+            opacity: 1;
+            transition: 2s;
+            transition-delay: 1s;
+            position: absolute;
+            left: 20px;
+        }
+        .candle-off {
+            opacity: 0;
+            transition: 2s;
+            transition-delay: 1s;
+            position: absolute;
+            left: 20px;
+        }
+        .light-on1 {
+            background-color:white;
+            opacity: 1;
             border-radius: 50%;
             position: absolute;
-            top: 140px;
-            left: 155px;
-            box-shadow: 0px 0px 200px 100px yellow;
+            top: 425px;
+            left: 168px;
+            box-shadow: 0px 0px 200px 100px #F3E37C;
             transition: 2s;
             transition-delay: 1s;
         }
-        .light-off { 
+        .light-on2 {
+            background-color: #fff;
+            opacity: 1;
+            border-radius: 50%;
+            position: absolute;
+            top: 368px;
+            left: 418px;
+            box-shadow: 0px 0px 200px 100px #F3E37C;
+            transition: 2s;
+            transition-delay: 1s;
+        }
+        .light-on3 {
+            background-color: #fff;
+            opacity: 1;
+            border-radius: 50%;
+            position: absolute;
+            top: 398px;
+            left: 578px;
+            box-shadow: 0px 0px 200px 100px #F3E37C;
+            transition: 2s;
+            transition-delay: 1s;
+            z-index: 0;
+        }
+        .light-off1 { 
+            opacity: 0;
+            transition: 2s;
+            transition-delay: 1s;
+        }
+        .light-off2 { 
+            opacity: 0;
+            transition: 2s;
+            transition-delay: 1s;
+        }
+        .light-off3 { 
             opacity: 0;
             transition: 2s;
             transition-delay: 1s;
@@ -106,6 +193,7 @@
     /////   svg animations 
     .castspell-container {
         margin-top: 30px;
+        cursor: pointer;
         .pp{
             margin-top: 20px;
             color: white;

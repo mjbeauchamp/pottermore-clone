@@ -19,9 +19,9 @@ class Item extends Component{
                 </div>
                 <div className="item-body">
                 <img src={this.props.wholeThing.product_image} alt="product"/>
-                    <h3>{this.props.wholeThing.product_description}</h3>
+                    <p>{this.props.wholeThing.product_description}</p>
                     <hr/>
-                    <h3>{this.props.wholeThing.product_price}</h3>
+                    <p>{this.props.wholeThing.product_price}</p>
                 </div>
 
                     

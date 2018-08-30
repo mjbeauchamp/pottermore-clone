@@ -81,8 +81,16 @@
 			],
 			"request": {
 				"method": "GET",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Jack Sparrow\",\n\t\"file_name\": \"orange\",\n\t\"id\": \"1\"\n}"
+				},
 				"url": {
 					"raw": "http://localhost:4000/auth/all_usernames",
 					"protocol": "http",

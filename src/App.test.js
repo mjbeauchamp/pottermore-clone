@@ -45,6 +45,4 @@ describe("Logging in", () => {
             expect(res).toBeDefined()
         })
     })
-
-
 })

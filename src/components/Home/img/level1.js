@@ -2,9 +2,9 @@ import React from 'react'
 
 export default 
 <svg width="400" height="350" viewBox="0 0 1098 765" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="1097.49" height="723.245" fill="black" fill-opacity="0"/>
+<rect width="1097.49" height="723.245" fill="black" fillOpacity="0"/>
 <g filter="url(#filter0_d)">
-<path className='svg-spell-1' d="M247.564 137.316C345.636 109.13 398.675 267.803 367.652 341.92C355.643 387.852 269.58 427.52 247.564 479.715C226.219 562.184 274.962 656.463 327 693C370.031 730.58 518.762 728.644 576.805 711.462C714.906 655.091 769.36 544.804 755.936 437.959C745.664 356.208 657.864 301.208 669.873 253.189C685.884 220.828 726.914 166.545 844 166.545" stroke="white" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+<path className='svg-spell-1' d="M247.564 137.316C345.636 109.13 398.675 267.803 367.652 341.92C355.643 387.852 269.58 427.52 247.564 479.715C226.219 562.184 274.962 656.463 327 693C370.031 730.58 518.762 728.644 576.805 711.462C714.906 655.091 769.36 544.804 755.936 437.959C745.664 356.208 657.864 301.208 669.873 253.189C685.884 220.828 726.914 166.545 844 166.545" stroke="white" strokeWidth="35" strokeLinecap="round" strokeLinejoin="round"/>
 </g>
 <path className='svg-level1-stars-1' d="M92.8057 445.546L100.682 459.08L114.463 451.646L106.681 465.233L120.009 473.452L104.351 473.506L103.898 489.158L96.0221 475.624L82.2408 483.058L90.0229 469.47L76.6945 461.252L92.3528 461.198L92.8057 445.546Z" fill="white"/>
 <path className='svg-level1-stars-2' d="M949.806 322.546L957.682 336.08L971.463 328.646L963.681 342.233L977.009 350.452L961.351 350.506L960.898 366.158L953.022 352.624L939.241 360.058L947.023 346.47L933.695 338.252L949.353 338.198L949.806 322.546Z" fill="white"/>
@@ -18,8 +18,8 @@ export default
 <path className='svg-level1-stars-3' d="M902.141 385.105L907.971 395.123L918.172 389.62L912.411 399.678L922.277 405.761L910.687 405.801L910.351 417.387L904.521 407.369L894.32 412.872L900.081 402.814L890.215 396.731L901.805 396.691L902.141 385.105Z" fill="white"/>
 <path className='svg-level1-stars-3' d="M1073.14 425.105L1078.97 435.123L1089.17 429.62L1083.41 439.678L1093.28 445.761L1081.69 445.801L1081.35 457.387L1075.52 447.369L1065.32 452.872L1071.08 442.814L1061.22 436.731L1072.81 436.691L1073.14 425.105Z" fill="white"/>
 <defs>
-<filter id="filter0_d" x="209.922" y="100.499" width="676.578" height="664.246" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<filter id="filter0_d" x="209.922" y="100.499" width="676.578" height="664.246" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+<feFlood floodOpacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
 <feOffset dx="5" dy="4"/>
 <feGaussianBlur stdDeviation="15"/>

@@ -17,8 +17,8 @@ module.exports = {
     },
 
     login: () => {
-        let username = "crookshanks";
-        let password = "boo";
+        let username = "monypony99";
+        let password = "cricket18";
         return axios.post("http://localhost:4000/auth/login", {username: username, password: password})
                 .then(res => {
                     return res.data
