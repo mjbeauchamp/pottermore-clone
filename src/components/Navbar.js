@@ -13,10 +13,8 @@ class Navbar extends Component {
     }
 
     componentDidMount(){
-        console.log('did mount')
         axios.get("/api/current_user")
             .then(response => {
-                console.log(response.data)
                 if(response.data[0].id){
                     this.setState({
                         currentUser: response.data[0],
