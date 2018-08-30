@@ -141,10 +141,13 @@ class Cart extends Component{
                 timer: 3000
               });
               
-              toast({
+              swal({
+                position: 'center',
                 type: 'success',
-                title: 'Item added!'
-              })
+                title: 'Thanks for your order',
+                showConfirmButton: false,
+                timer: 3000
+            })
           }).then( () => this.props.history.push('store') );
 
         axios.delete('/api/cart')
