@@ -24,7 +24,6 @@ class Storefront extends Component{
         axios.get("/api/current_user")
         .then(response => {
             if(response.data[0].id){
-                console.log(response.data[0].id)
                 this.setState({
                     currentUser: response.data[0],
                     userID: response.data[0].id
@@ -118,7 +117,6 @@ class Storefront extends Component{
     
     
     render(){
-            console.log(this.state.cart)
             
             let products = this.state.filter.map(e=>{
             return(
