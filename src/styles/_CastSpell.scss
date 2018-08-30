@@ -105,13 +105,15 @@
             left: 526px;
             img {width: 110px};
             z-index: 10;
+            transition: 2s all;
         }
         .candle2 { 
             width: 100px;
             position: absolute;
             top: 380px;
             left: 116px;
-            img {width: 110px}
+            img {width: 110px};
+            transition: 2s all;
         }
         .candle3 { 
             width: 100px;
@@ -120,12 +122,25 @@
             left: 365px;
             img {width: 110px};
             z-index: 10;
+            transition: 2s all;
+        }
+        .candle-on {
+            opacity: 1;
+            transition: 2s;
+            transition-delay: 1s;
+            position: absolute;
+            left: 20px;
+        }
+        .candle-off {
+            opacity: 0;
+            transition: 2s;
+            transition-delay: 1s;
+            position: absolute;
+            left: 20px;
         }
         .light-on1 {
             background-color:white;
-            display: block;
-            width: 10px;
-            height: 10px;
+            opacity: 1;
             border-radius: 50%;
             position: absolute;
             top: 425px;
@@ -136,9 +151,7 @@
         }
         .light-on2 {
             background-color: #fff;
-            display: block;
-            width: 10px;
-            height: 10px;
+            opacity: 1;
             border-radius: 50%;
             position: absolute;
             top: 368px;
@@ -149,9 +162,7 @@
         }
         .light-on3 {
             background-color: #fff;
-            display: block;
-            width: 10px;
-            height: 10px;
+            opacity: 1;
             border-radius: 50%;
             position: absolute;
             top: 398px;
