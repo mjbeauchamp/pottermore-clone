@@ -4,6 +4,8 @@ import Items from './Items';
 import {Link} from 'react-router-dom';
 import Navbar from '../Navbar';
 import swal from 'sweetalert2';
+import StripeCheckout from 'react-stripe-checkout';
+
 
 
 class Cart extends Component{
@@ -14,8 +16,9 @@ class Cart extends Component{
             details:[],
             currentUser:{},
             userId:null,
-            products:[]
-        }
+            products:[],
+            price:0
+         }
 
 
     }
@@ -41,8 +44,15 @@ class Cart extends Component{
                     customClass: 'animated tada'
                   })
             }
+            let total = items.data.reduce((acc,product)=>{
+                let cost = (Number(product.product_price.replace(/[$]+/g, '')*product.quantity))
+                return (acc + cost)
+              }, 0);
+                let tax = Number((total)+(total * 0.0685) ).toFixed(2)
+                console.log(typeof tax)
             this.setState({
-                products:items.data
+                products:items.data,
+                price:tax
             })
         })
         this.getCartDetails();
@@ -86,7 +96,7 @@ class Cart extends Component{
     handleDeleteProduct=(id)=>{
         axios.delete(`/api/product/${+id}`,).then(res=>{
             if(res.data.length<=0){
-                
+
             }
             this.setState({
                 products:res.data
@@ -112,15 +122,42 @@ class Cart extends Component{
                 position: 'center',
                 type: 'success',
                 title: 'Your order has been placed',
-                showConfirmButton: false,
+                showConfirmButton: true,
                 timer: 1500
             })
         }).catch(err=>{
             console.log(err)
         })
     }
+    onToken = (token) => {
+        token.card = void 0;
+        axios.post('/api/payment', { token, amount: this.state.price} ).then(response => { 
+            const toast = swal.mixin({
+                toast: true,
+                position: 'center',
+                heightAuto: false,
+                showConfirmButton: false,
+                background: 'rgb(82, 194, 8)',
+                timer: 3000
+              });
+              
+              toast({
+                type: 'success',
+                title: 'Item added!'
+              })
+          }).then( () => this.props.history.push('store') );
+
+        axios.delete('/api/cart')
+        .then(response => { 
+            this.props.empty(response.data)
+        })
+        .catch(err => console.log(err));
+      }
+
+
 
     render(){
+        console.log( this.state.price)
       let total = this.state.products.reduce((acc,product)=>{
         let cost = (Number(product.product_price.replace(/[$]+/g, '')*product.quantity))
         return (acc + cost)
@@ -152,12 +189,42 @@ class Cart extends Component{
                     </Link>
                 <div className='cart-items'>
                   {items}
-                    <div className='cart-checkout'>
-                        <h4>Tax:${tax}</h4>
-                        <hr/>
-                        <h4>Cart Total:${(Number(total)+Number(tax)).toFixed(2)}</h4>
-                        <button onClick={this.handleDeleteCart}>Checkout</button>
+                  
+                  
+                  {/* <div className="checkout">
                     </div>
+                    <h4>Tax:${tax}</h4>
+                    <hr/>
+                    <h4>Cart Total:${(Number(total)+Number(tax)).toFixed(2)}</h4>
+                    <div className="stripe">
+                    <button>Checkout</button>
+                    
+                    <StripeCheckout
+                token={this.onToken}
+                stripeKey='pk_test_FUhDsB3c5yQRnUKpgDSJRTQK'
+                amount={{total}+{tax}*100}
+                />
+                </div> */}
+<div className='cart-checkout'>
+    <div className="checkout">
+        <div>
+            <h4>Tax:${tax}</h4>
+            <hr/>
+            <h4>Cart Total:${(Number(total)+Number(tax)).toFixed(2)}</h4>
+        </div>
+
+        <div className="stripe">
+        <div>
+            <StripeCheckout
+                token={this.onToken}
+                stripeKey='pk_test_FUhDsB3c5yQRnUKpgDSJRTQK'
+                amount={{total}+{tax}*100}
+                />
+        </div>        
+            <button>Checkout</button>
+        </div>
+    </div>
+</div>
                 </div>
                 </div>
             )
