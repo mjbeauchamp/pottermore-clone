@@ -138,6 +138,7 @@ class Storefront extends Component{
                     <p>to</p>
                     <h1 className='da'>DIAGON ALLEY</h1>
                     <div className="filter-cart">
+                    <label htmlFor="listFilter">Filter Cart: </label>
                     <select name="filter" id="listFilter"
                     onChange={(e)=>this.filterStore(e.target.value)}>
                     <option value = 'all'>All</option>
