@@ -90,7 +90,7 @@ class SortingQuiz extends Component{
 
     newAnswerBtn = async () => {
         
-        //house points************************
+        //*********house points******************
         
         switch (this.state.answerHouse[this.state.index]) {
             case 'Gryffindor':
@@ -189,7 +189,7 @@ class SortingQuiz extends Component{
 
         }
 
-        // splice array of used question*****
+        // *******splice array of used question*****
         
         
         var newQuestionsArr = this.state.sortingQuestions.filter( e => {
@@ -199,7 +199,7 @@ class SortingQuiz extends Component{
             sortingQuestions:newQuestionsArr
         })
         
-        // reset page***********************
+        // **********reset page***********************
         this.pageSetup(newQuestionsArr)
         
     }
@@ -238,10 +238,11 @@ class SortingQuiz extends Component{
     }
     
 
-    //*********************** could use points of houses for when to determine to end the quis instead of using an amount of questions************* */
     
     render (){
-        
+        console.log(111,this.state.index)
+        var answercircle = 'answercircle'
+        var notcurrentanswer = 'notcurrentanswer'
         return (
             
             <div className="SortingQuiz">
@@ -258,34 +259,34 @@ class SortingQuiz extends Component{
                 <div className = 'answercontainer'>
                     <div className = 'answerdiv'>
                         <div className = 'answertoggleupdiv'>
-                            <button onClick = {this.decreaseAIndex} className = 'answertoggleup'>
-                                {/* Previous Answer */}
-                            </button>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className = 'answertoggleup' onClick = {this.decreaseAIndex}>
+                            <path d="M256 64L96 433.062 110.938 448 256 384l145.062 64L416 433.062z"/></svg>
                         </div>
 
                         <div className = 'answertext'>
                             {this.state.questionAnswer[this.state.index]}
-
                         </div>
 
                         <div className = 'answertoggledowndiv'>
-                            <button onClick = {this.increaseAIndex} className = 'answertoggledown'>
-                                {/* Next Answer */}
-                            </button>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className = 'answertoggledown' onClick = {this.increaseAIndex}>
+                            <path d="M256 64L96 433.062 110.938 448 256 384l145.062 64L416 433.062z"/></svg>
                         </div>
                     </div>
 
                     <div className = 'bottombtns'>
-
+                        
                         <button className = 'answerselectbtn' id = 'selectbtn' onClick = {this.newAnswerBtn}>
                             Select
                         </button>
                     </div>
 
 
-                </div>
-                <div className = 'footer'>
-
+                    <div className = 'circlesContainer'>
+                        <div className = {`${answercircle}`}></div>
+                        <div className = {`${notcurrentanswer}`}></div>
+                        <div className = {`${notcurrentanswer}`}></div>
+                        <div className = {`${notcurrentanswer}`}></div>
+                    </div>
                 </div>
             </div>
         )

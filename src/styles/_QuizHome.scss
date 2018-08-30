@@ -19,6 +19,12 @@ background-image: url('https://s3-us-west-1.amazonaws.com/personal-project-1989/
     }
 }
 
+.practice {
+    width:100;
+    height:100;
+    background-color: grey;
+}
+
 .sortingQuiz {
     margin: auto;
     width:850px;
@@ -32,7 +38,6 @@ background-image: url('https://s3-us-west-1.amazonaws.com/personal-project-1989/
 
     .sortingquizlink{
         text-decoration: none;
-        background-color: red;
     }
 
     .sortingquiztext {
