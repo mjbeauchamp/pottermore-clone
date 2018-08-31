@@ -9,6 +9,7 @@ class Item extends Component{
     render(){
         
         return(
+        
         <div className='store-popup' onClick = {()=>this.props.toggle({})}>
 
 
