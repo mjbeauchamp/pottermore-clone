@@ -7,10 +7,13 @@ const authControllers = require('./controllers/auth-controllers');
 const sqControllers = require('./controllers/sqcontrollers');
 const storeControllers = require('./controllers/store-controllers');
 const session = require('express-session');
-const bypass = require('./middleware')
+const bypass = require('./middleware');
+const stripe=require('stripe')(process.env.STRIPE)
+
 
 
 const app = express();
+app.use(require("body-parser").text());
 
 let {
     SERVER_PORT,
@@ -81,6 +84,62 @@ app.put('/api/cart/:id/:quantity', storeControllers.update)
 
 // Dashboard
 app.get('/api/wizards', authControllers.getHouse);
+////////STRIPE////////
+// app.post("/charge", async (req, res) => {
+//     try {
+//       let {status} = await stripe.charges.create({
+//         amount: 1675,
+//         currency: "usd",
+//         description: "An example charge",
+//         source: req.body
+//       });
+  
+//       res.json({status});
+//     } catch (err) {
+//       res.status(500).end();
+//     }
+//   });
+
+
+
+app.post('/api/payment', function(req, res, next){
+    //convert amount to pennies
+    console.log(11111111111, typeof req.body)
+    const amountArray = req.body.amount.toString().split('');
+    const pennies = [];
+    for (var i = 0; i < amountArray.length; i++) {
+      if(amountArray[i] === ".") {
+        if (typeof amountArray[i + 1] === "string") {
+          pennies.push(amountArray[i + 1]);
+        } else {
+          pennies.push("0");
+        }
+        if (typeof amountArray[i + 2] === "string") {
+          pennies.push(amountArray[i + 2]);
+        } else {
+          pennies.push("0");
+        }
+          break;
+      } else {
+          pennies.push(amountArray[i])
+      }
+    }
+
+
+    const convertedAmt = parseInt(pennies.join(''));
+  
+    const charge = stripe.charges.create({
+    amount: convertedAmt, 
+    currency: 'usd',
+    source: req.body.token.id,
+    description: 'Test charge from react app'
+  }, function(err, charge) {
+      if (err) return res.sendStatus(500)
+      return res.sendStatus(200);
+      
+  });
+  })
+  //////////END STRIPE/////////////
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server docked in port ${SERVER_PORT}`)

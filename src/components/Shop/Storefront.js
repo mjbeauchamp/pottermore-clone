@@ -24,7 +24,6 @@ class Storefront extends Component{
         axios.get("/api/current_user")
         .then(response => {
             if(response.data[0].id){
-                console.log(response.data[0].id)
                 this.setState({
                     currentUser: response.data[0],
                     userID: response.data[0].id
@@ -94,7 +93,7 @@ class Storefront extends Component{
                   });
                   toast1({
                     type: 'success',
-                    title: 'Item added to trunk!'
+                    title: 'Item added to cart!'
                   })
                   this.setState({
                       quantity:this.state.quantity +=1
@@ -107,19 +106,14 @@ class Storefront extends Component{
               });
               
               toast2({
-                type: 'failure',
+                type: 'error',
                 title: 'Uh-Oh'
               })
             console.log(err)
-        
         })
     }
 
-    
-    
     render(){
-            console.log(this.state.cart)
-            
             let products = this.state.filter.map(e=>{
             return(
                     <Products
@@ -144,6 +138,7 @@ class Storefront extends Component{
                     <p>to</p>
                     <h1 className='da'>DIAGON ALLEY</h1>
                     <div className="filter-cart">
+                    <label htmlFor="listFilter">Filter Cart: </label>
                     <select name="filter" id="listFilter"
                     onChange={(e)=>this.filterStore(e.target.value)}>
                     <option value = 'all'>All</option>
@@ -159,15 +154,15 @@ class Storefront extends Component{
                     <div className="cart-quantity">
                         <Link to='/cart'>
                         <i className="fas fa-shopping-cart fa-3x"><p>{this.state.quantity}</p></i>
-                    
+
                         </Link>
                     </div>
                     </div>
-                    
+
                     </div>
                     <div className='store-products'>
                         {products}
-                        {this.state.selectedProduct.id && 
+                        {this.state.selectedProduct.id &&
                         <Item
                         wholeThing = {this.state.selectedProduct}
                         toggle={this.toggleSelectedProduct}/>

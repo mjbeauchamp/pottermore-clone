@@ -13,7 +13,7 @@ class Product extends Component{
                 <div className="product-footer">
                 <h3>{this.props.name}</h3>
                     <h3 className = 'money'>{this.props.price}</h3>
-                    <button className='' onClick={()=>this.props.handleAdd(this.props.id)}>Add to Cart</button>
+                    <button id='add-to-cart' onClick={()=>this.props.handleAdd(this.props.id)}>Add to Cart</button>
                 
                 </div>
 

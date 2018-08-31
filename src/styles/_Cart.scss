@@ -13,11 +13,6 @@
     h4{
         font-size: 25px;
     }
-    button{
-       
-        color:white;
-        padding:20px
-    }
     a{
         display:block;
         color:white;
@@ -30,15 +25,24 @@
 }
 .cs{
     box-shadow:2px 2px 3px black;
-    background-color:#DCCCA3;
+    background-color:#EAE6E5;
     margin: 0 auto;
     text-decoration: none;
-    color:white;
-    margin-top:155px;
-    padding:10px;
-    height:55px;
-    width:100px;
+    color:black;
+    margin-top:145px;
+    padding: 10px;
+    height:65px;
+    width:130px;
+    border-radius: 2px;
+    font-family: "Stoke", sans-serif;
+    p {
+        padding-bottom: 5px;
+        margin: 5px;
+    }
+}
 
+.cs:hover {
+    
 }
 
 .cart-card{
@@ -92,17 +96,44 @@
     color:#EDAE49;
 }
 .cart-checkout{
-    button{
-        color:black;
-    }
-    h4{
-    padding:10px;
-    }
     position:fixed;
     right:45px;
     top:260px;
     text-align:right;
-    background-color: #fff;
     height:auto;
-    width:auto;
+    width:230px;
+    .checkout {
+        position: relative;
+        height: 150px;
+        background-color: rgb(255, 255, 255);
+        width: 230px;
+        .stripe {
+            position: relative;
+            div {
+                position: absolute;
+                z-index: 13;
+                left: 50%;
+                width: 400px;
+                margin-top: -10px;
+                padding: 12px 30px;
+                transform: translate(-50%);
+                opacity: 0;
+            }
+                button {
+                    position: absolute;
+                    padding: 8px 30px;
+                    left: 50%;
+                    transform: translate(-50%);
+                }
+        }
+    }
+
+    h4{
+    padding:10px;
+    }
+
+}
+.stripe{
+    position:absolute;
+    
 }
