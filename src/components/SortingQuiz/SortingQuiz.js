@@ -293,7 +293,7 @@ class SortingQuiz extends Component{
 
                 <div className = 'questioncontainer'>
                     <img src={require('./../../QuizQuerys/' + questionImageArray[currentquestionindex] + '.png')} alt='No Image Available' className = 'images'/>
-                    <NavLink className = 'backbtn' to = '/quizHome'>   </NavLink>
+                    <NavLink className = 'backbtn' to = '/quizHome'> X  </NavLink>
                     {/* <div className = 'questiontext'  style = {{backgroundImage:`url('${this.state.backgroundimage}')`}}>
                         {this.state.sortingQuestion.question}
                     </div> */}
