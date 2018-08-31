@@ -19,7 +19,8 @@ class SortingQuiz extends Component{
             Hufflepuff:0,
             Ravenclaw:0,
             Slytherin:0,
-            clicks: 0
+            clicks: 0,
+            answerColors: ["#412198", "#354253", "#0f072b", "#506782", "#1d074e", "#531162", "#554b9d", "#7f1e45", "#1d3f46", "#37153a", "#602118", "#192470","#191a15","#42395a"]
         }
     }
 
@@ -237,55 +238,91 @@ class SortingQuiz extends Component{
         }
     }
     
+    getAnswerColor = () => {
+        var answerColor = this.state.answerColor[Math.floor(Math.random * this.state.answerColors.length)]
+        return answerColor;
+    }
 
     
     render (){
-        console.log(111,this.state.index)
-        var answercircle = 'answercircle'
+        var answercircle1 = ''
+        var answercircle2 = ''
+        var answercircle3 = ''
+        var answercircle4 = ''
+        var currentanswer = 'currentanswer'
         var notcurrentanswer = 'notcurrentanswer'
+
+        switch(this.state.index){
+            case 0: answercircle1 = currentanswer
+                    answercircle2 = notcurrentanswer
+                    answercircle3 = notcurrentanswer
+                    answercircle4 = notcurrentanswer
+                break;
+            case 1: answercircle2 = currentanswer
+                    answercircle1 = notcurrentanswer
+                    answercircle3 = notcurrentanswer
+                    answercircle4 = notcurrentanswer
+                break;
+            case 2: answercircle3 = currentanswer
+                    answercircle2 = notcurrentanswer
+                    answercircle1 = notcurrentanswer
+                    answercircle4 = notcurrentanswer
+                break;
+            case 3: answercircle4 = currentanswer
+                    answercircle2 = notcurrentanswer
+                    answercircle3 = notcurrentanswer
+                    answercircle1 = notcurrentanswer
+                break;
+        }
+
+
+        var currentquestionindex = 0
+        if (this.state.sortingQuestion.id) {
+            currentquestionindex = this.state.sortingQuestion.id -1
+        }
+     
+
+        var questionImageArray = ['CallHater','PostMortem','PotionChoice','History','EnchantedGarden','MusicOfTheEar',
+        '4boxes','FourGoblets','FlutterbyScentAttract','TrollItemSaver','Wouldyourather','DifficultDeal','whattolearn','','AnyPower',
+        'whattolearn','CheatingQuillQuery','RiverTrollBridge','WhichRoad','NightmareScare','LateNightAlleyCry','MuggleConfront',
+        'DawnDusk','MoonorStars','ForestOrRiver','BlackWhite','HeadsorTails','','LeftRight'] 
+
         return (
             
             <div className="SortingQuiz">
 
-
                 <div className = 'questioncontainer'>
-                    <NavLink className = 'backbtn' to = '/quizHome'> X  </NavLink>
-
-                    <div className = 'questiontext'  style = {{backgroundImage:`url('${this.state.backgroundimage}')`}}>
+                    <img src={require('./../../QuizQuerys/' + questionImageArray[currentquestionindex] + '.png')} alt='No Image Available' className = 'images'/>
+                    <NavLink className = 'backbtn' to = '/quizHome'>   </NavLink>
+                    {/* <div className = 'questiontext'  style = {{backgroundImage:`url('${this.state.backgroundimage}')`}}>
                         {this.state.sortingQuestion.question}
-                    </div>
-
+                    </div> */}
                 </div>
-                <div className = 'answercontainer'>
+                <div className = 'answercontainer' style={{backgroundColor: `${this.state.answerColors[Math.floor(Math.random() * this.state.answerColors.length)]}`}}>
                     <div className = 'answerdiv'>
                         <div className = 'answertoggleupdiv'>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className = 'answertoggleup' onClick = {this.decreaseAIndex}>
+                            <svg fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className = 'answertoggleup' onClick = {this.decreaseAIndex}>
                             <path d="M256 64L96 433.062 110.938 448 256 384l145.062 64L416 433.062z"/></svg>
                         </div>
-
                         <div className = 'answertext'>
                             {this.state.questionAnswer[this.state.index]}
                         </div>
 
                         <div className = 'answertoggledowndiv'>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className = 'answertoggledown' onClick = {this.increaseAIndex}>
+                            <svg fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className = 'answertoggledown' onClick = {this.increaseAIndex}>
                             <path d="M256 64L96 433.062 110.938 448 256 384l145.062 64L416 433.062z"/></svg>
                         </div>
                     </div>
-
                     <div className = 'bottombtns'>
-                        
                         <button className = 'answerselectbtn' id = 'selectbtn' onClick = {this.newAnswerBtn}>
                             Select
                         </button>
                     </div>
-
-
                     <div className = 'circlesContainer'>
-                        <div className = {`${answercircle}`}></div>
-                        <div className = {`${notcurrentanswer}`}></div>
-                        <div className = {`${notcurrentanswer}`}></div>
-                        <div className = {`${notcurrentanswer}`}></div>
+                        <div className = {`${answercircle1}`}></div>
+                        <div className = {`${answercircle2}`}></div>
+                        <div className = {`${answercircle3}`} style = {{display: this.state.answerLength > 1?  'block':'none'}}></div>
+                        <div className = {`${answercircle4}`} style = {{display: this.state.answerLength > 1? 'block':'none'}}></div>
                     </div>
                 </div>
             </div>

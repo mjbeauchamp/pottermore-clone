@@ -42,7 +42,7 @@ export default class Gryffindor extends React.Component {
         <div className='house'>
             <section className='house-logo' id='gryffindor'>
                 <h1>{this.state.currentUser.first_name} {this.state.currentUser.last_name}</h1>
-                <h2>Welcome back to your house page</h2>
+                <h2>Welcome to your house page</h2>
                 <img src="https://vignette.wikia.nocookie.net/jspotter/images/e/e2/Gryffindor_House_Crest.png/revision/latest?cb=20140720030308" alt=""/>
             </section>
             <section className='house-about'>
