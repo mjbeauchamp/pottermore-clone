@@ -3,14 +3,13 @@
 module.exports = {
 
     getCart: async(req,res)=>{
-        console.log("current user ID", req.session.userid)
+        if(+req.session.userid)
         try{
             const db = req.app.get('db')
             let cart = await db.get_cart([+req.session.userid])
-            console.log(cart)
             return res.status(200).send(cart)
-            }catch(err){res.sendStatus(500)
-                console.log(err)
+            }catch(err){
+                console.log("Something went wrong",err)
             }
     },
     getProducts: async (req, res) => {
@@ -98,10 +97,7 @@ module.exports = {
         try{
             const db = req.app.get('db')
             const deletedCart = await db.delete_cart([req.session.userid]);
-            return res.status(200).send([{product_name:"Continue shopping to add an item to your cart",
-            product_price:"$0.00",
-            product_quantity:'0',
-        product_image:'https://scontent-atl3-1.cdninstagram.com/vp/e22e53de2eb9a084905cd25feebc812e/5C0C8D6C/t51.2885-15/e35/37411578_1714777021968519_4217534786614329344_n.jpg'}])
+            return res.status(200).send(deletedCart)
         }catch(err){
             res.status(500).send(err)
             console.log(err)

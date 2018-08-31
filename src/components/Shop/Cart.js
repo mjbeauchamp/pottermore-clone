@@ -4,6 +4,8 @@ import Items from './Items';
 import {Link} from 'react-router-dom';
 import Navbar from '../Navbar';
 import swal from 'sweetalert2';
+import StripeCheckout from 'react-stripe-checkout';
+
 
 
 class Cart extends Component{
@@ -14,27 +16,43 @@ class Cart extends Component{
             details:[],
             currentUser:{},
             userId:null,
-            products:[]
-        }
+            products:[],
+            price:0
+         }
 
 
     }
     componentDidMount(){
         axios.get("/api/current_user")
         .then(response => {
-            if(response.data[0].id){
                 this.setState({
                     currentUser: response.data[0],
                     userId: response.data[0].id
                 })
-            }
+        }).catch(err=>{
+            swal({
+                title: "Looks like you're not logged in!",
+                animation: false,
+                customClass: 'animated tada'
+              })
         })
-        .catch(err=>{
-            swal("might want to log in.", err)
-        });
         axios.get('/api/cart').then(items=>{
+            if(items.data.length<=0){
+                swal({
+                    title: 'Looks like you have an empty cart!',
+                    animation: false,
+                    customClass: 'animated tada'
+                  })
+            }
+            let total = items.data.reduce((acc,product)=>{
+                let cost = (Number(product.product_price.replace(/[$]+/g, '')*product.quantity))
+                return (acc + cost)
+              }, 0);
+                let tax = Number((total)+(total * 0.0685) ).toFixed(2)
+                console.log(typeof tax)
             this.setState({
-                products:items.data
+                products:items.data,
+                price:tax
             })
         })
         this.getCartDetails();
@@ -58,36 +76,91 @@ class Cart extends Component{
             })
         })
     }
-    handleDeleteItem=()=>{
-        const {id} = this.props
-        console.log('DELETEITEM',id)
-        axios.put('/api/delete',{id}).then(res=>{
-            console.log(res.data)
-                axios.get('/api/details').then(updatedCart=>{
-                    this.setState({
-                        details:updatedCart
-                    })
+    // handleDeleteItem=()=>{
+    //     const {id} = this.props
+    //     axios.put('/api/delete',{id}).then(res=>{
+    //             axios.get('/api/details').then(updatedCart=>{
+    //                 this.setState({
+    //                     details:updatedCart
+    //                 })
                     
-                })
-            })
-    }
+    //             })
+    //         }).catch(err=>{
+    //             swal({
+    //                 title: 'Custom animation with Animate.css',
+    //                 animation: false,
+    //                 customClass: 'animated tada'
+    //               })
+    //         })
+    // }
     handleDeleteProduct=(id)=>{
         axios.delete(`/api/product/${+id}`,).then(res=>{
-            console.log(res.data)
-                this.setState({
-                    products:res.data
-                })
+            if(res.data.length<=0){
+
+            }
+            this.setState({
+                products:res.data
+            })
+            }).catch(err=>{
+                swal(err)
             })
     }
     handleDeleteCart=()=>{
+        if(this.state.products.length<=0){
+            return swal({
+                title: "Unable to buy nothing",
+                animation: false,
+                customClass: 'animated tada'
+              })
+
+        }
         axios.delete('/api/cart').then(res=>{
             this.setState({
                 products:res.data
             })
+            swal({
+                position: 'center',
+                type: 'success',
+                title: 'Your order has been placed',
+                showConfirmButton: true,
+                timer: 1500
+            })
+        }).catch(err=>{
+            console.log(err)
         })
     }
+    onToken = (token) => {
+        token.card = void 0;
+        axios.post('/api/payment', { token, amount: this.state.price} ).then(response => { 
+            const toast = swal.mixin({
+                toast: true,
+                position: 'center',
+                heightAuto: false,
+                showConfirmButton: false,
+                background: 'rgb(82, 194, 8)',
+                timer: 3000
+              });
+              
+              swal({
+                position: 'center',
+                type: 'success',
+                title: 'Thanks for your order',
+                showConfirmButton: false,
+                timer: 3000
+            })
+          }).then( () => this.props.history.push('store') );
+
+        axios.delete('/api/cart')
+        .then(response => { 
+            this.props.empty(response.data)
+        })
+        .catch(err => console.log(err));
+      }
+
+
 
     render(){
+        console.log( this.state.price)
       let total = this.state.products.reduce((acc,product)=>{
         let cost = (Number(product.product_price.replace(/[$]+/g, '')*product.quantity))
         return (acc + cost)
@@ -103,7 +176,7 @@ class Cart extends Component{
                     price={e.product_price}
                     image={e.product_image}
                     description={e.product_description}
-                    delete={this.handleDeleteItem}
+                    // delete={this.handleDeleteItem}
                     add={this.handleAddItem}
                     deleteProduct={this.handleDeleteProduct}
                 />
@@ -115,16 +188,46 @@ class Cart extends Component{
             <div className='cart-main'>
             <Navbar{...this.props}/>
                     <Link className='cs' to ='/store'>
-                    Continue Shopping            
+                    <p>Continue Shopping</p>         
                     </Link>
                 <div className='cart-items'>
                   {items}
-                  <div className='cart-checkout'>
+                  
+                  
+                  {/* <div className="checkout">
+                    </div>
                     <h4>Tax:${tax}</h4>
                     <hr/>
                     <h4>Cart Total:${(Number(total)+Number(tax)).toFixed(2)}</h4>
-                    <button onClick={this.handleDeleteCart}>Checkout</button>
-                    </div>
+                    <div className="stripe">
+                    <button>Checkout</button>
+                    
+                    <StripeCheckout
+                token={this.onToken}
+                stripeKey='pk_test_FUhDsB3c5yQRnUKpgDSJRTQK'
+                amount={{total}+{tax}*100}
+                />
+                </div> */}
+<div className='cart-checkout'>
+    <div className="checkout">
+        <div>
+            <h4>Tax:${tax}</h4>
+            <hr/>
+            <h4>Cart Total:${(Number(total)+Number(tax)).toFixed(2)}</h4>
+        </div>
+
+        <div className="stripe">
+        <div>
+            <StripeCheckout
+                token={this.onToken}
+                stripeKey='pk_test_FUhDsB3c5yQRnUKpgDSJRTQK'
+                amount={this.state.price*100}
+                />
+        </div>        
+            <button>Checkout</button>
+        </div>
+    </div>
+</div>
                 </div>
                 </div>
             )

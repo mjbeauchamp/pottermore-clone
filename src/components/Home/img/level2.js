@@ -2,7 +2,7 @@ import React from 'react'
 
 export default 
 <svg width="400" height="350" viewBox="0 0 807 587" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="807" height="548" fill="black" fill-opacity="0"/>
+<rect width="807" height="548" fill="black" fillOpacity="0"/>
 <g filter="url(#filter0_d)">
 <path className='svg-spell-2' d="M524 60C642.694 91.8949 695 189 689 252C683 315 610 372 555 403C500 434 430 448 355 431C280 414 158.295 347.057 151 252C143.723 157.18 212.061 99.0203 237 83C261.939 66.9797 352 26 425 50V548" stroke="white" strokeWidth="35" strokeLinecap="round" strokeLinejoin="round"/>
 </g>
