@@ -166,6 +166,7 @@ class Cart extends Component{
         return (acc + cost)
       }, 0);
         let tax = (total * 0.0685).toFixed(2)
+        let totalTax= (Number(total)+Number(tax)).toFixed(2)
         let items =  this.state.products.map(e=>{
             return(
                 <Items
@@ -213,7 +214,7 @@ class Cart extends Component{
         <div>
             <h4>Tax:${tax}</h4>
             <hr/>
-            <h4>Cart Total:${(Number(total)+Number(tax)).toFixed(2)}</h4>
+            <h4>Cart Total:${totalTax}</h4>
         </div>
 
         <div className="stripe">
@@ -221,7 +222,7 @@ class Cart extends Component{
             <StripeCheckout
                 token={this.onToken}
                 stripeKey='pk_test_FUhDsB3c5yQRnUKpgDSJRTQK'
-                amount={(Number(total)+Number(tax)).toFixed(2)*100}
+                amount={totalTax*100}
                 />
         </div>        
             <button>Checkout</button>
