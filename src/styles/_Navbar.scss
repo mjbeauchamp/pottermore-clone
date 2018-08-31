@@ -186,4 +186,12 @@
         100% {transform: none;}
     }
 
+    .navbar-link {
+        transition: .5s;
+    }
+
+    .navbar-link:hover {
+        color: #bdbdbd;
+    }
+
 }

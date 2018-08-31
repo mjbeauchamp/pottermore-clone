@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios";
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 class Navbar extends Component {
     constructor(props){
@@ -45,20 +45,20 @@ class Navbar extends Component {
         //Links to be rendered conditionally
         let logout;
         let dashboard;
-        let home = <Link to="/home">HOME</Link>;
-        let store = <Link to="/store">STORE</Link>;
-        let quizhome = <Link to="/quizhome">QUIZ</Link>;
+        let home = <NavLink className="navbar-link" to="/home">HOME</NavLink>;
+        let store = <NavLink className="navbar-link" to="/store">STORE</NavLink>;
+        let quizhome = <NavLink className="navbar-link" to="/quizhome">QUIZ</NavLink>;
         let auth;
         let cart;
         //Pulling path from props for conditional routing
         let path = this.props.location.pathname;
 
         if(this.state.userID){
-            logout = <Link to='/' onClick={this.logout}>LOGOUT</Link>
-            dashboard = <Link to="/dashboard">DASHBOARD</Link>
-            cart = <Link to="/cart">CART</Link>
+            logout = <NavLink className="navbar-link" to='/' onClick={this.logout}>LOGOUT</NavLink>
+            dashboard = <NavLink className="navbar-link" to="/dashboard">DASHBOARD</NavLink>
+            cart = <NavLink className="navbar-link" to="/cart">CART</NavLink>
         } else if(!this.state.userID){
-            auth = <Link to="/">LOGIN</Link>
+            auth = <NavLink className="navbar-link" to="/">LOGIN</NavLink>
         }
 
         return (
