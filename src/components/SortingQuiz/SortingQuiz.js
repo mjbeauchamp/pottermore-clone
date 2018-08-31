@@ -19,7 +19,8 @@ class SortingQuiz extends Component{
             Hufflepuff:0,
             Ravenclaw:0,
             Slytherin:0,
-            clicks: 0
+            clicks: 0,
+            answerColors: ["#412198", "#354253", "#0f072b", "#506782", "#1d074e", "#531162", "#554b9d", "#7f1e45", "#1d3f46", "#37153a", "#602118", "#192470","#191a15","#42395a"]
         }
     }
 
@@ -237,12 +238,17 @@ class SortingQuiz extends Component{
         }
     }
     
+    getAnswerColor = () => {
+        var answerColor = this.state.answerColor[Math.floor(Math.random * this.state.answerColors.length)]
+        return answerColor;
+    }
 
     
     render (){
         console.log(111,this.state.index)
         var answercircle = 'answercircle'
         var notcurrentanswer = 'notcurrentanswer'
+        
         return (
             
             <div className="SortingQuiz">
@@ -256,10 +262,10 @@ class SortingQuiz extends Component{
                     </div>
 
                 </div>
-                <div className = 'answercontainer'>
+                <div className = 'answercontainer' style={{backgroundColor: `${this.state.answerColors[Math.floor(Math.random() * this.state.answerColors.length)]}`}}>
                     <div className = 'answerdiv'>
                         <div className = 'answertoggleupdiv'>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className = 'answertoggleup' onClick = {this.decreaseAIndex}>
+                            <svg fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className = 'answertoggleup' onClick = {this.decreaseAIndex}>
                             <path d="M256 64L96 433.062 110.938 448 256 384l145.062 64L416 433.062z"/></svg>
                         </div>
 
@@ -268,7 +274,7 @@ class SortingQuiz extends Component{
                         </div>
 
                         <div className = 'answertoggledowndiv'>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className = 'answertoggledown' onClick = {this.increaseAIndex}>
+                            <svg fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className = 'answertoggledown' onClick = {this.increaseAIndex}>
                             <path d="M256 64L96 433.062 110.938 448 256 384l145.062 64L416 433.062z"/></svg>
                         </div>
                     </div>
