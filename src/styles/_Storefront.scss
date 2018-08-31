@@ -140,6 +140,7 @@
         font-family: 'Vollkorn', serif;
         max-height: 150px;
         overflow: scroll;
+        overflow-x:hidden;
     }
     hr {
         margin: 20px 0;
@@ -169,4 +170,9 @@
 #listFilter {
     margin-left: 5px;
     margin-right: 120px;
+}
+.itempopup{
+    position:fixed;
+    height:100vh;
+    width:100vw;
 }

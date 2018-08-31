@@ -221,7 +221,7 @@ class Cart extends Component{
             <StripeCheckout
                 token={this.onToken}
                 stripeKey='pk_test_FUhDsB3c5yQRnUKpgDSJRTQK'
-                amount={this.state.price*100}
+                amount={(Number(total)+Number(tax)).toFixed(2)*100}
                 />
         </div>        
             <button>Checkout</button>
