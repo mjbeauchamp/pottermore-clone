@@ -93,7 +93,7 @@ class Storefront extends Component{
                   });
                   toast1({
                     type: 'success',
-                    title: 'Item added to trunk!'
+                    title: 'Item added to cart!'
                   })
                   this.setState({
                       quantity:this.state.quantity +=1
@@ -106,7 +106,7 @@ class Storefront extends Component{
               });
               
               toast2({
-                type: 'failure',
+                type: 'error',
                 title: 'Uh-Oh'
               })
             console.log(err)
