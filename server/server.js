@@ -85,22 +85,6 @@ app.put('/api/cart/:id/:quantity', storeControllers.update)
 // Dashboard
 app.get('/api/wizards', authControllers.getHouse);
 ////////STRIPE////////
-// app.post("/charge", async (req, res) => {
-//     try {
-//       let {status} = await stripe.charges.create({
-//         amount: 1675,
-//         currency: "usd",
-//         description: "An example charge",
-//         source: req.body
-//       });
-  
-//       res.json({status});
-//     } catch (err) {
-//       res.status(500).end();
-//     }
-//   });
-
-
 
 app.post('/api/payment', function(req, res, next){
     //convert amount to pennies
