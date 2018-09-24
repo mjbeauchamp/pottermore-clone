@@ -21,12 +21,11 @@ class Login extends Component {
         let {username, password} = this.state;
         axios.post('/auth/login', {username: username, password: password})
             .then(response => {
-                // this.props.gatherUserId(username);
                 this.setState({
                     username: '',
                     password: ''
                 })
-                this.props.history.push('/home');
+                this.props.history.push('/');
             })
             .catch(err => {
                 alert("Username and password incorrect.")
@@ -52,8 +51,8 @@ class Login extends Component {
                 <Navbar {...this.props}  />
 
                 <div className='auth-background'>
-                <video autoPlay muted loop width='100%' >
-                    <source src={video} type='video/mp4' />
+                <video autoPlay muted loop width='100%'>
+                    <source src={video} type='video/mp4'/>
                 </video></div>
                     <div className={ !this.state.toggle ? 'show' : ' show hide'}>
                         <h1 className="auth-title">LOGIN</h1>
