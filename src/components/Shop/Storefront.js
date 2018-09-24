@@ -107,7 +107,7 @@ class Storefront extends Component{
               
               toast2({
                 type: 'error',
-                title: 'Uh-Oh'
+                title: 'Please log-in to add items to cart.'
               })
             console.log(err)
         })
