@@ -91,7 +91,7 @@ class QuizHome extends React.Component {
 
                     <section className = 'sortingQuiz' style = {{display: this.state.userishere ? 'none':'block'}}>
                         <div className = 'sortingquiztext'>
-                            <Link className="sorting-login-link" to='/'>Please Sign In To Be Sorted</Link>
+                            <Link className="sorting-login-link" to='/Login'>Please Sign In To Be Sorted</Link>
                         </div>
                     </section>    
                 </div>

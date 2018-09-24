@@ -20,7 +20,7 @@ module.exports = {
 
         //Encrypting password
         bcrypt.hash(password, null, null, function(err, hash){
-            //All of this is what was working before I tried using bcrypt, except I swapped out "hash" for "password in the argument array"
+            //All of this is what was working before I tried using bcrypt, except I swapped out "hash" for "password" in the argument array
             dbInstance.create_user([first_name, last_name, username, hash])
             .then(createdUser => {
                 req.session.userid = createdUser[0].id

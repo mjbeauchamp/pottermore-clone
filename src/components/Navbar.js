@@ -32,7 +32,7 @@ class Navbar extends Component {
                     currentUser: {},
                     userID: null
                 })
-                this.props.history.push("/home")
+                this.props.history.push("/")
             })
             .catch()
     }
@@ -45,7 +45,7 @@ class Navbar extends Component {
         //Links to be rendered conditionally
         let logout;
         let dashboard;
-        let home = <NavLink className="navbar-link" to="/home">HOME</NavLink>;
+        let home = <NavLink className="navbar-link" to="/">HOME</NavLink>;
         let store = <NavLink className="navbar-link" to="/store">STORE</NavLink>;
         let quizhome = <NavLink className="navbar-link" to="/quizhome">QUIZ</NavLink>;
         let auth;
@@ -58,7 +58,7 @@ class Navbar extends Component {
             dashboard = <NavLink className="navbar-link" to="/dashboard">DASHBOARD</NavLink>
             cart = <NavLink className="navbar-link" to="/cart">CART</NavLink>
         } else if(!this.state.userID){
-            auth = <NavLink className="navbar-link" to="/">LOGIN</NavLink>
+            auth = <NavLink className="navbar-link" to="/Login">LOGIN</NavLink>
         }
 
         return (

@@ -114,6 +114,7 @@ class Storefront extends Component{
     }
 
     render(){
+        console.log(this.props)
             let products = this.state.filter.map(e=>{
             return(
                     <Products
