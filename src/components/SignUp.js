@@ -33,7 +33,7 @@ class SignUp extends Component {
                                 username: '',
                                 password: ''
                             })
-                            this.props.history.push('/home')
+                            this.props.history.push('/')
                         })
                         .catch(err => {
                             console.log("Unable to create new user.",err)

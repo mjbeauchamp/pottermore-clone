@@ -12,10 +12,10 @@ import CastSpell from './components/CastSpell/CastSpell';
 
 export default (
     <Switch>
-        <Route path = '/' component = {Login} exact />
+        <Route path = '/' component = {Home} exact />
         <Route path = '/signup' component = {SignUp}/>
         <Route path = '/dashboard' component = {UserDashboard} />
-        <Route path = '/home' component = {Home}/>
+        <Route path = '/login' component = {Login}/>
         <Route path = '/store' component = {Storefront}/>
         <Route path = '/cart' component = {Cart}/>
         <Route path = '/quizhome' component = {QuizHome}/>
